@@ -61,6 +61,61 @@
                 }
             }
         }
+
+        /* ── Lightbox ── */
+#lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 999;
+    background: rgba(0,0,0,0.92);
+    backdrop-filter: blur(8px);
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    cursor: zoom-out;
+}
+#lightbox.open {
+    display: flex;
+}
+#lightbox img {
+    max-width: 100%;
+    max-height: 90vh;
+    border-radius: 1rem;
+    border: 1px solid rgba(255,255,255,0.1);
+    box-shadow: 0 30px 80px rgba(0,0,0,0.8);
+    cursor: default;
+}
+#lightbox-close {
+    position: fixed;
+    top: 1.25rem;
+    right: 1.25rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.15);
+    color: white;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+#lightbox-close:hover {
+    background: rgba(255,255,255,0.2);
+}
+.screenshot-img {
+    cursor: zoom-in;
+}
+
+        @media (max-width: 767px) {
+    .step-card {
+        padding: 1rem !important;
+        text-align: left !important;
+    }
+}
     </script>
  
     <style>
@@ -231,7 +286,14 @@
 </head>
  
 <body class="antialiased selection:bg-lavender-500/30 selection:text-lavender-100 overflow-x-hidden relative">
- 
+
+    <!-- Lightbox -->
+<div id="lightbox" onclick="closeLightbox(event)">
+    <button id="lightbox-close" onclick="closeLightbox()">
+        <i class="fa-solid fa-xmark"></i>
+    </button>
+    <img id="lightbox-img" src="" alt="" />
+</div>
     <!-- Noise overlay -->
     <div class="bg-noise"></div>
     
@@ -430,7 +492,7 @@
                             <i class="fa-solid fa-award text-yellow-400 shadow-[0_0_10px_rgba(250,204,21,0.5)] text-lg"></i>
                         </div>
                         <div class="rounded-xl overflow-hidden border border-white/5 bg-[#05030A]">
-                            <img src="Pitch Praise.png" alt="Pitch Praise" class="w-full h-auto opacity-90 group-hover:opacity-100 group-hover:scale-[1.01] transition-all duration-500" />
+                            <img src="Pitch Praise.png" alt="Pitch Praise" class="screenshot-img w-full h-auto opacity-90 group-hover:opacity-100 group-hover:scale-[1.01] transition-all duration-500" onclick="openLightbox(this)" />
                         </div>
                     </div>
  
@@ -440,7 +502,7 @@
                             <i class="fa-regular fa-eye text-lavender-400 text-lg"></i>
                         </div>
                         <div class="rounded-xl overflow-hidden border border-white/5 bg-[#05030A]">
-                            <img src="Subject Line 1.png" alt="Subject Line Curiosity" class="w-full h-auto opacity-90 group-hover:opacity-100 group-hover:scale-[1.01] transition-all duration-500" />
+                            <img src="Subject Line 1.png" alt="Subject Line Curiosity" class="screenshot-img w-full h-auto opacity-90 group-hover:opacity-100 group-hover:scale-[1.01] transition-all duration-500" onclick="openLightbox(this)" />
                         </div>
                     </div>
  
@@ -450,7 +512,7 @@
                             <i class="fa-solid fa-check-double text-emerald-400 text-lg"></i>
                         </div>
                         <div class="rounded-xl overflow-hidden border border-white/5 bg-[#05030A]">
-                            <img src="Subject Line 2.png" alt="Subject Line Praise" class="w-full h-auto opacity-90 group-hover:opacity-100 group-hover:scale-[1.01] transition-all duration-500" />
+                            <img src="Subject Line 2.png" alt="Subject Line Praise" class="screenshot-img w-full h-auto opacity-90 group-hover:opacity-100 group-hover:scale-[1.01] transition-all duration-500" onclick="openLightbox(this)" />
                         </div>
                     </div>
  
@@ -460,7 +522,7 @@
                             <i class="fa-solid fa-link text-indigo-400 text-lg"></i>
                         </div>
                         <div class="rounded-xl overflow-hidden border border-white/5 bg-[#05030A]">
-                            <img src="Right into the Deal.png" alt="Direct Agreement" class="w-full h-auto opacity-90 group-hover:opacity-100 group-hover:scale-[1.01] transition-all duration-500" />
+                            <img src="Right into the Deal.png" alt="Direct Agreement" class="screenshot-img w-full h-auto opacity-90 group-hover:opacity-100 group-hover:scale-[1.01] transition-all duration-500" onclick="openLightbox(this)" />
                         </div>
                     </div>
  
@@ -470,7 +532,7 @@
                             <i class="fa-solid fa-handshake text-fuchsia-400 text-lg"></i>
                         </div>
                         <div class="rounded-xl overflow-hidden border border-white/5 bg-[#05030A]">
-                            <img src="Negotiation Power.png" alt="Successful Negotiation" class="w-full h-auto opacity-90 group-hover:opacity-100 group-hover:scale-[1.01] transition-all duration-500" />
+                            <img src="Negotiation Power.png" alt="Successful Negotiation" class="screenshot-img w-full h-auto opacity-90 group-hover:opacity-100 group-hover:scale-[1.01] transition-all duration-500" onclick="openLightbox(this)" />
                         </div>
                     </div>
  
@@ -480,7 +542,7 @@
                             <i class="fa-solid fa-bolt text-yellow-400 text-lg"></i>
                         </div>
                         <div class="rounded-xl overflow-hidden border border-white/5 bg-[#05030A]">
-                            <img src="Interested Right Away.png" alt="Instant Interest" class="w-full h-auto opacity-90 group-hover:opacity-100 group-hover:scale-[1.01] transition-all duration-500" />
+                            <img src="Interested Right Away.png" alt="Instant Interest" class="screenshot-img w-full h-auto opacity-90 group-hover:opacity-100 group-hover:scale-[1.01] transition-all duration-500" onclick="openLightbox(this)" />
                         </div>
                     </div>
  
@@ -490,7 +552,7 @@
                             <i class="fa-solid fa-filter text-blue-400 text-lg"></i>
                         </div>
                         <div class="rounded-xl overflow-hidden border border-white/5 bg-[#05030A]">
-                            <img src="Funneling Down.png" alt="Moving Down Funnel" class="w-full h-auto opacity-90 group-hover:opacity-100 group-hover:scale-[1.01] transition-all duration-500" />
+                            <img src="Funneling Down.png" alt="Moving Down Funnel" class="screenshot-img w-full h-auto opacity-90 group-hover:opacity-100 group-hover:scale-[1.01] transition-all duration-500" onclick="openLightbox(this)" />
                         </div>
                     </div>
  
@@ -500,7 +562,7 @@
                             <i class="fa-solid fa-reply-all text-emerald-400 text-lg"></i>
                         </div>
                         <div class="rounded-xl overflow-hidden border border-white/5 bg-[#05030A]">
-                            <img src="Quick Agreement.png" alt="Quick Agreement" class="w-full h-auto opacity-90 group-hover:opacity-100 group-hover:scale-[1.01] transition-all duration-500" />
+                            <img src="Quick Agreement.png" alt="Quick Agreement" class="screenshot-img w-full h-auto opacity-90 group-hover:opacity-100 group-hover:scale-[1.01] transition-all duration-500" onclick="openLightbox(this)" />
                         </div>
                     </div>
  
@@ -903,6 +965,22 @@ z
 
     <!-- Interactive Scripts -->
 <script>
+// ── Lightbox ──────────────────────────────────────────
+function openLightbox(img) {
+    document.getElementById('lightbox-img').src = img.src;
+    document.getElementById('lightbox-img').alt = img.alt;
+    document.getElementById('lightbox').classList.add('open');
+    document.body.style.overflow = 'hidden';
+}
+function closeLightbox(e) {
+    if (e && e.target === document.getElementById('lightbox-img')) return;
+    document.getElementById('lightbox').classList.remove('open');
+    document.body.style.overflow = '';
+}
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeLightbox();
+});
+    
         // Scroll reveal
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -941,14 +1019,19 @@ function updateTimeline() {
 
 // Mobile: use IntersectionObserver to highlight steps as they enter view
 if (isMobile()) {
+    let mobileActiveStep = null;
     const mobileObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                steps.forEach(s => s.classList.remove('step-active'));
+                if (mobileActiveStep) mobileActiveStep.classList.remove('step-active');
                 entry.target.classList.add('step-active');
+                mobileActiveStep = entry.target;
             }
         });
-    }, { threshold: 0.5, rootMargin: '-10% 0px -10% 0px' });
+    }, {
+        threshold: 0.25,
+        rootMargin: '-15% 0px -55% 0px'
+    });
     steps.forEach(step => mobileObserver.observe(step));
 }
 
