@@ -147,6 +147,59 @@
             margin: 0 auto;
             background: linear-gradient(to right, transparent, rgba(255,255,255,0.08), transparent);
         }
+        /* ── Process timeline scroll effects ── */
+#timeline-track {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    transform: translateX(-50%);
+    background: rgba(255,255,255,0.06);
+    border-radius: 99px;
+}
+#timeline-fill {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    width: 3px;
+    height: 0%;
+    transform: translateX(-50%);
+    background: linear-gradient(to bottom, #a855f7, #d946ef, #6366f1);
+    border-radius: 99px;
+    transition: height 0.08s linear;
+    box-shadow: 0 0 12px 2px rgba(168,85,247,0.5);
+}
+.step-card {
+    border-radius: 1rem;
+    padding: 1.5rem;
+    border: 1px solid transparent;
+    transition: background 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease, opacity 0.4s ease, filter 0.4s ease;
+    opacity: 0.38;
+    filter: blur(0.3px);
+}
+.step-node {
+    transition: transform 0.4s ease, background 0.4s ease, box-shadow 0.4s ease, opacity 0.4s ease;
+    opacity: 0.45;
+}
+.process-step.step-active .step-card {
+    background: rgba(255, 255, 255, 0.055);
+    border-color: rgba(255, 255, 255, 0.13);
+    box-shadow: 0 8px 40px rgba(168, 85, 247, 0.12), inset 0 1px 0 rgba(255,255,255,0.07);
+    opacity: 1;
+    filter: none;
+}
+.process-step.step-active .step-node {
+    transform: translateX(-50%) scale(1.15);
+    opacity: 1;
+}
+@media (max-width: 767px) {
+    .step-card { opacity: 1; filter: none; }
+    .process-step.step-active .step-card {
+        background: rgba(255,255,255,0.05);
+        border-color: rgba(168,85,247,0.25);
+    }
+}
     </style>
 </head>
  
@@ -595,77 +648,78 @@
         <div class="max-w-6xl mx-auto px-6">
  
             <div class="text-center mb-24 reveal">
-                <h2 class="text-4xl lg:text-5xl font-bold text-white mb-6">The System Behind the Results</h2>
-                <p class="text-xl text-slate-400 max-w-2xl mx-auto font-light">High reply rates are not luck. They are a repeatable process. Here's the exact framework I run to land quality links consistently.</p>
+                <h2 class="text-4xl lg:text-5xl font-bold text-white mb-6">My Psychology of Successful Campaigns</h2>
+                <p class="text-xl text-slate-400 max-w-2xl mx-auto font-light">High reply rates are not luck. They are the output of a repeatable system that I adapt based on what the campaign actually needs, whether that's surgical precision or efficient scale.</p>
             </div>
  
-            <!-- Process timeline -->
-            <div class="relative max-w-5xl mx-auto reveal">
-                <div class="hidden md:block absolute left-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-lavender-500/30 via-fuchsia-500/30 to-indigo-500/30 -translate-x-1/2 rounded-full"></div>
+<!-- Process timeline -->
+<div class="relative max-w-5xl mx-auto reveal" id="process-timeline">
+    <div class="hidden md:block" id="timeline-track"></div>
+    <div class="hidden md:block" id="timeline-fill"></div>
  
-                <!-- Step 1 -->
-                <div class="relative flex flex-col md:flex-row justify-between items-center mb-16 group">
-                    <div class="w-full md:w-[45%] md:text-right pr-0 md:pr-10 mb-6 md:mb-0 relative z-10 transition-transform duration-300 md:group-hover:-translate-x-2">
+                                <!-- Step 1 -->
+                <div class="process-step relative flex flex-col md:flex-row justify-between items-center mb-16" data-step="1">
+                    <div class="step-card w-full md:w-[45%] md:text-right pr-0 md:pr-10 mb-6 md:mb-0 relative z-10">
                         <div class="md:hidden flex w-12 h-12 rounded-full bg-[#0c0817] border-2 border-lavender-500 items-center justify-center text-lavender-400 font-bold mb-4 shadow-[0_0_15px_rgba(168,85,247,0.4)]">1</div>
                         <h4 class="text-2xl font-bold text-white mb-3">Keyword & Competitor Intel</h4>
-                        <p class="text-slate-400 font-light leading-relaxed">I map every linkable asset, then identify exactly who is linking to competing content, so I know which doors are already open before I knock.</p>
+                        <p class="text-slate-400 font-light leading-relaxed">Before prospecting starts, I map every linkable asset and identify who is already linking to competing content. This tells me which doors are open before I knock, and which angles are most likely to land.</p>
                     </div>
-                    <div class="hidden md:flex absolute left-1/2 -translate-x-1/2 w-14 h-14 rounded-full bg-[#05030A] border-[3px] border-lavender-500 items-center justify-center text-lavender-400 font-bold text-xl z-20 group-hover:scale-110 group-hover:bg-lavender-500/20 transition-all shadow-[0_0_20px_rgba(168,85,247,0.5)]">1</div>
+                    <div class="step-node hidden md:flex absolute left-1/2 -translate-x-1/2 w-14 h-14 rounded-full bg-[#05030A] border-[3px] border-lavender-500 items-center justify-center text-lavender-400 font-bold text-xl z-20 shadow-[0_0_20px_rgba(168,85,247,0.5)]">1</div>
                     <div class="hidden md:block w-[45%]"></div>
                 </div>
  
                 <!-- Step 2 -->
-                <div class="relative flex flex-col md:flex-row justify-between items-center mb-16 group">
+                <div class="process-step relative flex flex-col md:flex-row justify-between items-center mb-16" data-step="2">
                     <div class="hidden md:block w-[45%]"></div>
-                    <div class="hidden md:flex absolute left-1/2 -translate-x-1/2 w-14 h-14 rounded-full bg-[#05030A] border-[3px] border-fuchsia-500 items-center justify-center text-fuchsia-400 font-bold text-xl z-20 group-hover:scale-110 group-hover:bg-fuchsia-500/20 transition-all shadow-[0_0_20px_rgba(217,70,239,0.5)]">2</div>
-                    <div class="w-full md:w-[45%] md:text-left pl-0 md:pl-10 relative z-10 transition-transform duration-300 md:group-hover:translate-x-2">
+                    <div class="step-node hidden md:flex absolute left-1/2 -translate-x-1/2 w-14 h-14 rounded-full bg-[#05030A] border-[3px] border-fuchsia-500 items-center justify-center text-fuchsia-400 font-bold text-xl z-20 shadow-[0_0_20px_rgba(217,70,239,0.5)]">2</div>
+                    <div class="step-card w-full md:w-[45%] md:text-left pl-0 md:pl-10 relative z-10">
                         <div class="md:hidden flex w-12 h-12 rounded-full bg-[#0c0817] border-2 border-fuchsia-500 items-center justify-center text-fuchsia-400 font-bold mb-4 shadow-[0_0_15px_rgba(217,70,239,0.4)]">2</div>
-                        <h4 class="text-2xl font-bold text-white mb-3">Surgical Prospecting</h4>
-                        <p class="text-slate-400 font-light leading-relaxed">Strict DR, traffic, and topical relevancy filters eliminate every site that wouldn't move the needle. No PBNs. No link farms. Only targets worth a personalized pitch.</p>
+                        <h4 class="text-2xl font-bold text-white mb-3">Prospecting That Fits the Brief</h4>
+                        <p class="text-slate-400 font-light leading-relaxed">For targeted campaigns, strict DR, traffic, and topical relevancy filters narrow the list to sites that will actually move the needle. For high-volume campaigns, I use automation tools to build and segment prospect lists quickly, without compromising on relevancy. No PBNs. No link farms.</p>
                     </div>
                 </div>
  
                 <!-- Step 3 -->
-                <div class="relative flex flex-col md:flex-row justify-between items-center mb-16 group">
-                    <div class="w-full md:w-[45%] md:text-right pr-0 md:pr-10 mb-6 md:mb-0 relative z-10 transition-transform duration-300 md:group-hover:-translate-x-2">
+                <div class="process-step relative flex flex-col md:flex-row justify-between items-center mb-16" data-step="3">
+                    <div class="step-card w-full md:w-[45%] md:text-right pr-0 md:pr-10 mb-6 md:mb-0 relative z-10">
                         <div class="md:hidden flex w-12 h-12 rounded-full bg-[#0c0817] border-2 border-blue-500 items-center justify-center text-blue-400 font-bold mb-4 shadow-[0_0_15px_rgba(59,130,246,0.4)]">3</div>
-                        <h4 class="text-2xl font-bold text-white mb-3">Hyper-Personalization</h4>
-                        <p class="text-slate-400 font-light leading-relaxed">I manually extract unique merge data: a recent article, a specific opinion, a content gap. Every opener reads like it was written for one person and one person only.</p>
+                        <h4 class="text-2xl font-bold text-white mb-3">Personalization at the Right Level</h4>
+                        <p class="text-slate-400 font-light leading-relaxed">For specific, high-value targets, I dig into the site and write openers that feel genuinely tailored. For scale campaigns, I use AI-assisted tools to build templates that read as personal without requiring manual effort on every send. The approach matches the output required.</p>
                     </div>
-                    <div class="hidden md:flex absolute left-1/2 -translate-x-1/2 w-14 h-14 rounded-full bg-[#05030A] border-[3px] border-blue-500 items-center justify-center text-blue-400 font-bold text-xl z-20 group-hover:scale-110 group-hover:bg-blue-500/20 transition-all shadow-[0_0_20px_rgba(59,130,246,0.5)]">3</div>
+                    <div class="step-node hidden md:flex absolute left-1/2 -translate-x-1/2 w-14 h-14 rounded-full bg-[#05030A] border-[3px] border-blue-500 items-center justify-center text-blue-400 font-bold text-xl z-20 shadow-[0_0_20px_rgba(59,130,246,0.5)]">3</div>
                     <div class="hidden md:block w-[45%]"></div>
                 </div>
  
                 <!-- Step 4 -->
-                <div class="relative flex flex-col md:flex-row justify-between items-center mb-16 group">
+                <div class="process-step relative flex flex-col md:flex-row justify-between items-center mb-16" data-step="4">
                     <div class="hidden md:block w-[45%]"></div>
-                    <div class="hidden md:flex absolute left-1/2 -translate-x-1/2 w-14 h-14 rounded-full bg-[#05030A] border-[3px] border-lavender-500 items-center justify-center text-lavender-400 font-bold text-xl z-20 group-hover:scale-110 group-hover:bg-lavender-500/20 transition-all shadow-[0_0_20px_rgba(168,85,247,0.5)]">4</div>
-                    <div class="w-full md:w-[45%] md:text-left pl-0 md:pl-10 relative z-10 transition-transform duration-300 md:group-hover:translate-x-2">
+                    <div class="step-node hidden md:flex absolute left-1/2 -translate-x-1/2 w-14 h-14 rounded-full bg-[#05030A] border-[3px] border-lavender-500 items-center justify-center text-lavender-400 font-bold text-xl z-20 shadow-[0_0_20px_rgba(168,85,247,0.5)]">4</div>
+                    <div class="step-card w-full md:w-[45%] md:text-left pl-0 md:pl-10 relative z-10">
                         <div class="md:hidden flex w-12 h-12 rounded-full bg-[#0c0817] border-2 border-lavender-500 items-center justify-center text-lavender-400 font-bold mb-4 shadow-[0_0_15px_rgba(168,85,247,0.4)]">4</div>
                         <h4 class="text-2xl font-bold text-white mb-3">The Right Angle, Every Time</h4>
-                        <p class="text-slate-400 font-light leading-relaxed">Value swap, broken-link fix, or expert quote. Each prospect gets matched to the approach that removes the most friction from their yes. Never a one-size blast.</p>
+                        <p class="text-slate-400 font-light leading-relaxed">Value swap, broken-link fix, expert quote, listicle pitch. I match the outreach angle to the prospect type, so the ask feels like a logical next step rather than a cold interruption.</p>
                     </div>
                 </div>
  
                 <!-- Step 5 -->
-                <div class="relative flex flex-col md:flex-row justify-between items-center mb-16 group">
-                    <div class="w-full md:w-[45%] md:text-right pr-0 md:pr-10 mb-6 md:mb-0 relative z-10 transition-transform duration-300 md:group-hover:-translate-x-2">
+                <div class="process-step relative flex flex-col md:flex-row justify-between items-center mb-16" data-step="5">
+                    <div class="step-card w-full md:w-[45%] md:text-right pr-0 md:pr-10 mb-6 md:mb-0 relative z-10">
                         <div class="md:hidden flex w-12 h-12 rounded-full bg-[#0c0817] border-2 border-fuchsia-500 items-center justify-center text-fuchsia-400 font-bold mb-4 shadow-[0_0_15px_rgba(217,70,239,0.4)]">5</div>
                         <h4 class="text-2xl font-bold text-white mb-3">Smart Send & Follow-Up</h4>
-                        <p class="text-slate-400 font-light leading-relaxed">Sequences go out at the right time, not just any time. Follow-ups add something new to the thread. No generic nudges that get you blocklisted.</p>
+                        <p class="text-slate-400 font-light leading-relaxed">Sequences go out with proper send-time logic and domain warming in place. Follow-ups add something new to the thread rather than just nudging. The goal is replies, not blocklists.</p>
                     </div>
-                    <div class="hidden md:flex absolute left-1/2 -translate-x-1/2 w-14 h-14 rounded-full bg-[#05030A] border-[3px] border-fuchsia-500 items-center justify-center text-fuchsia-400 font-bold text-xl z-20 group-hover:scale-110 group-hover:bg-fuchsia-500/20 transition-all shadow-[0_0_20px_rgba(217,70,239,0.5)]">5</div>
+                    <div class="step-node hidden md:flex absolute left-1/2 -translate-x-1/2 w-14 h-14 rounded-full bg-[#05030A] border-[3px] border-fuchsia-500 items-center justify-center text-fuchsia-400 font-bold text-xl z-20 shadow-[0_0_20px_rgba(217,70,239,0.5)]">5</div>
                     <div class="hidden md:block w-[45%]"></div>
                 </div>
  
                 <!-- Step 6 -->
-                <div class="relative flex flex-col md:flex-row justify-between items-center group">
+                <div class="process-step relative flex flex-col md:flex-row justify-between items-center" data-step="6">
                     <div class="hidden md:block w-[45%]"></div>
-                    <div class="hidden md:flex absolute left-1/2 -translate-x-1/2 w-14 h-14 rounded-full bg-[#05030A] border-[3px] border-indigo-500 items-center justify-center text-indigo-400 font-bold text-xl z-20 group-hover:scale-110 group-hover:bg-indigo-500/20 transition-all shadow-[0_0_20px_rgba(99,102,241,0.5)]">6</div>
-                    <div class="w-full md:w-[45%] md:text-left pl-0 md:pl-10 relative z-10 transition-transform duration-300 md:group-hover:translate-x-2">
+                    <div class="step-node hidden md:flex absolute left-1/2 -translate-x-1/2 w-14 h-14 rounded-full bg-[#05030A] border-[3px] border-indigo-500 items-center justify-center text-indigo-400 font-bold text-xl z-20 shadow-[0_0_20px_rgba(99,102,241,0.5)]">6</div>
+                    <div class="step-card w-full md:w-[45%] md:text-left pl-0 md:pl-10 relative z-10">
                         <div class="md:hidden flex w-12 h-12 rounded-full bg-[#0c0817] border-2 border-indigo-500 items-center justify-center text-indigo-400 font-bold mb-4 shadow-[0_0_15px_rgba(99,102,241,0.4)]">6</div>
                         <h4 class="text-2xl font-bold text-white mb-3">Relationship Capital</h4>
-                        <p class="text-slate-400 font-light leading-relaxed">Every editor who says yes gets logged in a CRM built for long-term partnership. A first placement is just the opening. The compounding starts after.</p>
+                        <p class="text-slate-400 font-light leading-relaxed">Every editor who says yes gets logged for the long term. A first placement is an opening. The compounding value comes from what happens after.</p>
                     </div>
                 </div>
             </div>
@@ -788,7 +842,37 @@
         }, { root: null, rootMargin: '0px', threshold: 0.12 });
 
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+// ── Process timeline scroll progress ──────────────────
+const timeline = document.getElementById('process-timeline');
+const fillEl   = document.getElementById('timeline-fill');
+const steps    = Array.from(document.querySelectorAll('.process-step'));
+const isMobile = () => window.innerWidth < 768;
 
+function updateTimeline() {
+    if (!timeline || isMobile()) return;
+    const tlRect    = timeline.getBoundingClientRect();
+    const tlHeight  = timeline.offsetHeight;
+    const viewMid   = window.innerHeight / 2;
+    const rawProgress = (viewMid - tlRect.top) / tlHeight;
+    const progress  = Math.min(Math.max(rawProgress, 0), 1);
+    fillEl.style.height = (progress * 100) + '%';
+
+    let closestStep = null;
+    let closestDist = Infinity;
+    steps.forEach(step => {
+        const r   = step.getBoundingClientRect();
+        const mid = r.top + r.height / 2;
+        const dist = Math.abs(mid - viewMid);
+        if (dist < closestDist) { closestDist = dist; closestStep = step; }
+    });
+    steps.forEach(step => {
+        step.classList.toggle('step-active', step === closestStep);
+    });
+}
+
+window.addEventListener('load', updateTimeline);
+window.addEventListener('scroll', updateTimeline, { passive: true });
+window.addEventListener('resize', updateTimeline, { passive: true });
         // Copy email
         function copyEmail() {
             const email = "hello@siddharth-outreach.com";
