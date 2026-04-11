@@ -225,6 +225,9 @@
     line-height: 1.4;
 }
     </style>
+
+    <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+<script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
 </head>
  
 <body class="antialiased selection:bg-lavender-500/30 selection:text-lavender-100 overflow-x-hidden relative">
@@ -336,30 +339,35 @@
                         Most outreach is noise. <br/>
                         <span class="text-lavender-300">Mine is a reason to reply.</span>
                     </h2>
+<div class="space-y-5 text-base lg:text-lg text-slate-400 font-light mb-10 border-l border-white/10 pl-5">
+    <p class="leading-relaxed">
+        I built my process by failing first. Early on, I sent emails that got ignored, and I paid attention to why. Over time, I figured out how to make each element (the research, the angle, the opener) feel like a genuine conversation with a peer rather than a pitch landing in someone's inbox.
+    </p>
+    <p class="leading-relaxed">
+        Three years in, the core logic hasn't changed: approach prospects with something that's actually useful to them. When the deal creates more value for their side than it asks for, the reply almost writes itself. Getting them to see it that way is the job.
+    </p>
+</div>
  
-                    <div class="space-y-6 text-lg text-slate-400 font-light mb-10 border-l border-white/10 pl-6">
-                        <p>
-                            I built my process by failing first. Early on, I sent emails that got ignored, and I paid attention to why. Over time, I figured out how to make each element (the research, the angle, the opener) feel like a genuine conversation with a peer rather than a pitch landing in someone's inbox.
-                        </p>
-                        <p>
-                            Three years in, the core logic hasn't changed: approach prospects with something that's actually useful to them. When the deal creates more value for their side than it asks for, the reply almost writes itself. Getting them to see it that way is the job.
-                        </p>
-                    </div>
- 
-                    <ul class="space-y-5 hover-group">
-                        <li class="flex items-start gap-4 hover-item bg-white/5 p-4 rounded-xl border border-transparent hover:border-white/10 backdrop-blur-sm cursor-default">
-                            <div class="mt-1 flex-shrink-0 w-6 h-6 rounded-full bg-lavender-500/20 flex items-center justify-center border border-lavender-500/30 text-lavender-400">
-                                <i class="fa-solid fa-check text-xs"></i>
-                            </div>
-                            <span class="text-slate-300"><strong class="text-white font-semibold">Precision targeting, when it matters:</strong>  If a client needs a link from a specific site, a particular page, a brand mention, or a listicle slot, I'll track it down. Insertion, mention, roundup, whatever the format calls for. I've learned how to hunt for very specific placements without burning the relationship in the process.</span>
-                        </li>
-                        <li class="flex items-start gap-4 hover-item bg-white/5 p-4 rounded-xl border border-transparent hover:border-white/10 backdrop-blur-sm cursor-default">
-                            <div class="mt-1 flex-shrink-0 w-6 h-6 rounded-full bg-lavender-500/20 flex items-center justify-center border border-lavender-500/30 text-lavender-400">
-                                <i class="fa-solid fa-check text-xs"></i>
-                            </div>
-                        <span class="text-slate-300"><strong class="text-white font-semibold">Scale, when the brief calls for it:</strong> High-volume campaigns need a different approach. I've built templated outreach that reads like it was written one-to-one, so a blast to hundreds of recipients doesn't feel like one.</span>
-                        </li>
-                    </ul>
+                    <ul class="space-y-4">
+    <li class="flex items-start gap-3 bg-white/5 p-4 rounded-xl border border-transparent hover:border-white/10 backdrop-blur-sm cursor-default transition-all">
+        <div class="mt-0.5 flex-shrink-0 w-5 h-5 rounded-full bg-lavender-500/20 flex items-center justify-center border border-lavender-500/30 text-lavender-400">
+            <i class="fa-solid fa-check text-[10px]"></i>
+        </div>
+        <span class="text-sm lg:text-base text-slate-300 leading-relaxed">
+            <strong class="text-white font-semibold block mb-1">Precision targeting, when it matters</strong>
+            If a client needs a link from a specific site, a particular page, a brand mention, or a listicle slot, I'll track it down. Insertion, mention, roundup, whatever the format calls for.
+        </span>
+    </li>
+    <li class="flex items-start gap-3 bg-white/5 p-4 rounded-xl border border-transparent hover:border-white/10 backdrop-blur-sm cursor-default transition-all">
+        <div class="mt-0.5 flex-shrink-0 w-5 h-5 rounded-full bg-lavender-500/20 flex items-center justify-center border border-lavender-500/30 text-lavender-400">
+            <i class="fa-solid fa-check text-[10px]"></i>
+        </div>
+        <span class="text-sm lg:text-base text-slate-300 leading-relaxed">
+            <strong class="text-white font-semibold block mb-1">Scale, when the brief calls for it</strong>
+            High-volume campaigns need a different approach. I've built templated outreach that reads like it was written one-to-one, so a blast to hundreds of recipients doesn't feel like one.
+        </span>
+    </li>
+</ul>
                 </div>
  
                 <!-- Testimonial card -->
@@ -911,24 +919,37 @@ const isMobile = () => window.innerWidth < 768;
 
 function updateTimeline() {
     if (!timeline || isMobile()) return;
-    const tlRect    = timeline.getBoundingClientRect();
-    const tlHeight  = timeline.offsetHeight;
-    const viewMid   = window.innerHeight / 2;
+    const tlRect      = timeline.getBoundingClientRect();
+    const tlHeight    = timeline.offsetHeight;
+    const viewMid     = window.innerHeight / 2;
     const rawProgress = (viewMid - tlRect.top) / tlHeight;
-    const progress  = Math.min(Math.max(rawProgress, 0), 1);
+    const progress    = Math.min(Math.max(rawProgress, 0), 1);
     fillEl.style.height = (progress * 100) + '%';
 
     let closestStep = null;
     let closestDist = Infinity;
     steps.forEach(step => {
-        const r   = step.getBoundingClientRect();
-        const mid = r.top + r.height / 2;
+        const r    = step.getBoundingClientRect();
+        const mid  = r.top + r.height / 2;
         const dist = Math.abs(mid - viewMid);
         if (dist < closestDist) { closestDist = dist; closestStep = step; }
     });
     steps.forEach(step => {
         step.classList.toggle('step-active', step === closestStep);
     });
+}
+
+// Mobile: use IntersectionObserver to highlight steps as they enter view
+if (isMobile()) {
+    const mobileObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                steps.forEach(s => s.classList.remove('step-active'));
+                entry.target.classList.add('step-active');
+            }
+        });
+    }, { threshold: 0.5, rootMargin: '-10% 0px -10% 0px' });
+    steps.forEach(step => mobileObserver.observe(step));
 }
 
 window.addEventListener('load', updateTimeline);
