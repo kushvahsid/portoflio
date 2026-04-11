@@ -200,6 +200,30 @@
         border-color: rgba(168,85,247,0.25);
     }
 }
+
+.cta-stat-card {
+    flex: 1;
+    min-width: 160px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 1rem;
+    padding: 1.25rem 1.5rem;
+    text-align: center;
+}
+.cta-stat-card .stat-label {
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: rgba(192,132,252,0.7);
+    margin-bottom: 0.4rem;
+}
+.cta-stat-card .stat-value {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #e2e8f0;
+    line-height: 1.4;
+}
     </style>
 </head>
  
@@ -765,52 +789,93 @@
         </div>
     </section>
  
-    <!-- ── 5. CTA ─────────────────────────────────────────────── -->
-    <section class="py-32 relative overflow-hidden z-20">
-        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[500px] bg-lavender-600/20 rounded-[100%] blur-[120px] -z-10 pointer-events-none"></div>
-        
-        <div class="max-w-4xl mx-auto px-6 relative text-center reveal">
-            <!-- Social proof strip above CTA -->
-            <div class="inline-flex flex-wrap justify-center gap-3 mb-10">
-                <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-slate-300 text-sm font-medium">
-                    <i class="fa-solid fa-shield-check text-emerald-400 text-xs"></i> 18–32% reply rates, verified
-                </span>
-                <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-slate-300 text-sm font-medium">
-                    <i class="fa-solid fa-link text-lavender-400 text-xs"></i> 6 live placements, all clickable
-                </span>
-                <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-slate-300 text-sm font-medium">
-                    <i class="fa-solid fa-calendar-check text-fuchsia-400 text-xs"></i> Available immediately
-                </span>
+<!-- ── 5. CTA ─────────────────────────────────────────────── -->
+<section class="py-32 relative overflow-hidden z-20">
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[500px] bg-lavender-600/20 rounded-[100%] blur-[120px] -z-10 pointer-events-none"></div>
+
+    <div class="max-w-4xl mx-auto px-6 relative text-center reveal">
+
+        <!-- Single proof strip -->
+        <div class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/5 border border-white/10 text-slate-400 text-sm font-medium mb-12 flex-wrap justify-center">
+            <span class="text-slate-300 font-semibold">3 years</span>
+            <span class="text-white/20">·</span>
+            <span class="text-slate-300 font-semibold">500+ placements</span>
+            <span class="text-white/20">·</span>
+            <span>Brandable wins at Jotform, Cloudways, ClickUp</span>
+            <span class="text-white/20">·</span>
+            <span class="text-slate-300 font-semibold">12–20% reply rates</span>
+            <span class="text-white/20">·</span>
+            <span class="text-emerald-400 font-semibold">Open to opportunities</span>
+        </div>
+
+        <!-- Headline -->
+        <h2 class="text-5xl md:text-6xl font-bold text-white mb-6 tracking-tight leading-[1.1]">
+            You've seen the work.<br/>
+            <span class="text-gradient">You know what this produces.</span>
+        </h2>
+
+        <!-- Body -->
+        <p class="text-xl text-slate-400 mb-4 font-light max-w-2xl mx-auto">
+            Most link builders can follow a template. Very few can build the system, manage the pipeline, adapt the angle, and still hit the numbers when the campaign scales.
+        </p>
+        <p class="text-xl text-slate-400 mb-4 font-light max-w-2xl mx-auto">
+            That's the gap I fill.
+        </p>
+        <p class="text-base text-slate-500 mb-12 max-w-xl mx-auto font-light">
+            I'm currently serving a two-month notice period, but I'm available to take on freelance work immediately if you'd rather not wait. Either way, the next step is straightforward.
+        </p>
+
+        <!-- Stat strip -->
+        <div class="flex flex-wrap justify-center gap-4 mb-14">
+            <div class="cta-stat-card">
+                <div class="stat-label">What you get</div>
+                <div class="stat-value">A system that runs<br/>without hand-holding</div>
             </div>
- 
-            <h2 class="text-5xl md:text-6xl font-bold text-white mb-8 tracking-tight">
-                Your competitors are <br/>
-                <span class="text-gradient">already building links.</span>
-            </h2>
-            <p class="text-xl text-slate-400 mb-12 font-light max-w-2xl mx-auto">
-                Open to full-time Link Building and Outreach roles at SaaS companies, agencies, and in-house teams. If you want a system that keeps compounding, not a one-time campaign, let's talk.
-            </p>
- 
-            <div class="flex flex-col sm:flex-row justify-center gap-6 mb-16">
-                <!-- CALENDLY POPUP INTEGRATION -->
-                <button onclick="Calendly.initPopupWidget({url: 'https://calendly.com/kushvahsid/30min'});return false;" class="glow-border relative inline-flex justify-center items-center gap-3 px-10 py-5 rounded-2xl font-bold text-white hover:text-lavender-100 transition-all text-lg shadow-[0_0_40px_rgba(168,85,247,0.3)]">
-                    <span class="relative z-10 flex items-center gap-3"><i class="fa-regular fa-calendar-check text-xl"></i> Schedule an Interview</span>
-                </button>
-                
-                <!-- RESUME DOWNLOAD LINK -->
-                <a href="Siddharth_Resume.pdf" download="Siddharth_SEO_Resume.pdf" onclick="showToast('Downloading Resume...', 'success')" class="inline-flex justify-center items-center gap-3 bg-white/5 border border-white/10 hover:bg-white/10 backdrop-blur-xl text-white px-10 py-5 rounded-2xl font-bold transition-all text-lg cursor-pointer">
-                    <i class="fa-regular fa-file-pdf text-lavender-400 text-xl"></i> View Resume
-                </a>
+            <div class="cta-stat-card">
+                <div class="stat-label">At any volume</div>
+                <div class="stat-value">Campaigns that scale<br/>without losing quality</div>
             </div>
- 
-            <div class="inline-flex items-center gap-3 text-slate-300 bg-[#0c0817] px-8 py-4 rounded-full border border-white/10 hover:border-lavender-500/50 hover:bg-[#120a21] transition-all cursor-pointer group shadow-xl" onclick="copyEmail()">
-                <i class="fa-regular fa-envelope text-lavender-400 group-hover:scale-110 transition-transform"></i>
-                <span id="email-text" class="font-medium tracking-wide"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="3a525f5656557a49535e5e525b484e5217554f4e485f5b595214595557">[email&#160;protected]</a></span>
-                <div class="w-[1px] h-4 bg-white/20 mx-2"></div>
-                <i class="fa-regular fa-copy text-slate-500 group-hover:text-lavender-400 transition-colors" title="Copy to clipboard"></i>
+            <div class="cta-stat-card">
+                <div class="stat-label">Every month</div>
+                <div class="stat-value">Results you can<br/>show your clients</div>
             </div>
         </div>
-    </section>
+
+        <!-- CTAs -->
+        <div class="flex flex-col sm:flex-row justify-center gap-6 mb-8">
+            <button onclick="Calendly.initPopupWidget({url: 'https://calendly.com/kushvahsid/30min'});return false;"
+                    class="glow-border relative inline-flex justify-center items-center gap-3 px-10 py-5 rounded-2xl font-bold text-white hover:text-lavender-100 transition-all text-lg shadow-[0_0_40px_rgba(168,85,247,0.3)]">
+                <span class="relative z-10 flex items-center gap-3">
+                    <i class="fa-regular fa-calendar-check text-xl"></i> Book a 20-Minute Call
+                </span>
+            </button>
+            <a href="Siddharth_Resume.pdf" download="Siddharth_SEO_Resume.pdf"
+               onclick="showToast('Downloading Resume...', 'success')"
+               class="inline-flex justify-center items-center gap-3 bg-white/5 border border-white/10 hover:bg-white/10 backdrop-blur-xl text-white px-10 py-5 rounded-2xl font-bold transition-all text-lg cursor-pointer">
+                <i class="fa-regular fa-file-pdf text-lavender-400 text-xl"></i> View Resume
+            </a>
+        </div>
+
+        <!-- Freelance availability note -->
+        <p class="text-sm text-lavender-400/70 font-medium mb-10">
+            Need someone sooner? I'm available for freelance engagements right now.
+        </p>
+
+        <!-- Email -->
+        <div class="inline-flex items-center gap-3 text-slate-300 bg-[#0c0817] px-8 py-4 rounded-full border border-white/10 hover:border-lavender-500/50 hover:bg-[#120a21] transition-all cursor-pointer group shadow-xl" onclick="copyEmail()">
+            <i class="fa-regular fa-envelope text-lavender-400 group-hover:scale-110 transition-transform"></i>
+            <span id="email-text" class="font-medium tracking-wide">hello@siddharth-outreach.com</span>
+            <div class="w-[1px] h-4 bg-white/20 mx-2"></div>
+            <i class="fa-regular fa-copy text-slate-500 group-hover:text-lavender-400 transition-colors" title="Copy to clipboard"></i>
+        </div>
+
+        <!-- Closing line -->
+        <p class="text-sm text-slate-600 mt-6 font-light">
+            No lengthy process. Just a conversation to see if it's a fit.
+        </p>
+
+    </div>
+</section>
  
     <footer class="bg-[#030206] py-10 border-t border-white/5 text-center text-slate-500 text-sm relative z-20">
         <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
