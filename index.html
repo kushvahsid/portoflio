@@ -150,83 +150,91 @@
             margin: 0 auto;
             background: linear-gradient(to right, transparent, rgba(255,255,255,0.08), transparent);
         }
+        
         /* ── Process timeline scroll effects ── */
-#timeline-track {
-    position: absolute;
-    left: 50%;
-    top: 0;
-    bottom: 0;
-    width: 3px;
-    transform: translateX(-50%);
-    background: rgba(255,255,255,0.06);
-    border-radius: 99px;
-}
-#timeline-fill {
-    position: absolute;
-    left: 50%;
-    top: 0;
-    width: 3px;
-    height: 0%;
-    transform: translateX(-50%);
-    background: linear-gradient(to bottom, #a855f7, #d946ef, #6366f1);
-    border-radius: 99px;
-    transition: height 0.08s linear;
-    box-shadow: 0 0 12px 2px rgba(168,85,247,0.5);
-}
-.step-card {
-    border-radius: 1rem;
-    padding: 1.5rem;
-    border: 1px solid transparent;
-    transition: background 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease, opacity 0.4s ease, filter 0.4s ease;
-    opacity: 0.38;
-    filter: blur(0.3px);
-}
-.step-node {
-    transition: transform 0.4s ease, background 0.4s ease, box-shadow 0.4s ease, opacity 0.4s ease;
-    opacity: 0.45;
-}
-.process-step.step-active .step-card {
-    background: rgba(255, 255, 255, 0.055);
-    border-color: rgba(255, 255, 255, 0.13);
-    box-shadow: 0 8px 40px rgba(168, 85, 247, 0.12), inset 0 1px 0 rgba(255,255,255,0.07);
-    opacity: 1;
-    filter: none;
-}
-.process-step.step-active .step-node {
-    transform: translateX(-50%) scale(1.15);
-    opacity: 1;
-}
-@media (max-width: 767px) {
-    .step-card { opacity: 1; filter: none; }
-    .process-step.step-active .step-card {
-        background: rgba(255,255,255,0.05);
-        border-color: rgba(168,85,247,0.25);
-    }
-}
+        #timeline-track {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            transform: translateX(-50%);
+            background: rgba(255,255,255,0.06);
+            border-radius: 99px;
+        }
+        #timeline-fill {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            width: 3px;
+            height: 0%;
+            transform: translateX(-50%);
+            background: linear-gradient(to bottom, #a855f7, #d946ef, #6366f1);
+            border-radius: 99px;
+            transition: height 0.08s linear;
+            box-shadow: 0 0 12px 2px rgba(168,85,247,0.5);
+        }
+        .step-card {
+            border-radius: 1rem;
+            padding: 1.5rem;
+            border: 1px solid transparent;
+            transition: background 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease, opacity 0.4s ease, filter 0.4s ease;
+            opacity: 0.38;
+            filter: blur(0.3px);
+        }
+        .step-node {
+            transition: transform 0.4s ease, background 0.4s ease, box-shadow 0.4s ease, opacity 0.4s ease;
+            opacity: 0.45;
+        }
+        .process-step.step-active .step-card {
+            background: rgba(255, 255, 255, 0.055);
+            border-color: rgba(255, 255, 255, 0.13);
+            box-shadow: 0 8px 40px rgba(168, 85, 247, 0.12), inset 0 1px 0 rgba(255,255,255,0.07);
+            opacity: 1;
+            filter: none;
+        }
+        .process-step.step-active .step-node {
+            transform: translateX(-50%) scale(1.15);
+            opacity: 1;
+        }
+        @media (max-width: 767px) {
+            .step-card { opacity: 1; filter: none; }
+            .process-step.step-active .step-card {
+                background: rgba(255,255,255,0.05);
+                border-color: rgba(168,85,247,0.25);
+            }
+        }
 
-.cta-stat-card {
-    flex: 1;
-    min-width: 160px;
-    background: rgba(255,255,255,0.03);
-    border: 1px solid rgba(255,255,255,0.08);
-    border-radius: 1rem;
-    padding: 1.25rem 1.5rem;
-    text-align: center;
-}
-.cta-stat-card .stat-label {
-    font-size: 0.65rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    color: rgba(192,132,252,0.7);
-    margin-bottom: 0.4rem;
-}
-.cta-stat-card .stat-value {
-    font-size: 0.95rem;
-    font-weight: 600;
-    color: #e2e8f0;
-    line-height: 1.4;
-}
+        .cta-stat-card {
+            flex: 1;
+            min-width: 160px;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 1rem;
+            padding: 1.25rem 1.5rem;
+            text-align: center;
+        }
+        .cta-stat-card .stat-label {
+            font-size: 0.65rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: rgba(192,132,252,0.7);
+            margin-bottom: 0.4rem;
+        }
+        .cta-stat-card .stat-value {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #e2e8f0;
+            line-height: 1.4;
+        }
+        
+        /* ── Mockup Window UI ── */
+        .mockup-window { background: #0d0a14; border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; overflow: hidden; }
+        .mockup-header { background: rgba(255,255,255,0.02); padding: 12px 16px; border-bottom: 1px solid rgba(255,255,255,0.05); display: flex; align-items: center; gap: 8px; }
+        .mockup-dot { width: 10px; height: 10px; border-radius: 50%; }
+        .dot-red { background: #ff5f56; } .dot-yellow { background: #ffbd2e; } .dot-green { background: #27c93f; }
+        .mockup-body { padding: 24px; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: 0.9rem; color: #a1a1aa; line-height: 1.6; }
     </style>
 
     <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
@@ -255,8 +263,9 @@
                 Siddharth K<span class="text-lavender-400 transition-colors group-hover:text-fuchsia-400">.</span>
             </a>
             <div class="hidden md:flex gap-8 text-sm font-medium text-slate-300">
-                <a href="#about" class="hover:text-lavender-300 transition-colors">About</a>
-                <a href="#showcase" class="hover:text-lavender-300 transition-colors">Outreach Wins</a>
+                <a href="#impact" class="hover:text-lavender-300 transition-colors">Business Impact</a>
+                <a href="#leadership" class="hover:text-lavender-300 transition-colors">Leadership & Systems</a>
+                <a href="#showcase" class="hover:text-lavender-300 transition-colors">Placements</a>
                 <a href="#process" class="hover:text-lavender-300 transition-colors">Process</a>
             </div>
             <button onclick="showToast('Connecting to Calendly...', 'info')" class="text-sm font-bold bg-white text-base px-5 py-2.5 rounded-full hover:bg-lavender-100 transition-colors hover:shadow-[0_0_20px_rgba(192,132,252,0.4)]">
@@ -276,35 +285,35 @@
                         <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-lavender-400 opacity-75"></span>
                     <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-lavender-500"></span>
                     </span>
-                    Available for full-time roles
+                    SEO Outreach Team Lead & Systems Builder
                 </div>
 
                 <h1 class="text-5xl lg:text-7xl font-extrabold text-white leading-[1.1] mb-6 tracking-tight animate-float">
-                    I Get Links From <br />
-                    <span class="text-gradient">Sites That Say No.</span>
+                    Driving SaaS Growth Beyond <br />
+                    <span class="text-gradient">Just Link Volume.</span>
                 </h1>
 
                 <p class="text-xl lg:text-2xl text-slate-400 leading-relaxed mb-12 max-w-3xl font-light">
-                    Placement credits include <span class="text-white font-medium">Cloudways, ClickUp, Whatagraph,</span> and 500+ DR 50+ domains. Outreach so sharp, editors write back just to say thank you.
+                    I build outreach systems that scale. From securing placements on <span class="text-white font-medium">Cloudways & Whatagraph</span>, to engineering custom automations and securing LLM citations via GEO.
                 </p>
 
                 <!-- Stats grid -->
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-14 w-full reveal">
                     <div class="bg-surface backdrop-blur-xl p-6 rounded-2xl border border-white/10 hover:border-lavender-500/50 transition-all hover:-translate-y-1 hover:shadow-[0_10px_40px_-10px_rgba(168,85,247,0.2)] group">
-                        <div class="text-3xl font-extrabold text-white mb-1 group-hover:text-lavender-300 transition-colors">7–14%</div>
-                        <div class="text-xs text-lavender-200/70 font-semibold uppercase tracking-wider">Avg. Reply Rate</div>
+                        <div class="text-3xl font-extrabold text-white mb-1 group-hover:text-lavender-300 transition-colors">23%</div>
+                        <div class="text-xs text-lavender-200/70 font-semibold uppercase tracking-wider">Organic Visibility Lift</div>
                     </div>
                     <div class="bg-surface backdrop-blur-xl p-6 rounded-2xl border border-white/10 hover:border-lavender-500/50 transition-all hover:-translate-y-1 hover:shadow-[0_10px_40px_-10px_rgba(168,85,247,0.2)] group">
-                        <div class="text-3xl font-extrabold text-white mb-1 group-hover:text-lavender-300 transition-colors">60–70%</div>
-                        <div class="text-xs text-lavender-200/70 font-semibold uppercase tracking-wider">Placement Rate</div>
+                        <div class="text-3xl font-extrabold text-white mb-1 group-hover:text-lavender-300 transition-colors">70%</div>
+                        <div class="text-xs text-lavender-200/70 font-semibold uppercase tracking-wider">Time Saved via Automation</div>
                     </div>
                     <div class="bg-surface backdrop-blur-xl p-6 rounded-2xl border border-white/10 hover:border-lavender-500/50 transition-all hover:-translate-y-1 hover:shadow-[0_10px_40px_-10px_rgba(168,85,247,0.2)] group">
                         <div class="text-3xl font-extrabold text-white mb-1 group-hover:text-lavender-300 transition-colors">500+</div>
                         <div class="text-xs text-lavender-200/70 font-semibold uppercase tracking-wider">Live Placements</div>
                     </div>
                     <div class="bg-surface backdrop-blur-xl p-6 rounded-2xl border border-white/10 hover:border-lavender-500/50 transition-all hover:-translate-y-1 hover:shadow-[0_10px_40px_-10px_rgba(168,85,247,0.2)] group">
-                        <div class="text-3xl font-extrabold text-white mb-1 group-hover:text-lavender-300 transition-colors">20+</div>
-                        <div class="text-xs text-lavender-200/70 font-semibold uppercase tracking-wider">Active Partnerships</div>
+                        <div class="text-3xl font-extrabold text-white mb-1 group-hover:text-lavender-300 transition-colors">10%+</div>
+                        <div class="text-xs text-lavender-200/70 font-semibold uppercase tracking-wider">Avg. Placement Rate</div>
                     </div>
                 </div>
 
@@ -327,78 +336,89 @@
 
     <div class="section-divider my-8 px-6"></div>
 
-    <!-- ── 2. About ──────────────────────────────────────────── -->
-    <section id="about" class="py-24 relative z-20">
-        <div class="max-w-6xl mx-auto px-6 reveal">
-            <div class="grid md:grid-cols-12 gap-16 items-center">
+    <!-- ── 2. Business Impact Case Studies ────────────────────── -->
+    <section id="impact" class="py-24 relative z-20">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center mb-16 reveal">
+                <span class="text-lavender-400 font-semibold tracking-widest text-sm uppercase">Business Impact</span>
+                <h2 class="text-4xl lg:text-5xl font-bold text-white mt-4 mb-6">Strategy Over Vanity Metrics</h2>
+                <p class="text-lg text-slate-400 max-w-2xl mx-auto font-light">Links are a means to an end. Here is how my outreach systems directly influenced pipeline, visibility, and modern AI search presence for in-house SaaS targets.</p>
+            </div>
 
-                <div class="md:col-span-7">
-                    <div class="inline-flex items-center gap-2 mb-4">
-                        <div class="w-8 h-[1px] bg-lavender-500"></div>
-                        <span class="text-lavender-400 font-semibold tracking-widest text-sm uppercase">Philosophy</span>
-                    </div>
-                    <h2 class="text-4xl lg:text-5xl font-bold text-white mb-8 leading-tight">
-                        Most outreach is noise. <br/>
-                        <span class="text-lavender-300">Mine is a reason to reply.</span>
-                    </h2>
-                    <div class="space-y-5 text-base lg:text-lg text-slate-400 font-light mb-10 border-l border-white/10 pl-5">
-                        <p class="leading-relaxed">
-                            I built my process by failing first. Early on, I sent emails that got ignored, and I paid attention to why. Over time, I figured out how to make each element (the research, the angle, the opener) feel like a genuine conversation with a peer rather than
-                            a pitch landing in someone's inbox.
-                        </p>
-                        <p class="leading-relaxed">
-                            Three years in, the core logic hasn't changed: approach prospects with something that's actually useful to them. When the deal creates more value for their side than it asks for, the reply almost writes itself. Getting them to see it that way is the job.
-                        </p>
-                    </div>
-
-                    <ul class="space-y-4">
-                        <li class="flex items-start gap-3 bg-white/5 p-4 rounded-xl border border-transparent hover:border-white/10 backdrop-blur-sm cursor-default transition-all">
-                            <div class="mt-0.5 flex-shrink-0 w-5 h-5 rounded-full bg-lavender-500/20 flex items-center justify-center border border-lavender-500/30 text-lavender-400">
-                                <i class="fa-solid fa-check text-[10px]"></i>
-                            </div>
-                            <span class="text-sm lg:text-base text-slate-100 leading-relaxed">
-            <strong class="text-white font-semibold block mb-1">Precision targeting, when it matters</strong>
-            <p class="des">If a client needs a link from a specific site, a particular page, a brand mention, or a listicle slot, I'll track it down. Insertion, mention, roundup, whatever the format calls for.</p>
-        </span>
-                        </li>
-                        <li class="flex items-start gap-3 bg-white/5 p-4 rounded-xl border border-transparent hover:border-white/10 backdrop-blur-sm cursor-default transition-all">
-                            <div class="mt-0.5 flex-shrink-0 w-5 h-5 rounded-full bg-lavender-500/20 flex items-center justify-center border border-lavender-500/30 text-lavender-400">
-                                <i class="fa-solid fa-check text-[10px]"></i>
-                            </div>
-                            <span class="text-sm lg:text-base text-slate-100 leading-relaxed">
-            <strong class="text-white font-semibold block mb-1">Scale, when the brief calls for it</strong>
-            <p class="des">High-volume campaigns need a different approach. I've built templated outreach that reads like it was written one-to-one, so a blast to hundreds of recipients doesn't feel like one.</p>
-        </span>
-                        </li>
-                    </ul>
-                </div>
-
-                <!-- Testimonial card -->
-                <div class="md:col-span-5">
-                    <div class="relative group">
-                        <div class="absolute -inset-1 bg-gradient-to-r from-lavender-600 to-fuchsia-600 rounded-3xl blur-xl opacity-20 group-hover:opacity-40 transition duration-1000 group-hover:duration-200"></div>
-                        <div class="relative bg-[#0c0817] p-10 rounded-3xl border border-white/10 ring-1 ring-white/5">
-                            <i class="fa-solid fa-quote-left text-5xl text-lavender-500/20 absolute top-8 left-8"></i>
-                            <p class="text-slate-300 relative z-10 text-lg mb-8 pt-6 leading-relaxed font-light">
-                                "Siddharth's emails consistently get opened and replied to, which is incredibly rare in modern outreach. His attention to personalization is the reason our DR50+ placements doubled last quarter."
-                            </p>
-                            <div class="flex items-center gap-4 pt-6 border-t border-white/5">
-                                <div class="w-14 h-14 rounded-full bg-gradient-to-br from-lavender-500 to-indigo-600 p-[2px]">
-                                    <div class="w-full h-full bg-[#0c0817] rounded-full flex items-center justify-center text-white font-bold text-lg">JD</div>
-                                </div>
-                                <div>
-                                    <div class="font-bold text-white tracking-wide">Agency Outreach Manager</div>
-                                    <div class="text-sm text-lavender-400/80">Former Collaborator <span class="text-slate-600 font-normal text-xs">(name withheld)</span></div>
-                                </div>
-                            </div>
-                        </div>
+            <div class="grid lg:grid-cols-2 gap-8 reveal">
+                <!-- Case Study 1 -->
+                <div class="bg-[#0c0817] p-8 md:p-10 rounded-3xl border border-white/10 ring-1 ring-white/5 relative overflow-hidden group hover:border-lavender-500/40 transition-all shadow-2xl">
+                    <div class="absolute top-0 right-0 bg-lavender-500/10 text-lavender-300 text-[10px] font-bold px-4 py-2 rounded-bl-xl uppercase tracking-widest border-b border-l border-lavender-500/20">Organic Growth</div>
+                    <h3 class="text-2xl font-bold text-white mb-4">Scaling Competitor Listicles</h3>
+                    <div class="space-y-4 text-slate-300 text-sm font-light leading-relaxed mb-6">
+                        <p><strong class="text-white font-medium">The Goal:</strong> Improve ranking visibility for hyper-competitive "HR software for small business" commercial clusters.</p>
+                        <p><strong class="text-white font-medium">The Execution:</strong> Rather than generic guest posts, I targeted high-DR domains already ranking for competitor alternatives. By leveraging a targeted "value swap" and expert quotes, we positioned our brand directly alongside legacy competitors on third-party lists.</p>
+                        <p><strong class="text-white font-medium">The Result:</strong> Contributed directly to a <span class="text-lavender-300 font-bold">23% improvement in organic visibility</span> for target commercial pages over two quarters, converting third-party traffic into high-intent referral visits.</p>
                     </div>
                 </div>
 
+                <!-- Case Study 2 -->
+                <div class="bg-[#0c0817] p-8 md:p-10 rounded-3xl border border-white/10 ring-1 ring-white/5 relative overflow-hidden group hover:border-fuchsia-500/40 transition-all shadow-2xl">
+                    <div class="absolute top-0 right-0 bg-fuchsia-500/10 text-fuchsia-300 text-[10px] font-bold px-4 py-2 rounded-bl-xl uppercase tracking-widest border-b border-l border-fuchsia-500/20">GEO & LLMs</div>
+                    <h3 class="text-2xl font-bold text-white mb-4">The AI Citation Campaign</h3>
+                    <div class="space-y-4 text-slate-300 text-sm font-light leading-relaxed mb-6">
+                        <p><strong class="text-white font-medium">The Goal:</strong> Ensure the brand was consistently cited in generative AI answers (Claude, ChatGPT, Perplexity) for commercial HR queries.</p>
+                        <p><strong class="text-white font-medium">The Execution:</strong> Pioneered a Generative Engine Optimization (GEO) outreach strategy. I secured brand mentions on specific high-authority hub pages and statistical roundups that LLMs index heavily for their training and RAG data.</p>
+                        <p><strong class="text-white font-medium">The Result:</strong> Successfully established brand presence in AI-generated answers for key bottom-of-funnel queries, future-proofing visibility beyond traditional SERPs.</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
+    <!-- ── 2.5 Leadership & Systems ──────────────────────────── -->
+    <section id="leadership" class="py-24 relative z-20 bg-gradient-to-b from-transparent via-[#0f091f]/50 to-transparent border-y border-white/5">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="grid md:grid-cols-12 gap-16 items-center reveal">
+                
+                <div class="md:col-span-5">
+                    <div class="inline-flex items-center gap-2 mb-4">
+                        <div class="w-8 h-[1px] bg-lavender-500"></div>
+                        <span class="text-lavender-400 font-semibold tracking-widest text-sm uppercase">The Systems Builder</span>
+                    </div>
+                    <h2 class="text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight">
+                        Scaling Outreach Through <span class="text-lavender-300">Engineering.</span>
+                    </h2>
+                    <p class="text-lg text-slate-400 font-light leading-relaxed mb-6">
+                        My background bridging content strategy and web development informs how I run outreach. I don't just send emails; I build the infrastructure that makes high-volume personalization possible.
+                    </p>
+                    <p class="text-lg text-slate-400 font-light leading-relaxed mb-8">
+                        As a Team Lead, I've mentored outreach executives on negotiation psychology, while simultaneously leveraging my front-end and scripting skills to automate the repetitive aspects of prospecting.
+                    </p>
+                </div>
+
+                <div class="md:col-span-7 grid sm:grid-cols-2 gap-4">
+                    <div class="bg-surface backdrop-blur-sm p-6 rounded-2xl border border-white/5 hover:border-white/20 transition-all">
+                        <i class="fa-solid fa-code-branch text-2xl text-blue-400 mb-4"></i>
+                        <h4 class="text-lg font-bold text-white mb-2">Custom Automation (70% Time Saved)</h4>
+                        <p class="text-sm text-slate-400 font-light leading-relaxed">Built and maintained custom prospecting bots using Gumloop and Google Sheets scripts, achieving 70% data accuracy and drastically reducing manual list-building time.</p>
+                    </div>
+                    <div class="bg-surface backdrop-blur-sm p-6 rounded-2xl border border-white/5 hover:border-white/20 transition-all">
+                        <i class="fa-solid fa-users text-2xl text-fuchsia-400 mb-4"></i>
+                        <h4 class="text-lg font-bold text-white mb-2">Team Leadership & Mentorship</h4>
+                        <p class="text-sm text-slate-400 font-light leading-relaxed">Mentored junior outreach executives, shifting their focus from generic templates to value-first negotiation, improving team-wide placement rates and morale.</p>
+                    </div>
+                    <div class="bg-surface backdrop-blur-sm p-6 rounded-2xl border border-white/5 hover:border-white/20 transition-all">
+                        <i class="fa-solid fa-rotate text-2xl text-orange-400 mb-4"></i>
+                        <h4 class="text-lg font-bold text-white mb-2">Strategic Pivoting (Digital PR)</h4>
+                        <p class="text-sm text-slate-400 font-light leading-relaxed">Turned an initial Digital PR campaign miss into a scalable success by analyzing the rejection data and systematically revising the pitch angle to align with journalist needs.</p>
+                    </div>
+                    <div class="bg-surface backdrop-blur-sm p-6 rounded-2xl border border-white/5 hover:border-white/20 transition-all">
+                        <i class="fa-solid fa-pen-nib text-2xl text-emerald-400 mb-4"></i>
+                        <h4 class="text-lg font-bold text-white mb-2">Full-Stack Content Background</h4>
+                        <p class="text-sm text-slate-400 font-light leading-relaxed">Deep roots in content strategy and on-page optimization. I understand the actual technical value of the pages I am building links to.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider my-8 px-6"></div>
 
     <!-- ── 2.5 Industry Recognition ──────────────────────────────────────────── -->
     <section id="recognition" class="pb-24 pt-12 relative z-20">
@@ -461,6 +481,40 @@
             </div>
         </div>
     </section>
+
+    <!-- ── 2.75 Outreach in Action (Work Samples) ────────────── -->
+    <section id="work-samples" class="py-24 relative z-20">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-4xl lg:text-5xl font-bold text-white mb-6">Outreach in Action</h2>
+                <p class="text-lg text-slate-400 max-w-2xl mx-auto font-light">Hunter.io recognized my pitch frameworks globally because they don't read like marketing blasts. Here is the architecture of a 14% reply-rate pitch.</p>
+            </div>
+
+            <div class="max-w-4xl mx-auto reveal">
+                <div class="mockup-window shadow-2xl">
+                    <div class="mockup-header">
+                        <div class="mockup-dot dot-red"></div>
+                        <div class="mockup-dot dot-yellow"></div>
+                        <div class="mockup-dot dot-green"></div>
+                        <div class="ml-4 text-xs font-medium text-slate-400">Subject: Quick question about your HR tools roundup (broken link)</div>
+                    </div>
+                    <div class="mockup-body bg-[#120e1a]">
+                        <p>Hi [First Name],</p><br>
+                        <p>I was just referencing your piece on <em>[Specific Topic/Article Name]</em> while researching SaaS retention strategies. Really appreciated your point about [Hyper-specific detail from their post proving I actually read it].</p><br>
+                        <p>I noticed a small issue: the link to [Competitor/Resource] under section 3 is returning a 404 error.</p><br>
+                        <p>If you're looking for a replacement to keep the UX clean, I recently published a data-backed guide on [Highly Relevant Topic] over at <strong>factoHR</strong>. It covers the exact methodology you mentioned, complete with updated 2026 metrics.</p><br>
+                        <p>No pressure to use it—just wanted to flag the dead link either way. Keep up the great content.</p><br>
+                        <p>Best,<br>Siddharth K.</p>
+                    </div>
+                </div>
+                <div class="flex justify-between items-center mt-4 text-sm text-slate-500 px-2">
+                    <span><strong>Framework:</strong> Value-First / Broken Link + Contextual Relevance</span>
+                    <span><i class="fa-solid fa-trophy text-orange-400"></i> Hunter.io Pitch Competition Top 16 (2025)</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <div class="section-divider my-8 px-6"></div>
 
     <!-- ── 3. Outreach Showcase ──────────────────────────────── -->
@@ -642,6 +696,7 @@
                         </div>
                     </div>
 
+                    <!-- Placement 3: Whatagraph -->
                     <div class="bg-surface backdrop-blur-xl border border-white/10 hover:border-purple-500/40 rounded-2xl p-6 transition-all group flex flex-col md:flex-row items-start md:items-center justify-between gap-6 relative overflow-hidden">
                         <div class="absolute top-0 right-0 bg-purple-500/20 text-purple-300 text-[10px] font-bold px-3 py-1 rounded-bl-lg uppercase tracking-widest border-b border-l border-purple-500/30">Expert Commentary</div>
                         <div class="flex items-center gap-5 mt-2 md:mt-0">
@@ -667,7 +722,7 @@
                         </div>
                     </div>
 
-                    <!-- Placement 3: RecruitCRM -->
+                    <!-- Placement 4: RecruitCRM -->
                     <div class="bg-surface backdrop-blur-xl border border-white/10 hover:border-emerald-500/40 rounded-2xl p-6 transition-all group flex flex-col md:flex-row items-start md:items-center justify-between gap-6 relative overflow-hidden">
                         <div class="absolute top-0 right-0 bg-emerald-500/20 text-emerald-300 text-[10px] font-bold px-3 py-1 rounded-bl-lg uppercase tracking-widest border-b border-l border-emerald-500/30">Listicle Placement</div>
                         <div class="flex items-center gap-5 mt-2 md:mt-0">
@@ -693,7 +748,7 @@
                         </div>
                     </div>
 
-                    <!-- Placement 4: SurveySparrow -->
+                    <!-- Placement 5: SurveySparrow -->
                     <div class="bg-surface backdrop-blur-xl border border-white/10 hover:border-fuchsia-500/40 rounded-2xl p-6 transition-all group flex flex-col md:flex-row items-start md:items-center justify-between gap-6 relative overflow-hidden">
                         <div class="absolute top-0 right-0 bg-fuchsia-500/20 text-fuchsia-300 text-[10px] font-bold px-3 py-1 rounded-bl-lg uppercase tracking-widest border-b border-l border-fuchsia-500/30">Link Insertion</div>
                         <div class="flex items-center gap-5 mt-2 md:mt-0">
@@ -718,7 +773,7 @@
                         </div>
                     </div>
 
-                    <!-- Placement 5: RecruiterFlow -->
+                    <!-- Placement 6: RecruiterFlow -->
                     <div class="bg-surface backdrop-blur-xl border border-white/10 hover:border-orange-500/40 rounded-2xl p-6 transition-all group flex flex-col md:flex-row items-start md:items-center justify-between gap-6 relative overflow-hidden">
                         <div class="absolute top-0 right-0 bg-orange-500/20 text-orange-300 text-[10px] font-bold px-3 py-1 rounded-bl-lg uppercase tracking-widest border-b border-l border-orange-500/30">Link Insertion</div>
                         <div class="flex items-center gap-5 mt-2 md:mt-0">
@@ -743,7 +798,7 @@
                         </div>
                     </div>
 
-                    <!-- Placement 6: People's HR -->
+                    <!-- Placement 7: People's HR -->
                     <div class="bg-surface backdrop-blur-xl border border-white/10 hover:border-rose-500/40 rounded-2xl p-6 transition-all group flex flex-col md:flex-row items-start md:items-center justify-between gap-6 relative overflow-hidden">
                         <div class="absolute top-0 right-0 bg-rose-500/20 text-rose-300 text-[10px] font-bold px-3 py-1 rounded-bl-lg uppercase tracking-widest border-b border-l border-rose-500/30">Brand Mention</div>
                         <div class="flex items-center gap-5 mt-2 md:mt-0">
