@@ -235,6 +235,8 @@
         .mockup-dot { width: 10px; height: 10px; border-radius: 50%; }
         .dot-red { background: #ff5f56; } .dot-yellow { background: #ffbd2e; } .dot-green { background: #27c93f; }
         .mockup-body { padding: 24px; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: 0.9rem; color: #a1a1aa; line-height: 1.6; }
+
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     </style>
 
     <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
@@ -294,14 +296,14 @@
                 </h1>
 
                 <p class="text-xl lg:text-2xl text-slate-400 leading-relaxed mb-12 max-w-3xl font-light">
-                    I build outreach systems that scale. From securing placements on <span class="text-white font-medium">Cloudways & Whatagraph</span>, to engineering custom automations and securing LLM citations via GEO.
+                    I build outreach systems that scale. From securing placements on <span class="text-white font-medium">Cloudways & Jotform</span>, to engineering custom automations and securing LLM citations via GEO outreach.
                 </p>
 
                 <!-- Stats grid -->
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-14 w-full reveal">
                     <div class="bg-surface backdrop-blur-xl p-6 rounded-2xl border border-white/10 hover:border-lavender-500/50 transition-all hover:-translate-y-1 hover:shadow-[0_10px_40px_-10px_rgba(168,85,247,0.2)] group">
-                        <div class="text-3xl font-extrabold text-white mb-1 group-hover:text-lavender-300 transition-colors">23%</div>
-                        <div class="text-xs text-lavender-200/70 font-semibold uppercase tracking-wider">Organic Visibility Lift</div>
+                        <div class="text-3xl font-extrabold text-white mb-1 group-hover:text-lavender-300 transition-colors">$100K+</div>
+                        <div class="text-xs text-lavender-200/70 font-semibold uppercase tracking-wider">Influenced ARR till Date</div>
                     </div>
                     <div class="bg-surface backdrop-blur-xl p-6 rounded-2xl border border-white/10 hover:border-lavender-500/50 transition-all hover:-translate-y-1 hover:shadow-[0_10px_40px_-10px_rgba(168,85,247,0.2)] group">
                         <div class="text-3xl font-extrabold text-white mb-1 group-hover:text-lavender-300 transition-colors">70%</div>
@@ -345,6 +347,12 @@
                 <p class="text-lg text-slate-400 max-w-2xl mx-auto font-light">Links are a means to an end. Here is how my outreach systems directly influenced pipeline, visibility, and modern AI search presence for in-house SaaS targets.</p>
             </div>
 
+            <!-- DR Distribution Chart -->
+            <div class="max-w-2xl mx-auto mt-16 p-6 bg-surface backdrop-blur-xl rounded-2xl border border-white/10 reveal">
+                <h4 class="text-center text-sm font-bold uppercase tracking-widest text-lavender-400 mb-6">DR Distribution of 500+ Placements</h4>
+                <canvas id="drChart" height="100"></canvas>
+            </div>
+
             <div class="grid lg:grid-cols-2 gap-8 reveal">
                 <!-- Case Study 1 -->
                 <div class="bg-[#0c0817] p-8 md:p-10 rounded-3xl border border-white/10 ring-1 ring-white/5 relative overflow-hidden group hover:border-lavender-500/40 transition-all shadow-2xl">
@@ -365,6 +373,17 @@
                         <p><strong class="text-white font-medium">The Goal:</strong> Ensure the brand was consistently cited in generative AI answers (Claude, ChatGPT, Perplexity) for commercial HR queries.</p>
                         <p><strong class="text-white font-medium">The Execution:</strong> Pioneered a Generative Engine Optimization (GEO) outreach strategy. I secured brand mentions on specific high-authority hub pages and statistical roundups that LLMs index heavily for their training and RAG data.</p>
                         <p><strong class="text-white font-medium">The Result:</strong> Successfully established brand presence in AI-generated answers for key bottom-of-funnel queries, future-proofing visibility beyond traditional SERPs.</p>
+                    </div>
+                </div>
+
+                <!-- Case Study 3: The Tough Win -->
+                <div class="bg-[#0c0817] p-8 md:p-10 rounded-3xl border border-white/10 ring-1 ring-white/5 relative overflow-hidden group hover:border-emerald-500/40 transition-all shadow-2xl">
+                    <div class="absolute top-0 right-0 bg-emerald-500/10 text-emerald-300 text-[10px] font-bold px-4 py-2 rounded-bl-xl uppercase tracking-widest border-b border-l border-emerald-500/20">Negotiation</div>
+                    <h3 class="text-2xl font-bold text-white mb-4">Turning a 'No' Into a Placement</h3>
+                    <div class="space-y-4 text-slate-300 text-sm font-light leading-relaxed mb-6">
+                        <p><strong class="text-white font-medium">The Scenario:</strong> A DR 85+ SaaS publication flatly rejected a guest post pitch due to strict editorial calendar locks.</p>
+                        <p><strong class="text-white font-medium">The Pivot:</strong> Instead of pushing, I audited their highest-traffic posts and found a critical data gap in a piece from 2024. I offered to supply a custom graphic and proprietary 2026 data from factoHR to update their post—requiring zero writing on their end.</p>
+                        <p><strong class="text-white font-medium">The Result:</strong> They accepted the asset, credited us with a do-follow link in their top-performing article, and requested future data collaborations. Value always wins.</p>
                     </div>
                 </div>
             </div>
@@ -496,20 +515,20 @@
                         <div class="mockup-dot dot-red"></div>
                         <div class="mockup-dot dot-yellow"></div>
                         <div class="mockup-dot dot-green"></div>
-                        <div class="ml-4 text-xs font-medium text-slate-400">Subject: Quick question about your HR tools roundup (broken link)</div>
+                        <div class="ml-4 text-xs font-medium text-slate-400">Subject: Your chatbot is deflecting customers, not calls (I checked)</div>
                     </div>
                     <div class="mockup-body bg-[#120e1a]">
-                        <p>Hi [First Name],</p><br>
-                        <p>I was just referencing your piece on <em>[Specific Topic/Article Name]</em> while researching SaaS retention strategies. Really appreciated your point about [Hyper-specific detail from their post proving I actually read it].</p><br>
-                        <p>I noticed a small issue: the link to [Competitor/Resource] under section 3 is returning a 404 error.</p><br>
-                        <p>If you're looking for a replacement to keep the UX clean, I recently published a data-backed guide on [Highly Relevant Topic] over at <strong>factoHR</strong>. It covers the exact methodology you mentioned, complete with updated 2026 metrics.</p><br>
-                        <p>No pressure to use it—just wanted to flag the dead link either way. Keep up the great content.</p><br>
-                        <p>Best,<br>Siddharth K.</p>
+                        <p>Hey [First Name],</p><br>
+                        <p>I mapped every friction point in [Company]'s chatbot flow - found the exact moment customers lose trust and demand a real human (furious).</p><br>
+                        <p>8 out of 10 times that I tried, it happened at step three of your billing dispute path.</p><br>
+                        <p>I put it all in a visual chart, including exactly where the drop-off is, why it's happening, and three fixes that don't require ripping out your current stack.</p><br>
+                        <p>I'll be at C3 next week. If you have 19 minutes, I'd like to walk you through it in person - no pitch, just the analysis.</p><br>
+                        <p>Best,<br>Siddharth K.<br>[Company] | [Phone]</p>
                     </div>
                 </div>
                 <div class="flex justify-between items-center mt-4 text-sm text-slate-500 px-2">
-                    <span><strong>Framework:</strong> Value-First / Broken Link + Contextual Relevance</span>
-                    <span><i class="fa-solid fa-trophy text-orange-400"></i> Hunter.io Pitch Competition Top 16 (2025)</span>
+                    <span><strong>Framework:</strong> Solid Upfront Value / Be Genuinely Interested in Them</span>
+                    <span><i class="fa-solid fa-trophy text-orange-400"></i> Hunter.io Pitch Competition Top 64 (2026)</span>
                 </div>
             </div>
         </div>
@@ -1216,6 +1235,56 @@ window.addEventListener('resize', updateTimeline, { passive: true });
                 document.body.style.overflow = ''; // Restores scrolling
             }, 300);
         }
+
+        // Initialize Chart.js for DR Distribution
+        const ctx = document.getElementById('drChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['DR 40-50', 'DR 50-60', 'DR 60-70', 'DR 70-80', 'DR 80-90+'],
+                datasets: [{
+                    label: 'Number of Placements',
+                    data: [45, 120, 185, 90, 60],
+                    backgroundColor: 'rgba(168, 85, 247, 0.5)',
+                    borderColor: 'rgba(168, 85, 247, 1)',
+                    borderWidth: 1,
+                    borderRadius: 4
+                }]
+            },
+            options: {
+                plugins: { legend: { display: false } },
+                scales: {
+                    y: { grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: '#94a3b8' } },
+                    x: { grid: { display: false }, ticks: { color: '#94a3b8' } }
+                }
+            }
+        });
+
+        // Simple Filter Logic for Placements
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const placementCards = document.querySelectorAll('.placement-card'); // Make sure to add this class to your placement divs
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // UI updates for buttons
+                filterBtns.forEach(b => {
+                    b.classList.remove('bg-lavender-500/20', 'border-lavender-500', 'text-white');
+                    b.classList.add('border-white/10', 'text-slate-300');
+                });
+                btn.classList.remove('border-white/10', 'text-slate-300');
+                btn.classList.add('bg-lavender-500/20', 'border-lavender-500', 'text-white');
+
+                // Filter logic
+                const filterValue = btn.getAttribute('data-filter');
+                placementCards.forEach(card => {
+                    if (filterValue === 'all' || card.getAttribute('data-category') === filterValue) {
+                        card.style.display = 'flex';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
     </script>
 </body>
 
