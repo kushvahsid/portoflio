@@ -236,7 +236,7 @@
         .dot-red { background: #ff5f56; } .dot-yellow { background: #ffbd2e; } .dot-green { background: #27c93f; }
         .mockup-body { padding: 24px; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: 0.9rem; color: #a1a1aa; line-height: 1.6; }
     </style>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
     <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
     <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
 </head>
@@ -343,12 +343,6 @@
                 <span class="text-lavender-400 font-semibold tracking-widest text-sm uppercase">Business Impact</span>
                 <h2 class="text-4xl lg:text-5xl font-bold text-white mt-4 mb-6">Strategy Over Vanity Metrics</h2>
                 <p class="text-lg text-slate-400 max-w-2xl mx-auto font-light">Links are a means to an end. Here is how my outreach systems directly influenced pipeline, visibility, and modern AI search presence for in-house SaaS targets.</p>
-            </div>
-
-            <!-- DR Distribution Chart -->
-            <div class="max-w-2xl mx-auto mt-16 p-6 bg-surface backdrop-blur-xl rounded-2xl border border-white/10 reveal">
-                <h4 class="text-center text-sm font-bold uppercase tracking-widest text-lavender-400 mb-6">DR Distribution of 500+ Placements</h4>
-                <canvas id="drChart" height="100"></canvas>
             </div>
 
             <div class="grid lg:grid-cols-2 gap-8 reveal">
@@ -1233,56 +1227,6 @@ window.addEventListener('resize', updateTimeline, { passive: true });
                 document.body.style.overflow = ''; // Restores scrolling
             }, 300);
         }
-
-        // Initialize Chart.js for DR Distribution
-        const ctx = document.getElementById('drChart').getContext('2d');
-        new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: ['DR 40-50', 'DR 50-60', 'DR 60-70', 'DR 70-80', 'DR 80-90+'],
-                datasets: [{
-                    label: 'Number of Placements',
-                    data: [45, 120, 185, 90, 60],
-                    backgroundColor: 'rgba(168, 85, 247, 0.5)',
-                    borderColor: 'rgba(168, 85, 247, 1)',
-                    borderWidth: 1,
-                    borderRadius: 4
-                }]
-            },
-            options: {
-                plugins: { legend: { display: false } },
-                scales: {
-                    y: { grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: '#94a3b8' } },
-                    x: { grid: { display: false }, ticks: { color: '#94a3b8' } }
-                }
-            }
-        });
-
-        // Simple Filter Logic for Placements
-        const filterBtns = document.querySelectorAll('.filter-btn');
-        const placementCards = document.querySelectorAll('.placement-card'); // Make sure to add this class to your placement divs
-
-        filterBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                // UI updates for buttons
-                filterBtns.forEach(b => {
-                    b.classList.remove('bg-lavender-500/20', 'border-lavender-500', 'text-white');
-                    b.classList.add('border-white/10', 'text-slate-300');
-                });
-                btn.classList.remove('border-white/10', 'text-slate-300');
-                btn.classList.add('bg-lavender-500/20', 'border-lavender-500', 'text-white');
-
-                // Filter logic
-                const filterValue = btn.getAttribute('data-filter');
-                placementCards.forEach(card => {
-                    if (filterValue === 'all' || card.getAttribute('data-category') === filterValue) {
-                        card.style.display = 'flex';
-                    } else {
-                        card.style.display = 'none';
-                    }
-                });
-            });
-        });
     </script>
 </body>
 
