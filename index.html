@@ -207,12 +207,18 @@
 
         .cta-stat-card {
             flex: 1;
-            min-width: 160px;
+            min-width: 140px;
             background: rgba(255,255,255,0.03);
             border: 1px solid rgba(255,255,255,0.08);
             border-radius: 1rem;
-            padding: 1.25rem 1.5rem;
+            padding: 1rem 1.25rem;
             text-align: center;
+        }
+        @media (min-width: 640px) {
+            .cta-stat-card {
+                min-width: 160px;
+                padding: 1.25rem 1.5rem;
+            }
         }
         .cta-stat-card .stat-label {
             font-size: 0.65rem;
@@ -223,10 +229,15 @@
             margin-bottom: 0.4rem;
         }
         .cta-stat-card .stat-value {
-            font-size: 0.95rem;
+            font-size: 0.85rem;
             font-weight: 600;
             color: #e2e8f0;
             line-height: 1.4;
+        }
+        @media (min-width: 640px) {
+            .cta-stat-card .stat-value {
+                font-size: 0.95rem;
+            }
         }
         
         /* ── Mockup Window UI ── */
@@ -248,109 +259,127 @@
 
     <!-- Ambient orbs -->
     <div class="fixed top-0 left-0 w-full h-full overflow-hidden -z-10 pointer-events-none mix-blend-screen">
-        <div class="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] bg-lavender-600/20 rounded-full blur-[120px] animate-blob"></div>
-        <div class="absolute top-[40%] right-[-10%] w-[600px] h-[600px] bg-fuchsia-600/10 rounded-full blur-[150px] animate-blob-reverse"></div>
-        <div class="absolute bottom-[-20%] left-[20%] w-[700px] h-[700px] bg-indigo-600/10 rounded-full blur-[130px] animate-blob"></div>
+        <div class="absolute top-[-10%] left-[-10%] w-[300px] md:w-[500px] h-[300px] md:h-[500px] bg-lavender-600/20 rounded-full blur-[100px] md:blur-[120px] animate-blob"></div>
+        <div class="absolute top-[40%] right-[-10%] w-[400px] md:w-[600px] h-[400px] md:h-[600px] bg-fuchsia-600/10 rounded-full blur-[120px] md:blur-[150px] animate-blob-reverse"></div>
+        <div class="absolute bottom-[-20%] left-[20%] w-[500px] md:w-[700px] h-[500px] md:h-[700px] bg-indigo-600/10 rounded-full blur-[100px] md:blur-[130px] animate-blob"></div>
     </div>
 
     <!-- Toast container -->
-    <div id="toast-container" class="fixed bottom-4 right-4 z-50 flex flex-col gap-2"></div>
+    <div id="toast-container" class="fixed bottom-4 right-4 left-4 sm:left-auto z-50 flex flex-col gap-2 pointer-events-none"></div>
 
     <!-- ── Navigation ───────────────────────────────────────── -->
     <nav class="fixed w-full bg-[#05030A]/60 backdrop-blur-xl border-b border-white/5 z-40 top-0 transition-all duration-300">
-        <div class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
-            <a href="#" class="font-bold text-2xl tracking-tight text-white group">
+        <div class="max-w-6xl mx-auto px-4 md:px-6 h-20 flex items-center justify-between">
+            <a href="#" class="font-bold text-2xl tracking-tight text-white group z-50">
                 Siddharth K<span class="text-lavender-400 transition-colors group-hover:text-fuchsia-400">.</span>
             </a>
-            <div class="hidden md:flex gap-8 text-sm font-medium text-slate-300">
+            
+            <!-- Desktop Menu -->
+            <div class="hidden lg:flex gap-8 text-sm font-medium text-slate-300">
                 <a href="#impact" class="hover:text-lavender-300 transition-colors">Business Impact</a>
                 <a href="#leadership" class="hover:text-lavender-300 transition-colors">Leadership & Systems</a>
                 <a href="#showcase" class="hover:text-lavender-300 transition-colors">Placements</a>
                 <a href="#process" class="hover:text-lavender-300 transition-colors">Process</a>
             </div>
-            <button onclick="showToast('Connecting to Calendly...', 'info')" class="text-sm font-bold bg-white text-base px-5 py-2.5 rounded-full hover:bg-lavender-100 transition-colors hover:shadow-[0_0_20px_rgba(192,132,252,0.4)]">
-                <a href="https://calendly.com/kushvahsid/30min" rel="noopener">Let's Chat</a>
-            </button>
+            
+            <div class="flex items-center gap-4 z-50">
+                <button onclick="showToast('Connecting to Calendly...', 'info')" class="text-sm font-bold bg-white text-base px-4 py-2 md:px-5 md:py-2.5 rounded-full hover:bg-lavender-100 transition-colors hover:shadow-[0_0_20px_rgba(192,132,252,0.4)]">
+                    <a href="https://calendly.com/kushvahsid/30min" rel="noopener">Let's Chat</a>
+                </button>
+                
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" class="lg:hidden text-slate-300 hover:text-white focus:outline-none p-2">
+                    <i class="fa-solid fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden absolute top-20 left-0 w-full bg-[#05030A]/95 backdrop-blur-xl border-b border-white/5 flex-col py-4 px-6 gap-6 shadow-2xl transition-all h-screen">
+            <a href="#impact" class="text-slate-300 hover:text-lavender-300 font-medium text-lg mobile-link">Business Impact</a>
+            <a href="#leadership" class="text-slate-300 hover:text-lavender-300 font-medium text-lg mobile-link">Leadership & Systems</a>
+            <a href="#showcase" class="text-slate-300 hover:text-lavender-300 font-medium text-lg mobile-link">Placements</a>
+            <a href="#process" class="text-slate-300 hover:text-lavender-300 font-medium text-lg mobile-link">Process</a>
         </div>
     </nav>
 
     <!-- ── 1. Hero ───────────────────────────────────────────── -->
-    <header class="relative pt-40 pb-24 lg:pt-56 lg:pb-32 overflow-hidden flex flex-col items-center justify-center min-h-[90vh]">
-        <div class="max-w-6xl mx-auto px-6 relative z-10 w-full">
+    <header class="relative pt-32 pb-16 md:pt-40 md:pb-24 lg:pt-56 lg:pb-32 overflow-hidden flex flex-col items-center justify-center min-h-[90vh]">
+        <div class="max-w-6xl mx-auto px-4 md:px-6 relative z-10 w-full">
             <div class="max-w-4xl mx-auto text-center flex flex-col items-center">
 
                 <!-- Status pill -->
-                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 backdrop-blur-md border border-white/10 text-lavender-200 text-sm font-semibold mb-8 hover:bg-white/10 transition-colors cursor-default">
-                    <span class="relative flex h-2.5 w-2.5">
+                <div class="inline-flex items-center gap-2 px-3 py-1.5 md:px-4 md:py-1.5 rounded-full bg-white/5 backdrop-blur-md border border-white/10 text-lavender-200 text-xs md:text-sm font-semibold mb-6 md:mb-8 hover:bg-white/10 transition-colors cursor-default text-left sm:text-center max-w-full">
+                    <span class="relative flex h-2.5 w-2.5 shrink-0">
                         <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-lavender-400 opacity-75"></span>
                     <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-lavender-500"></span>
                     </span>
-                    SEO Outreach Team Lead & Link Building Specialist
+                    <span class="truncate whitespace-normal leading-tight">SEO Outreach Team Lead & Link Building Specialist</span>
                 </div>
 
-                <h1 class="text-5xl lg:text-7xl font-extrabold text-white leading-[1.1] mb-6 tracking-tight animate-float">
-                    I Get Links From Sites <br />
+                <h1 class="text-4xl md:text-6xl lg:text-7xl font-extrabold text-white leading-[1.1] mb-4 md:mb-6 tracking-tight animate-float">
+                    I Get Links From Sites <br class="hidden sm:block" />
                     <span class="text-gradient">That Say "No".</span>
                 </h1>
 
-                <p class="text-xl lg:text-2xl text-slate-400 leading-relaxed mb-12 max-w-3xl font-light">
+                <p class="text-lg md:text-xl lg:text-2xl text-slate-400 leading-relaxed mb-10 md:mb-12 max-w-3xl font-light px-2 sm:px-0">
                     I build outreach systems that scale. From securing placements on <span class="text-white font-medium">Cloudways & Jotform</span>, to engineering custom automations and securing LLM citations via GEO outreach.
                 </p>
 
                 <!-- Stats grid -->
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-14 w-full reveal">
-                    <div class="bg-surface backdrop-blur-xl p-6 rounded-2xl border border-white/10 hover:border-lavender-500/50 transition-all hover:-translate-y-1 hover:shadow-[0_10px_40px_-10px_rgba(168,85,247,0.2)] group">
-                        <div class="text-3xl font-extrabold text-white mb-1 group-hover:text-lavender-300 transition-colors">$100K+</div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-10 md:mb-14 w-full reveal px-2 md:px-0">
+                    <div class="bg-surface backdrop-blur-xl p-5 md:p-6 rounded-2xl border border-white/10 hover:border-lavender-500/50 transition-all hover:-translate-y-1 hover:shadow-[0_10px_40px_-10px_rgba(168,85,247,0.2)] group text-center lg:text-left">
+                        <div class="text-2xl md:text-3xl font-extrabold text-white mb-1 group-hover:text-lavender-300 transition-colors">$100K+</div>
                         <div class="text-xs text-lavender-200/70 font-semibold uppercase tracking-wider">Influenced ARR till Date</div>
                     </div>
-                    <div class="bg-surface backdrop-blur-xl p-6 rounded-2xl border border-white/10 hover:border-lavender-500/50 transition-all hover:-translate-y-1 hover:shadow-[0_10px_40px_-10px_rgba(168,85,247,0.2)] group">
-                        <div class="text-3xl font-extrabold text-white mb-1 group-hover:text-lavender-300 transition-colors">70%</div>
+                    <div class="bg-surface backdrop-blur-xl p-5 md:p-6 rounded-2xl border border-white/10 hover:border-lavender-500/50 transition-all hover:-translate-y-1 hover:shadow-[0_10px_40px_-10px_rgba(168,85,247,0.2)] group text-center lg:text-left">
+                        <div class="text-2xl md:text-3xl font-extrabold text-white mb-1 group-hover:text-lavender-300 transition-colors">70%</div>
                         <div class="text-xs text-lavender-200/70 font-semibold uppercase tracking-wider">Time Saved via Automation</div>
                     </div>
-                    <div class="bg-surface backdrop-blur-xl p-6 rounded-2xl border border-white/10 hover:border-lavender-500/50 transition-all hover:-translate-y-1 hover:shadow-[0_10px_40px_-10px_rgba(168,85,247,0.2)] group">
-                        <div class="text-3xl font-extrabold text-white mb-1 group-hover:text-lavender-300 transition-colors">500+</div>
+                    <div class="bg-surface backdrop-blur-xl p-5 md:p-6 rounded-2xl border border-white/10 hover:border-lavender-500/50 transition-all hover:-translate-y-1 hover:shadow-[0_10px_40px_-10px_rgba(168,85,247,0.2)] group text-center lg:text-left">
+                        <div class="text-2xl md:text-3xl font-extrabold text-white mb-1 group-hover:text-lavender-300 transition-colors">500+</div>
                         <div class="text-xs text-lavender-200/70 font-semibold uppercase tracking-wider">Live Placements</div>
                     </div>
-                    <div class="bg-surface backdrop-blur-xl p-6 rounded-2xl border border-white/10 hover:border-lavender-500/50 transition-all hover:-translate-y-1 hover:shadow-[0_10px_40px_-10px_rgba(168,85,247,0.2)] group">
-                        <div class="text-3xl font-extrabold text-white mb-1 group-hover:text-lavender-300 transition-colors">10%+</div>
+                    <div class="bg-surface backdrop-blur-xl p-5 md:p-6 rounded-2xl border border-white/10 hover:border-lavender-500/50 transition-all hover:-translate-y-1 hover:shadow-[0_10px_40px_-10px_rgba(168,85,247,0.2)] group text-center lg:text-left">
+                        <div class="text-2xl md:text-3xl font-extrabold text-white mb-1 group-hover:text-lavender-300 transition-colors">10%+</div>
                         <div class="text-xs text-lavender-200/70 font-semibold uppercase tracking-wider">Avg. Placement Rate</div>
                     </div>
                 </div>
 
                 <!-- CTA buttons -->
-                <div class="flex flex-col sm:flex-row gap-5 reveal delay-100 w-full sm:w-auto">
-                    <a href="#showcase" class="glow-border relative inline-flex justify-center items-center gap-2 px-8 py-4 rounded-full font-bold text-white hover:text-lavender-100 transition-all">
+                <div class="flex flex-col sm:flex-row gap-4 sm:gap-5 reveal delay-100 w-full sm:w-auto px-4 sm:px-0">
+                    <a href="#showcase" class="glow-border relative inline-flex justify-center items-center gap-2 w-full sm:w-auto px-6 py-4 md:px-8 md:py-4 rounded-full font-bold text-white hover:text-lavender-100 transition-all text-sm md:text-base">
                         <span class="relative z-10 flex items-center gap-2">View Best Outreach Wins <i class="fa-solid fa-arrow-down text-sm"></i></span>
                     </a>
 
                     <!-- RESUME DOWNLOAD LINK -->
-                    <a href="Siddharth-Senior-Link-Builder-Resume.pdf" download="Siddharth-Senior-Link-Builder-Resume.pdf" onclick="showToast('Downloading Resume...', 'success')" class="inline-flex justify-center items-center gap-2 bg-white/5 border border-white/10 hover:bg-white/10 backdrop-blur-md text-white px-8 py-4 rounded-full font-bold transition-all hover:shadow-[0_0_20px_rgba(255,255,255,0.1)] cursor-pointer">
+                    <a href="Siddharth-Senior-Link-Builder-Resume.pdf" download="Siddharth-Senior-Link-Builder-Resume.pdf" onclick="showToast('Downloading Resume...', 'success')" class="inline-flex justify-center items-center gap-2 bg-white/5 border border-white/10 hover:bg-white/10 backdrop-blur-md text-white w-full sm:w-auto px-6 py-4 md:px-8 md:py-4 rounded-full font-bold transition-all hover:shadow-[0_0_20px_rgba(255,255,255,0.1)] cursor-pointer text-sm md:text-base">
                         <i class="fa-regular fa-file-pdf text-lavender-400"></i> PDF Resume
                     </a>
                 </div>
             </div>
         </div>
         <!-- Bottom fade -->
-        <div class="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-[#05030A] to-transparent z-20"></div>
+        <div class="absolute bottom-0 left-0 w-full h-20 md:h-32 bg-gradient-to-t from-[#05030A] to-transparent z-20"></div>
     </header>
 
-    <div class="section-divider my-8 px-6"></div>
+    <div class="section-divider my-8 px-4 md:px-6"></div>
 
     <!-- ── 2. Business Impact Case Studies ────────────────────── -->
-    <section id="impact" class="py-24 relative z-20">
-        <div class="max-w-6xl mx-auto px-6">
-            <div class="text-center mb-16 reveal">
-                <span class="text-lavender-400 font-semibold tracking-widest text-sm uppercase">Business Impact</span>
-                <h2 class="text-4xl lg:text-5xl font-bold text-white mt-4 mb-6">Strategy Over Vanity Metrics</h2>
-                <p class="text-lg text-slate-400 max-w-2xl mx-auto font-light">Links are a means to an end. Here is how my outreach systems directly influenced pipeline, visibility, and modern AI search presence for in-house SaaS targets.</p>
+    <section id="impact" class="py-16 md:py-24 relative z-20">
+        <div class="max-w-6xl mx-auto px-4 md:px-6">
+            <div class="text-center mb-12 md:mb-16 reveal">
+                <span class="text-lavender-400 font-semibold tracking-widest text-xs md:text-sm uppercase">Business Impact</span>
+                <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-white mt-4 mb-4 md:mb-6">Strategy Over Vanity Metrics</h2>
+                <p class="text-base md:text-lg text-slate-400 max-w-2xl mx-auto font-light">Links are a means to an end. Here is how my outreach systems directly influenced pipeline, visibility, and modern AI search presence for in-house SaaS targets.</p>
             </div>
 
-            <div class="grid lg:grid-cols-2 gap-8 reveal">
+            <div class="grid lg:grid-cols-2 gap-6 md:gap-8 reveal">
                 <!-- Case Study 1 -->
-                <div class="bg-[#0c0817] p-8 md:p-10 rounded-3xl border border-white/10 ring-1 ring-white/5 relative overflow-hidden group hover:border-lavender-500/40 transition-all shadow-2xl">
-                    <div class="absolute top-0 right-0 bg-lavender-500/10 text-lavender-300 text-[10px] font-bold px-4 py-2 rounded-bl-xl uppercase tracking-widest border-b border-l border-lavender-500/20">Organic Growth</div>
-                    <h3 class="text-2xl font-bold text-white mb-4">Scaling Competitor Listicles</h3>
-                    <div class="space-y-4 text-slate-300 text-sm font-light leading-relaxed mb-6">
+                <div class="bg-[#0c0817] p-6 md:p-8 lg:p-10 rounded-3xl border border-white/10 ring-1 ring-white/5 relative overflow-hidden group hover:border-lavender-500/40 transition-all shadow-2xl">
+                    <div class="absolute top-0 right-0 bg-lavender-500/10 text-lavender-300 text-[9px] md:text-[10px] font-bold px-3 md:px-4 py-1.5 md:py-2 rounded-bl-xl uppercase tracking-widest border-b border-l border-lavender-500/20">Organic Growth</div>
+                    <h3 class="text-xl md:text-2xl font-bold text-white mb-4 pr-16 md:pr-0">Scaling Competitor Listicles</h3>
+                    <div class="space-y-4 text-slate-300 text-sm md:text-base font-light leading-relaxed mb-4 md:mb-6">
                         <p><strong class="text-white font-medium">The Goal:</strong> Improve ranking visibility for hyper-competitive "HR software for small business" commercial clusters.</p>
                         <p><strong class="text-white font-medium">The Execution:</strong> Rather than generic guest posts, I targeted high-DR domains already ranking for competitor alternatives. By leveraging a targeted "value swap" and expert quotes, we positioned our brand directly alongside legacy competitors on third-party lists.</p>
                         <p><strong class="text-white font-medium">The Result:</strong> Contributed directly to a <span class="text-lavender-300 font-bold">23% improvement in organic visibility</span> for target commercial pages over two quarters, converting third-party traffic into high-intent referral visits.</p>
@@ -358,10 +387,10 @@
                 </div>
 
                 <!-- Case Study 2 -->
-                <div class="bg-[#0c0817] p-8 md:p-10 rounded-3xl border border-white/10 ring-1 ring-white/5 relative overflow-hidden group hover:border-fuchsia-500/40 transition-all shadow-2xl">
-                    <div class="absolute top-0 right-0 bg-fuchsia-500/10 text-fuchsia-300 text-[10px] font-bold px-4 py-2 rounded-bl-xl uppercase tracking-widest border-b border-l border-fuchsia-500/20">GEO & LLMs</div>
-                    <h3 class="text-2xl font-bold text-white mb-4">The AI Citation Campaign</h3>
-                    <div class="space-y-4 text-slate-300 text-sm font-light leading-relaxed mb-6">
+                <div class="bg-[#0c0817] p-6 md:p-8 lg:p-10 rounded-3xl border border-white/10 ring-1 ring-white/5 relative overflow-hidden group hover:border-fuchsia-500/40 transition-all shadow-2xl">
+                    <div class="absolute top-0 right-0 bg-fuchsia-500/10 text-fuchsia-300 text-[9px] md:text-[10px] font-bold px-3 md:px-4 py-1.5 md:py-2 rounded-bl-xl uppercase tracking-widest border-b border-l border-fuchsia-500/20">GEO & LLMs</div>
+                    <h3 class="text-xl md:text-2xl font-bold text-white mb-4 pr-16 md:pr-0">The AI Citation Campaign</h3>
+                    <div class="space-y-4 text-slate-300 text-sm md:text-base font-light leading-relaxed mb-4 md:mb-6">
                         <p><strong class="text-white font-medium">The Goal:</strong> Ensure the brand was consistently cited in generative AI answers (Claude, ChatGPT, Perplexity) for commercial HR queries.</p>
                         <p><strong class="text-white font-medium">The Execution:</strong> Pioneered a Generative Engine Optimization (GEO) outreach strategy. I secured brand mentions on specific high-authority hub pages and statistical roundups that LLMs index heavily for their training and RAG data.</p>
                         <p><strong class="text-white font-medium">The Result:</strong> Successfully established brand presence in AI-generated answers for key bottom-of-funnel queries, future-proofing visibility beyond traditional SERPs.</p>
@@ -369,10 +398,10 @@
                 </div>
 
                 <!-- Case Study 3: The Tough Win -->
-                <div class="bg-[#0c0817] p-8 md:p-10 rounded-3xl border border-white/10 ring-1 ring-white/5 relative overflow-hidden group hover:border-emerald-500/40 transition-all shadow-2xl">
-                    <div class="absolute top-0 right-0 bg-emerald-500/10 text-emerald-300 text-[10px] font-bold px-4 py-2 rounded-bl-xl uppercase tracking-widest border-b border-l border-emerald-500/20">Negotiation</div>
-                    <h3 class="text-2xl font-bold text-white mb-4">Turning a 'No' Into a Placement</h3>
-                    <div class="space-y-4 text-slate-300 text-sm font-light leading-relaxed mb-6">
+                <div class="bg-[#0c0817] p-6 md:p-8 lg:p-10 rounded-3xl border border-white/10 ring-1 ring-white/5 relative overflow-hidden group hover:border-emerald-500/40 transition-all shadow-2xl lg:col-span-2 lg:w-3/4 lg:mx-auto">
+                    <div class="absolute top-0 right-0 bg-emerald-500/10 text-emerald-300 text-[9px] md:text-[10px] font-bold px-3 md:px-4 py-1.5 md:py-2 rounded-bl-xl uppercase tracking-widest border-b border-l border-emerald-500/20">Negotiation</div>
+                    <h3 class="text-xl md:text-2xl font-bold text-white mb-4 pr-16 md:pr-0">Turning a 'No' Into a Placement</h3>
+                    <div class="space-y-4 text-slate-300 text-sm md:text-base font-light leading-relaxed mb-4 md:mb-6">
                         <p><strong class="text-white font-medium">The Scenario:</strong> One of our competitors denied to add our platform to their resource since we didn't have a listicle related to them.</p>
                         <p><strong class="text-white font-medium">The Pivot:</strong> Instead of pushing, I audited their core offerings and arranged a placement in one of the sites more relevant to their business, making it an equal trade for them.</p>
                         <p><strong class="text-white font-medium">The Result:</strong> They accepted the offer, credited us with a do-follow link in their top-performing article, and requested future data collaborations.</p>
@@ -383,74 +412,74 @@
     </section>
 
     <!-- ── 2.5 Leadership & Systems ──────────────────────────── -->
-    <section id="leadership" class="py-24 relative z-20 bg-gradient-to-b from-transparent via-[#0f091f]/50 to-transparent border-y border-white/5">
-        <div class="max-w-6xl mx-auto px-6">
-            <div class="grid md:grid-cols-12 gap-16 items-center reveal">
+    <section id="leadership" class="py-16 md:py-24 relative z-20 bg-gradient-to-b from-transparent via-[#0f091f]/50 to-transparent border-y border-white/5">
+        <div class="max-w-6xl mx-auto px-4 md:px-6">
+            <div class="grid md:grid-cols-12 gap-10 md:gap-16 items-center reveal">
                 
                 <div class="md:col-span-5">
                     <div class="inline-flex items-center gap-2 mb-4">
                         <div class="w-8 h-[1px] bg-lavender-500"></div>
-                        <span class="text-lavender-400 font-semibold tracking-widest text-sm uppercase">The Systems Builder</span>
+                        <span class="text-lavender-400 font-semibold tracking-widest text-xs md:text-sm uppercase">The Systems Builder</span>
                     </div>
-                    <h2 class="text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight">
+                    <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight">
                         Scaling Outreach Through <span class="text-lavender-300">Engineering.</span>
                     </h2>
-                    <p class="text-lg text-slate-400 font-light leading-relaxed mb-6">
+                    <p class="text-base md:text-lg text-slate-400 font-light leading-relaxed mb-6">
                         My background bridging content strategy and web development informs how I run outreach. I don't just send emails; I build the infrastructure that makes high-volume personalization possible.
                     </p>
-                    <p class="text-lg text-slate-400 font-light leading-relaxed mb-8">
+                    <p class="text-base md:text-lg text-slate-400 font-light leading-relaxed mb-8 md:mb-0">
                         As a Team Lead, I've mentored outreach executives on negotiation psychology, while simultaneously leveraging my front-end and scripting skills to automate the repetitive aspects of prospecting.
                     </p>
                 </div>
 
-                <div class="md:col-span-7 grid sm:grid-cols-2 gap-4">
-                    <div class="bg-surface backdrop-blur-sm p-6 rounded-2xl border border-white/5 hover:border-white/20 transition-all">
+                <div class="md:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div class="bg-surface backdrop-blur-sm p-5 md:p-6 rounded-2xl border border-white/5 hover:border-white/20 transition-all">
                         <i class="fa-solid fa-code-branch text-2xl text-blue-400 mb-4"></i>
-                        <h4 class="text-lg font-bold text-white mb-2">Custom Automation (70% Time Saved)</h4>
-                        <p class="text-sm text-slate-400 font-light leading-relaxed">Built and maintained custom prospecting bots using Gumloop and Google Sheets scripts, achieving 70% data accuracy and drastically reducing manual list-building time.</p>
+                        <h4 class="text-base md:text-lg font-bold text-white mb-2">Custom Automation (70% Time Saved)</h4>
+                        <p class="text-xs md:text-sm text-slate-400 font-light leading-relaxed">Built and maintained custom prospecting bots using Gumloop and Google Sheets scripts, achieving 70% data accuracy and drastically reducing manual list-building time.</p>
                     </div>
-                    <div class="bg-surface backdrop-blur-sm p-6 rounded-2xl border border-white/5 hover:border-white/20 transition-all">
+                    <div class="bg-surface backdrop-blur-sm p-5 md:p-6 rounded-2xl border border-white/5 hover:border-white/20 transition-all">
                         <i class="fa-solid fa-users text-2xl text-fuchsia-400 mb-4"></i>
-                        <h4 class="text-lg font-bold text-white mb-2">Team Leadership & Mentorship</h4>
-                        <p class="text-sm text-slate-400 font-light leading-relaxed">Mentored junior outreach executives, shifting their focus from generic templates to value-first negotiation, improving team-wide placement rates and morale.</p>
+                        <h4 class="text-base md:text-lg font-bold text-white mb-2">Team Leadership & Mentorship</h4>
+                        <p class="text-xs md:text-sm text-slate-400 font-light leading-relaxed">Mentored junior outreach executives, shifting their focus from generic templates to value-first negotiation, improving team-wide placement rates and morale.</p>
                     </div>
-                    <div class="bg-surface backdrop-blur-sm p-6 rounded-2xl border border-white/5 hover:border-white/20 transition-all">
+                    <div class="bg-surface backdrop-blur-sm p-5 md:p-6 rounded-2xl border border-white/5 hover:border-white/20 transition-all">
                         <i class="fa-solid fa-rotate text-2xl text-orange-400 mb-4"></i>
-                        <h4 class="text-lg font-bold text-white mb-2">Strategic Pivoting (Digital PR)</h4>
-                        <p class="text-sm text-slate-400 font-light leading-relaxed">Turned an initial Digital PR campaign miss into a scalable success by analyzing the rejection data and systematically revising the pitch angle to align with journalist needs.</p>
+                        <h4 class="text-base md:text-lg font-bold text-white mb-2">Strategic Pivoting (Digital PR)</h4>
+                        <p class="text-xs md:text-sm text-slate-400 font-light leading-relaxed">Turned an initial Digital PR campaign miss into a scalable success by analyzing the rejection data and systematically revising the pitch angle to align with journalist needs.</p>
                     </div>
-                    <div class="bg-surface backdrop-blur-sm p-6 rounded-2xl border border-white/5 hover:border-white/20 transition-all">
+                    <div class="bg-surface backdrop-blur-sm p-5 md:p-6 rounded-2xl border border-white/5 hover:border-white/20 transition-all">
                         <i class="fa-solid fa-pen-nib text-2xl text-emerald-400 mb-4"></i>
-                        <h4 class="text-lg font-bold text-white mb-2">Full-Stack Content Background</h4>
-                        <p class="text-sm text-slate-400 font-light leading-relaxed">Deep roots in content strategy and on-page optimization. I understand the actual technical value of the pages I am building links to.</p>
+                        <h4 class="text-base md:text-lg font-bold text-white mb-2">Full-Stack Content Background</h4>
+                        <p class="text-xs md:text-sm text-slate-400 font-light leading-relaxed">Deep roots in content strategy and on-page optimization. I understand the actual technical value of the pages I am building links to.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <div class="section-divider my-8 px-6"></div>
+    <div class="section-divider my-8 px-4 md:px-6"></div>
 
     <!-- ── 2.5 Industry Recognition ──────────────────────────────────────────── -->
-    <section id="recognition" class="pb-24 pt-12 relative z-20">
-        <div class="max-w-6xl mx-auto px-6 reveal">
+    <section id="recognition" class="pb-16 md:pb-24 pt-8 md:pt-12 relative z-20">
+        <div class="max-w-6xl mx-auto px-4 md:px-6 reveal">
             <div class="relative group">
                 <!-- Outer Glow -->
                 <div class="absolute -inset-1 bg-gradient-to-r from-orange-500 to-fuchsia-600 rounded-3xl blur-xl opacity-20 group-hover:opacity-40 transition duration-1000 group-hover:duration-200"></div>
                 
                 <!-- Main Content Card -->
-                <div class="relative bg-[#0c0817] p-8 md:p-12 rounded-3xl border border-white/10 ring-1 ring-white/5 flex flex-col lg:flex-row items-center lg:items-start gap-10 shadow-2xl">
+                <div class="relative bg-[#0c0817] p-6 md:p-12 rounded-3xl border border-white/10 ring-1 ring-white/5 flex flex-col lg:flex-row items-center lg:items-start gap-8 md:gap-10 shadow-2xl">
                     
                     <!-- Left Column: Header & Logo -->
                     <div class="lg:w-1/3 w-full flex flex-col items-center lg:items-start text-center lg:text-left shrink-0">
-                        <div class="w-16 h-16 rounded-2xl bg-white/95 p-2 flex items-center justify-center shadow-[0_0_20px_rgba(255,255,255,0.15)] mb-6 border border-white/30 overflow-hidden group-hover:scale-105 transition-transform duration-500">
+                        <div class="w-16 h-16 rounded-2xl bg-white/95 p-2 flex items-center justify-center shadow-[0_0_20px_rgba(255,255,255,0.15)] mb-4 md:mb-6 border border-white/30 overflow-hidden group-hover:scale-105 transition-transform duration-500">
                             <img src="https://www.google.com/s2/favicons?domain=hunter.io&sz=128" alt="Hunter.io Logo" class="w-full h-full object-contain" />
                         </div>
                         <div class="inline-flex items-center gap-2 mb-3">
                             <span class="text-orange-400 font-semibold tracking-widest text-xs uppercase">Global Recognition</span>
                         </div>
                         <h3 class="text-2xl md:text-3xl font-bold text-white leading-tight">Hunter.io Pitch Competition</h3>
-                        <p class="text-slate-400 mt-4 text-sm font-light leading-relaxed">
+                        <p class="text-slate-400 mt-3 md:mt-4 text-xs md:text-sm font-light leading-relaxed max-w-sm md:max-w-none">
                             Consistent, internationally recognized performance in competitive outreach copywriting by one of the industry's leading authorities.
                         </p>
                     </div>
@@ -458,30 +487,30 @@
                     <!-- Right Column: The Awards -->
                     <div class="lg:w-2/3 w-full flex flex-col gap-4">
                         <!-- Award 1: 2025 -->
-                        <div class="bg-surface backdrop-blur-sm p-6 rounded-2xl border border-white/5 hover:border-orange-500/30 transition-colors flex items-start gap-5">
+                        <div class="bg-surface backdrop-blur-sm p-5 md:p-6 rounded-2xl border border-white/5 hover:border-orange-500/30 transition-colors flex flex-col sm:flex-row items-start gap-4 md:gap-5">
                             <div class="mt-1 w-12 h-12 rounded-full bg-orange-500/10 flex items-center justify-center text-orange-400 shrink-0 border border-orange-500/20 shadow-inner">
                                 <i class="fa-solid fa-trophy text-lg"></i>
                             </div>
                             <div>
-                                <h4 class="text-lg font-bold text-white mb-2 flex items-center gap-3">
+                                <h4 class="text-base md:text-lg font-bold text-white mb-2 flex items-center gap-3">
                                     Top 16 Globally <span class="text-xs font-mono bg-white/10 text-slate-300 px-2 py-1 rounded border border-white/10">2025</span>
                                 </h4>
-                                <p class="text-slate-300 text-sm leading-relaxed font-light">
+                                <p class="text-slate-300 text-xs md:text-sm leading-relaxed font-light">
                                     Placed in the top 16 out of hundreds of participants globally in a publicly run competition by one of the most recognized brands in the outreach industry.
                                 </p>
                             </div>
                         </div>
 
                         <!-- Award 2: 2026 -->
-                        <div class="bg-surface backdrop-blur-sm p-6 rounded-2xl border border-white/5 hover:border-fuchsia-500/30 transition-colors flex items-start gap-5">
+                        <div class="bg-surface backdrop-blur-sm p-5 md:p-6 rounded-2xl border border-white/5 hover:border-fuchsia-500/30 transition-colors flex flex-col sm:flex-row items-start gap-4 md:gap-5">
                             <div class="mt-1 w-12 h-12 rounded-full bg-fuchsia-500/10 flex items-center justify-center text-fuchsia-400 shrink-0 border border-fuchsia-500/20 shadow-inner">
                                 <i class="fa-solid fa-medal text-lg"></i>
                             </div>
                             <div>
-                                <h4 class="text-lg font-bold text-white mb-2 flex items-center gap-3">
+                                <h4 class="text-base md:text-lg font-bold text-white mb-2 flex items-center gap-3">
                                     Top 64 out of 300+ <span class="text-xs font-mono bg-white/10 text-slate-300 px-2 py-1 rounded border border-white/10">2026</span>
                                 </h4>
-                                <p class="text-slate-300 text-sm leading-relaxed font-light">
+                                <p class="text-slate-300 text-xs md:text-sm leading-relaxed font-light">
                                     Returned to demonstrate consistent performance in competitive outreach copywriting at an international level against a massive field of professionals.
                                 </p>
                             </div>
@@ -494,99 +523,100 @@
     </section>
 
     <!-- ── 3. Outreach Showcase ──────────────────────────────── -->
-    <section class="py-24 relative z-20">
-        <div class="max-w-6xl mx-auto px-6">
+    <section class="py-16 md:py-24 relative z-20">
+        <div class="max-w-6xl mx-auto px-4 md:px-6">
 
-            <div class="text-center mb-20 reveal">
-                <h2 class="text-4xl lg:text-5xl font-bold text-white mb-6">Real Editor Replies, Unedited</h2>
-                <p class="text-xl text-slate-400 max-w-2xl mx-auto font-light">
+            <div class="text-center mb-16 md:mb-20 reveal">
+                <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 md:mb-6">Real Editor Replies, Unedited</h2>
+                <p class="text-base md:text-xl text-slate-400 max-w-2xl mx-auto font-light">
                     Not theory. Real editor praise, live links, and high-DR acquisitions. The exact output of a
                     <span class="text-lavender-300 font-medium">my relationship-first approach.</span>
                 </p>
             </div>
 
             <!-- A. Inbox proof screenshots -->
-            <div class="mb-24 reveal">
+            <div class="mb-16 md:mb-24 reveal">
 
-                <div class="max-w-4xl mx-auto flex flex-col gap-10">
+                <div class="max-w-4xl mx-auto flex flex-col gap-8 md:gap-10">
 
-                    <div class="bg-surface backdrop-blur-md p-4 md:p-5 rounded-3xl border border-white/10 hover:border-lavender-500/50 transition-all group shadow-2xl">
-                        <div class="mb-4 px-2 pt-1 flex items-center justify-between">
-                            <span class="text-base md:text-lg font-bold text-lavender-300">"The best link exchange pitch"</span>
-                            <i class="fa-solid fa-award text-yellow-400 shadow-[0_0_10px_rgba(250,204,21,0.5)] text-lg"></i>
+                    <!-- Adjusted inner layout for proof containers to scale smoothly on mobile -->
+                    <div class="bg-surface backdrop-blur-md p-3 md:p-5 rounded-3xl border border-white/10 hover:border-lavender-500/50 transition-all group shadow-2xl">
+                        <div class="mb-3 md:mb-4 px-2 pt-1 flex items-center justify-between">
+                            <span class="text-sm md:text-lg font-bold text-lavender-300 truncate mr-2">"The best link exchange pitch"</span>
+                            <i class="fa-solid fa-award text-yellow-400 shadow-[0_0_10px_rgba(250,204,21,0.5)] text-base md:text-lg shrink-0"></i>
                         </div>
                         <div class="rounded-xl overflow-hidden border border-white/5 bg-[#05030A]">
-                            <img src="Pitch Praise.png" alt="Pitch Praise" class="w-full h-auto opacity-90 group-hover:opacity-100 group-hover:scale-[1.01] transition-all duration-500 cursor-pointer" onclick="openModal(this.src)" />
+                            <img src="Pitch Praise.png" alt="Pitch Praise" class="w-full h-auto opacity-90 group-hover:opacity-100 group-hover:scale-[1.01] transition-all duration-500 cursor-pointer object-cover" onclick="openModal(this.src)" />
                         </div>
                     </div>
 
-                    <div class="bg-surface backdrop-blur-md p-4 md:p-5 rounded-3xl border border-white/10 hover:border-lavender-500/50 transition-all group shadow-2xl">
-                        <div class="mb-4 px-2 pt-1 flex items-center justify-between">
-                            <span class="text-base md:text-lg font-bold text-lavender-300">Curiosity-Driven Subject Line</span>
-                            <i class="fa-regular fa-eye text-lavender-400 text-lg"></i>
+                    <div class="bg-surface backdrop-blur-md p-3 md:p-5 rounded-3xl border border-white/10 hover:border-lavender-500/50 transition-all group shadow-2xl">
+                        <div class="mb-3 md:mb-4 px-2 pt-1 flex items-center justify-between">
+                            <span class="text-sm md:text-lg font-bold text-lavender-300 truncate mr-2">Curiosity-Driven Subject Line</span>
+                            <i class="fa-regular fa-eye text-lavender-400 text-base md:text-lg shrink-0"></i>
                         </div>
                         <div class="rounded-xl overflow-hidden border border-white/5 bg-[#05030A]">
-                            <img src="Subject Line 1.png" alt="Subject Line Curiosity" class="w-full h-auto opacity-90 group-hover:opacity-100 group-hover:scale-[1.01] transition-all duration-500 cursor-pointer" onclick="openModal(this.src)" />
+                            <img src="Subject Line 1.png" alt="Subject Line Curiosity" class="w-full h-auto opacity-90 group-hover:opacity-100 group-hover:scale-[1.01] transition-all duration-500 cursor-pointer object-cover" onclick="openModal(this.src)" />
                         </div>
                     </div>
 
-                    <div class="bg-surface backdrop-blur-md p-4 md:p-5 rounded-3xl border border-white/10 hover:border-lavender-500/50 transition-all group shadow-2xl">
-                        <div class="mb-4 px-2 pt-1 flex items-center justify-between">
-                            <span class="text-base md:text-lg font-bold text-lavender-300">"Interesting Subject Line" Praise</span>
-                            <i class="fa-solid fa-check-double text-emerald-400 text-lg"></i>
+                    <div class="bg-surface backdrop-blur-md p-3 md:p-5 rounded-3xl border border-white/10 hover:border-lavender-500/50 transition-all group shadow-2xl">
+                        <div class="mb-3 md:mb-4 px-2 pt-1 flex items-center justify-between">
+                            <span class="text-sm md:text-lg font-bold text-lavender-300 truncate mr-2">"Interesting Subject Line" Praise</span>
+                            <i class="fa-solid fa-check-double text-emerald-400 text-base md:text-lg shrink-0"></i>
                         </div>
                         <div class="rounded-xl overflow-hidden border border-white/5 bg-[#05030A]">
-                            <img src="Subject Line 2.png" alt="Subject Line Praise" class="w-full h-auto opacity-90 group-hover:opacity-100 group-hover:scale-[1.01] transition-all duration-500 cursor-pointer" onclick="openModal(this.src)" />
+                            <img src="Subject Line 2.png" alt="Subject Line Praise" class="w-full h-auto opacity-90 group-hover:opacity-100 group-hover:scale-[1.01] transition-all duration-500 cursor-pointer object-cover" onclick="openModal(this.src)" />
                         </div>
                     </div>
 
-                    <div class="bg-surface backdrop-blur-md p-4 md:p-5 rounded-3xl border border-white/10 hover:border-lavender-500/50 transition-all group shadow-2xl">
-                        <div class="mb-4 px-2 pt-1 flex items-center justify-between">
-                            <span class="text-base md:text-lg font-bold text-lavender-300">Direct Link Agreement</span>
-                            <i class="fa-solid fa-link text-indigo-400 text-lg"></i>
+                    <div class="bg-surface backdrop-blur-md p-3 md:p-5 rounded-3xl border border-white/10 hover:border-lavender-500/50 transition-all group shadow-2xl">
+                        <div class="mb-3 md:mb-4 px-2 pt-1 flex items-center justify-between">
+                            <span class="text-sm md:text-lg font-bold text-lavender-300 truncate mr-2">Direct Link Agreement</span>
+                            <i class="fa-solid fa-link text-indigo-400 text-base md:text-lg shrink-0"></i>
                         </div>
                         <div class="rounded-xl overflow-hidden border border-white/5 bg-[#05030A]">
-                            <img src="Right into the Deal.png" alt="Direct Agreement" class="w-full h-auto opacity-90 group-hover:opacity-100 group-hover:scale-[1.01] transition-all duration-500 cursor-pointer" onclick="openModal(this.src)" />
+                            <img src="Right into the Deal.png" alt="Direct Agreement" class="w-full h-auto opacity-90 group-hover:opacity-100 group-hover:scale-[1.01] transition-all duration-500 cursor-pointer object-cover" onclick="openModal(this.src)" />
                         </div>
                     </div>
 
-                    <div class="bg-surface backdrop-blur-md p-4 md:p-5 rounded-3xl border border-white/10 hover:border-lavender-500/50 transition-all group shadow-2xl">
-                        <div class="mb-4 px-2 pt-1 flex items-center justify-between">
-                            <span class="text-base md:text-lg font-bold text-lavender-300">Successful Negotiation</span>
-                            <i class="fa-solid fa-handshake text-fuchsia-400 text-lg"></i>
+                    <div class="bg-surface backdrop-blur-md p-3 md:p-5 rounded-3xl border border-white/10 hover:border-lavender-500/50 transition-all group shadow-2xl">
+                        <div class="mb-3 md:mb-4 px-2 pt-1 flex items-center justify-between">
+                            <span class="text-sm md:text-lg font-bold text-lavender-300 truncate mr-2">Successful Negotiation</span>
+                            <i class="fa-solid fa-handshake text-fuchsia-400 text-base md:text-lg shrink-0"></i>
                         </div>
                         <div class="rounded-xl overflow-hidden border border-white/5 bg-[#05030A]">
-                            <img src="Negotiation Power.png" alt="Successful Negotiation" class="w-full h-auto opacity-90 group-hover:opacity-100 group-hover:scale-[1.01] transition-all duration-500 cursor-pointer" onclick="openModal(this.src)" />
+                            <img src="Negotiation Power.png" alt="Successful Negotiation" class="w-full h-auto opacity-90 group-hover:opacity-100 group-hover:scale-[1.01] transition-all duration-500 cursor-pointer object-cover" onclick="openModal(this.src)" />
                         </div>
                     </div>
 
-                    <div class="bg-surface backdrop-blur-md p-4 md:p-5 rounded-3xl border border-white/10 hover:border-lavender-500/50 transition-all group shadow-2xl">
-                        <div class="mb-4 px-2 pt-1 flex items-center justify-between">
-                            <span class="text-base md:text-lg font-bold text-lavender-300">Instant Interest</span>
-                            <i class="fa-solid fa-bolt text-yellow-400 text-lg"></i>
+                    <div class="bg-surface backdrop-blur-md p-3 md:p-5 rounded-3xl border border-white/10 hover:border-lavender-500/50 transition-all group shadow-2xl">
+                        <div class="mb-3 md:mb-4 px-2 pt-1 flex items-center justify-between">
+                            <span class="text-sm md:text-lg font-bold text-lavender-300 truncate mr-2">Instant Interest</span>
+                            <i class="fa-solid fa-bolt text-yellow-400 text-base md:text-lg shrink-0"></i>
                         </div>
                         <div class="rounded-xl overflow-hidden border border-white/5 bg-[#05030A]">
-                            <img src="Interested Right Away.png" alt="Instant Interest" class="w-full h-auto opacity-90 group-hover:opacity-100 group-hover:scale-[1.01] transition-all duration-500 cursor-pointer" onclick="openModal(this.src)" />
+                            <img src="Interested Right Away.png" alt="Instant Interest" class="w-full h-auto opacity-90 group-hover:opacity-100 group-hover:scale-[1.01] transition-all duration-500 cursor-pointer object-cover" onclick="openModal(this.src)" />
                         </div>
                     </div>
 
-                    <div class="bg-surface backdrop-blur-md p-4 md:p-5 rounded-3xl border border-white/10 hover:border-lavender-500/50 transition-all group shadow-2xl">
-                        <div class="mb-4 px-2 pt-1 flex items-center justify-between">
-                            <span class="text-base md:text-lg font-bold text-lavender-300">Moving Down the Funnel</span>
-                            <i class="fa-solid fa-filter text-blue-400 text-lg"></i>
+                    <div class="bg-surface backdrop-blur-md p-3 md:p-5 rounded-3xl border border-white/10 hover:border-lavender-500/50 transition-all group shadow-2xl">
+                        <div class="mb-3 md:mb-4 px-2 pt-1 flex items-center justify-between">
+                            <span class="text-sm md:text-lg font-bold text-lavender-300 truncate mr-2">Moving Down the Funnel</span>
+                            <i class="fa-solid fa-filter text-blue-400 text-base md:text-lg shrink-0"></i>
                         </div>
                         <div class="rounded-xl overflow-hidden border border-white/5 bg-[#05030A]">
-                            <img src="Funneling Down.png" alt="Moving Down Funnel" class="w-full h-auto opacity-90 group-hover:opacity-100 group-hover:scale-[1.01] transition-all duration-500 cursor-pointer" onclick="openModal(this.src)" />
+                            <img src="Funneling Down.png" alt="Moving Down Funnel" class="w-full h-auto opacity-90 group-hover:opacity-100 group-hover:scale-[1.01] transition-all duration-500 cursor-pointer object-cover" onclick="openModal(this.src)" />
                         </div>
                     </div>
 
-                    <div class="bg-surface backdrop-blur-md p-4 md:p-5 rounded-3xl border border-white/10 hover:border-lavender-500/50 transition-all group shadow-2xl">
-                        <div class="mb-4 px-2 pt-1 flex items-center justify-between">
-                            <span class="text-base md:text-lg font-bold text-lavender-300">Quick Collaboration</span>
-                            <i class="fa-solid fa-reply-all text-emerald-400 text-lg"></i>
+                    <div class="bg-surface backdrop-blur-md p-3 md:p-5 rounded-3xl border border-white/10 hover:border-lavender-500/50 transition-all group shadow-2xl">
+                        <div class="mb-3 md:mb-4 px-2 pt-1 flex items-center justify-between">
+                            <span class="text-sm md:text-lg font-bold text-lavender-300 truncate mr-2">Quick Collaboration</span>
+                            <i class="fa-solid fa-reply-all text-emerald-400 text-base md:text-lg shrink-0"></i>
                         </div>
                         <div class="rounded-xl overflow-hidden border border-white/5 bg-[#05030A]">
-                            <img src="Quick Agreement.png" alt="Quick Agreement" class="w-full h-auto opacity-90 group-hover:opacity-100 group-hover:scale-[1.01] transition-all duration-500 cursor-pointer" onclick="openModal(this.src)" />
+                            <img src="Quick Agreement.png" alt="Quick Agreement" class="w-full h-auto opacity-90 group-hover:opacity-100 group-hover:scale-[1.01] transition-all duration-500 cursor-pointer object-cover" onclick="openModal(this.src)" />
                         </div>
                     </div>
 
@@ -594,198 +624,192 @@
             </div>
 
             <!-- Section separator between inbox proof and placements -->
-            <div class="my-20 flex items-center gap-6">
+            <div class="my-14 md:my-20 flex items-center gap-2 md:gap-6">
                 <div class="flex-1 h-[1px] bg-gradient-to-r from-transparent to-white/10"></div>
-                <span class="text-xs font-bold uppercase tracking-[0.2em] text-slate-500 px-2 shrink-0">All talk (and no action)? That's not me</span>
+                <span class="text-[9px] md:text-xs font-bold uppercase tracking-[0.1em] md:tracking-[0.2em] text-slate-500 px-2 shrink-0 text-center">All talk (and no action)? That's not me</span>
                 <div class="flex-1 h-[1px] bg-gradient-to-l from-transparent to-white/10"></div>
             </div>
 
             <!-- B. Placements You Can Verify (single, verified section) -->
             <div class="reveal">
-                <div class="flex items-center gap-4 mb-10">
-                    <div class="w-12 h-12 rounded-2xl bg-indigo-500/10 flex items-center justify-center border border-indigo-500/20 shadow-[0_0_15px_rgba(99,102,241,0.15)]">
-                        <i class="fa-solid fa-link text-xl text-indigo-400"></i>
+                <div class="flex items-center gap-3 md:gap-4 mb-8 md:mb-10">
+                    <div class="w-10 h-10 md:w-12 md:h-12 rounded-2xl bg-indigo-500/10 flex items-center justify-center border border-indigo-500/20 shadow-[0_0_15px_rgba(99,102,241,0.15)] shrink-0">
+                        <i class="fa-solid fa-link text-lg md:text-xl text-indigo-400"></i>
                     </div>
                     <div>
-                        <h3 id="showcase" class="text-3xl font-bold text-white mb-1">Placements You Can Verify</h3>
-                        <p class="text-slate-400 text-sm font-light">Every link below is live. Click to check the live placement.</p>
+                        <h3 id="showcase" class="text-2xl md:text-3xl font-bold text-white mb-1">Placements You Can Verify</h3>
+                        <p class="text-slate-400 text-xs md:text-sm font-light">Every link below is live. Click to check the live placement.</p>
                     </div>
                 </div>
 
-                <div class="flex flex-col gap-5">
+                <div class="flex flex-col gap-4 md:gap-5">
                     <!-- Placement 1: Jotform -->
-                    <div class="bg-surface backdrop-blur-xl border border-white/10 hover:border-indigo-500/40 rounded-2xl p-6 transition-all group flex flex-col md:flex-row items-start md:items-center justify-between gap-6 relative overflow-hidden">
-                        <div class="absolute top-0 right-0 bg-indigo-500/20 text-indigo-300 text-[10px] font-bold px-3 py-1 rounded-bl-lg uppercase tracking-widest border-b border-l border-indigo-500/30">Listicle Placement</div>
-                        <div class="flex items-center gap-5 mt-2 md:mt-0">
-                            <!-- UPDATED: Logo Container -->
-                            <div class="w-14 h-14 rounded-xl bg-white/95 p-1.5 flex items-center justify-center shadow-[0_0_15px_rgba(255,255,255,0.1)] shrink-0 border border-white/30 overflow-hidden">
+                    <div class="bg-surface backdrop-blur-xl border border-white/10 hover:border-indigo-500/40 rounded-2xl p-4 md:p-6 transition-all group flex flex-col md:flex-row items-start md:items-center justify-between gap-4 md:gap-6 relative overflow-hidden">
+                        <div class="absolute top-0 right-0 bg-indigo-500/20 text-indigo-300 text-[9px] md:text-[10px] font-bold px-2 py-1 md:px-3 md:py-1 rounded-bl-lg uppercase tracking-widest border-b border-l border-indigo-500/30">Listicle Placement</div>
+                        <div class="flex items-center gap-4 md:gap-5 mt-4 md:mt-0">
+                            <!-- Logo Container -->
+                            <div class="w-12 h-12 md:w-14 md:h-14 rounded-xl bg-white/95 p-1 md:p-1.5 flex items-center justify-center shadow-[0_0_15px_rgba(255,255,255,0.1)] shrink-0 border border-white/30 overflow-hidden">
                                 <img src="https://www.google.com/s2/favicons?domain=jotform.com&sz=128" alt="Jotform Logo" class="w-full h-full object-contain" />
                             </div>
                             <div>
-                                <h4 class="text-xl font-bold text-white group-hover:text-indigo-300 transition-colors">Jotform</h4>
-                                <div class="text-sm text-slate-400 mt-1"><span class="font-semibold text-slate-300">Anchor:</span> factoHR</div>
+                                <h4 class="text-lg md:text-xl font-bold text-white group-hover:text-indigo-300 transition-colors">Jotform</h4>
+                                <div class="text-xs md:text-sm text-slate-400 mt-1"><span class="font-semibold text-slate-300">Anchor:</span> factoHR</div>
                             </div>
                         </div>
 
-                        <div class="flex flex-wrap sm:flex-nowrap items-center gap-4 w-full md:w-auto">
-                            <div class="flex gap-3">
-                                <span class="bg-[#120a21] border border-white/10 px-4 py-2 rounded-lg text-sm font-mono text-lavender-300 shadow-inner">DR 94</span>
-                                <span class="bg-[#120a21] border border-white/10 px-4 py-2 rounded-lg text-sm font-mono text-emerald-400 shadow-inner">Traffic: 1.5M</span>
+                        <div class="flex flex-wrap sm:flex-nowrap items-center gap-3 md:gap-4 w-full md:w-auto mt-2 md:mt-0">
+                            <div class="flex gap-2 md:gap-3 w-full sm:w-auto">
+                                <span class="bg-[#120a21] border border-white/10 px-3 py-1.5 md:px-4 md:py-2 rounded-lg text-xs md:text-sm font-mono text-lavender-300 shadow-inner flex-1 text-center">DR 94</span>
+                                <span class="bg-[#120a21] border border-white/10 px-3 py-1.5 md:px-4 md:py-2 rounded-lg text-xs md:text-sm font-mono text-emerald-400 shadow-inner flex-1 text-center">Traffic: 1.5M</span>
                             </div>
-                            <a href="https://www.jotform.com/blog/hrm-software-for-small-business/#:~:text=BambooHR-,2.%20factoHR,-factoHR%20is%20mobile" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto text-center bg-indigo-500/10 hover:bg-indigo-500/20 text-indigo-300 border border-indigo-500/30 px-6 py-2 rounded-lg text-sm font-bold transition-all flex items-center justify-center gap-2 whitespace-nowrap">
-                                View Placement <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+                            <a href="https://www.jotform.com/blog/hrm-software-for-small-business/#:~:text=BambooHR-,2.%20factoHR,-factoHR%20is%20mobile" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto text-center bg-indigo-500/10 hover:bg-indigo-500/20 text-indigo-300 border border-indigo-500/30 px-4 py-2 md:px-6 md:py-2 rounded-lg text-xs md:text-sm font-bold transition-all flex items-center justify-center gap-2 whitespace-nowrap">
+                                View Placement <i class="fa-solid fa-arrow-up-right-from-square text-[10px] md:text-xs"></i>
                             </a>
                         </div>
                     </div>
 
                     <!-- Placement 2: Cloudways -->
-                    <div class="bg-surface backdrop-blur-xl border border-white/10 hover:border-blue-500/40 rounded-2xl p-6 transition-all group flex flex-col md:flex-row items-start md:items-center justify-between gap-6 relative overflow-hidden">
-                        <div class="absolute top-0 right-0 bg-blue-500/20 text-blue-300 text-[10px] font-bold px-3 py-1 rounded-bl-lg uppercase tracking-widest border-b border-l border-blue-500/30">Listicle Placement</div>
-                        <div class="flex items-center gap-5 mt-2 md:mt-0">
-                            <!-- UPDATED: Logo Container -->
-                            <div class="w-14 h-14 rounded-xl bg-white/95 p-1.5 flex items-center justify-center shadow-[0_0_15px_rgba(255,255,255,0.1)] shrink-0 border border-white/30 overflow-hidden">
+                    <div class="bg-surface backdrop-blur-xl border border-white/10 hover:border-blue-500/40 rounded-2xl p-4 md:p-6 transition-all group flex flex-col md:flex-row items-start md:items-center justify-between gap-4 md:gap-6 relative overflow-hidden">
+                        <div class="absolute top-0 right-0 bg-blue-500/20 text-blue-300 text-[9px] md:text-[10px] font-bold px-2 py-1 md:px-3 md:py-1 rounded-bl-lg uppercase tracking-widest border-b border-l border-blue-500/30">Listicle Placement</div>
+                        <div class="flex items-center gap-4 md:gap-5 mt-4 md:mt-0">
+                            <div class="w-12 h-12 md:w-14 md:h-14 rounded-xl bg-white/95 p-1 md:p-1.5 flex items-center justify-center shadow-[0_0_15px_rgba(255,255,255,0.1)] shrink-0 border border-white/30 overflow-hidden">
                                 <img src="https://www.google.com/s2/favicons?domain=cloudways.com&sz=128" alt="Cloudways Logo" class="w-full h-full object-contain" />
                             </div>
                             <div>
-                                <h4 class="text-xl font-bold text-white group-hover:text-blue-300 transition-colors">Cloudways</h4>
-                                <div class="text-sm text-slate-400 mt-1"><span class="font-semibold text-slate-300">Anchor:</span> factoHR</div>
+                                <h4 class="text-lg md:text-xl font-bold text-white group-hover:text-blue-300 transition-colors">Cloudways</h4>
+                                <div class="text-xs md:text-sm text-slate-400 mt-1"><span class="font-semibold text-slate-300">Anchor:</span> factoHR</div>
                             </div>
                         </div>
 
-                        <div class="flex flex-wrap sm:flex-nowrap items-center gap-4 w-full md:w-auto">
-                            <div class="flex gap-3">
-                                <span class="bg-[#120a21] border border-white/10 px-4 py-2 rounded-lg text-sm font-mono text-lavender-300 shadow-inner">DR 91</span>
-                                <span class="bg-[#120a21] border border-white/10 px-4 py-2 rounded-lg text-sm font-mono text-emerald-400 shadow-inner">Traffic: 120K</span>
+                        <div class="flex flex-wrap sm:flex-nowrap items-center gap-3 md:gap-4 w-full md:w-auto mt-2 md:mt-0">
+                            <div class="flex gap-2 md:gap-3 w-full sm:w-auto">
+                                <span class="bg-[#120a21] border border-white/10 px-3 py-1.5 md:px-4 md:py-2 rounded-lg text-xs md:text-sm font-mono text-lavender-300 shadow-inner flex-1 text-center">DR 91</span>
+                                <span class="bg-[#120a21] border border-white/10 px-3 py-1.5 md:px-4 md:py-2 rounded-lg text-xs md:text-sm font-mono text-emerald-400 shadow-inner flex-1 text-center">Traffic: 120K</span>
                             </div>
-                            <a href="https://www.cloudways.com/blog/seo-agency-software/#factoHR:~:text=want%20fast%20hosting-,Human%20Resource,-1.%20BambooHR" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto text-center bg-blue-500/10 hover:bg-blue-500/20 text-blue-300 border border-blue-500/30 px-6 py-2 rounded-lg text-sm font-bold transition-all flex items-center justify-center gap-2 whitespace-nowrap">
-                                View Placement <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+                            <a href="https://www.cloudways.com/blog/seo-agency-software/#factoHR:~:text=want%20fast%20hosting-,Human%20Resource,-1.%20BambooHR" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto text-center bg-blue-500/10 hover:bg-blue-500/20 text-blue-300 border border-blue-500/30 px-4 py-2 md:px-6 md:py-2 rounded-lg text-xs md:text-sm font-bold transition-all flex items-center justify-center gap-2 whitespace-nowrap">
+                                View Placement <i class="fa-solid fa-arrow-up-right-from-square text-[10px] md:text-xs"></i>
                             </a>
                         </div>
                     </div>
 
                     <!-- Placement 3: Whatagraph -->
-                    <div class="bg-surface backdrop-blur-xl border border-white/10 hover:border-purple-500/40 rounded-2xl p-6 transition-all group flex flex-col md:flex-row items-start md:items-center justify-between gap-6 relative overflow-hidden">
-                        <div class="absolute top-0 right-0 bg-purple-500/20 text-purple-300 text-[10px] font-bold px-3 py-1 rounded-bl-lg uppercase tracking-widest border-b border-l border-purple-500/30">Expert Commentary</div>
-                        <div class="flex items-center gap-5 mt-2 md:mt-0">
-                            <!-- Logo Container -->
-                            <div class="w-14 h-14 rounded-xl bg-white/95 p-1.5 flex items-center justify-center shadow-[0_0_15px_rgba(255,255,255,0.1)] shrink-0 border border-white/30 overflow-hidden">
+                    <div class="bg-surface backdrop-blur-xl border border-white/10 hover:border-purple-500/40 rounded-2xl p-4 md:p-6 transition-all group flex flex-col md:flex-row items-start md:items-center justify-between gap-4 md:gap-6 relative overflow-hidden">
+                        <div class="absolute top-0 right-0 bg-purple-500/20 text-purple-300 text-[9px] md:text-[10px] font-bold px-2 py-1 md:px-3 md:py-1 rounded-bl-lg uppercase tracking-widest border-b border-l border-purple-500/30">Expert Commentary</div>
+                        <div class="flex items-center gap-4 md:gap-5 mt-4 md:mt-0">
+                            <div class="w-12 h-12 md:w-14 md:h-14 rounded-xl bg-white/95 p-1 md:p-1.5 flex items-center justify-center shadow-[0_0_15px_rgba(255,255,255,0.1)] shrink-0 border border-white/30 overflow-hidden">
                                 <img src="https://www.google.com/s2/favicons?domain=whatagraph.com&sz=128" alt="Whatagraph Logo" class="w-full h-full object-contain" />
                             </div>
                             <div>
-                                <h4 class="text-xl font-bold text-white group-hover:text-purple-300 transition-colors">Whatagraph</h4>
-                                <div class="text-sm text-purple-400/80 font-medium mt-1 mb-1"><i class="fa-solid fa-microphone-lines text-xs"></i> Personal Feature & Quote</div>
-                                <div class="text-sm text-slate-400"><span class="font-semibold text-slate-300">Anchor:</span> factoHR</div>
+                                <h4 class="text-lg md:text-xl font-bold text-white group-hover:text-purple-300 transition-colors">Whatagraph</h4>
+                                <div class="text-xs md:text-sm text-purple-400/80 font-medium mt-1 mb-1"><i class="fa-solid fa-microphone-lines text-[10px] md:text-xs"></i> Personal Feature & Quote</div>
+                                <div class="text-xs md:text-sm text-slate-400"><span class="font-semibold text-slate-300">Anchor:</span> factoHR</div>
                             </div>
                         </div>
 
-                        <div class="flex flex-wrap sm:flex-nowrap items-center gap-4 w-full md:w-auto">
-                            <div class="flex gap-3">
-                                <span class="bg-[#120a21] border border-white/10 px-4 py-2 rounded-lg text-sm font-mono text-lavender-300 shadow-inner">DR 77</span>
-                                <span class="bg-[#120a21] border border-white/10 px-4 py-2 rounded-lg text-sm font-mono text-emerald-400 shadow-inner">Traffic: 90K</span>
+                        <div class="flex flex-wrap sm:flex-nowrap items-center gap-3 md:gap-4 w-full md:w-auto mt-2 md:mt-0">
+                            <div class="flex gap-2 md:gap-3 w-full sm:w-auto">
+                                <span class="bg-[#120a21] border border-white/10 px-3 py-1.5 md:px-4 md:py-2 rounded-lg text-xs md:text-sm font-mono text-lavender-300 shadow-inner flex-1 text-center">DR 77</span>
+                                <span class="bg-[#120a21] border border-white/10 px-3 py-1.5 md:px-4 md:py-2 rounded-lg text-xs md:text-sm font-mono text-emerald-400 shadow-inner flex-1 text-center">Traffic: 90K</span>
                             </div>
-                            <a href="https://whatagraph.com/blog/articles/ai-seo-tools#ranking-racoon:~:text=Outreach%20Specialist%20at-,factoHR,-%2C%20said%3A" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto text-center bg-purple-500/10 hover:bg-purple-500/20 text-purple-300 border border-purple-500/30 px-6 py-2 rounded-lg text-sm font-bold transition-all flex items-center justify-center gap-2 whitespace-nowrap">
-                                View Placement <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+                            <a href="https://whatagraph.com/blog/articles/ai-seo-tools#ranking-racoon:~:text=Outreach%20Specialist%20at-,factoHR,-%2C%20said%3A" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto text-center bg-purple-500/10 hover:bg-purple-500/20 text-purple-300 border border-purple-500/30 px-4 py-2 md:px-6 md:py-2 rounded-lg text-xs md:text-sm font-bold transition-all flex items-center justify-center gap-2 whitespace-nowrap">
+                                View Placement <i class="fa-solid fa-arrow-up-right-from-square text-[10px] md:text-xs"></i>
                             </a>
                         </div>
                     </div>
 
                     <!-- Placement 4: RecruitCRM -->
-                    <div class="bg-surface backdrop-blur-xl border border-white/10 hover:border-emerald-500/40 rounded-2xl p-6 transition-all group flex flex-col md:flex-row items-start md:items-center justify-between gap-6 relative overflow-hidden">
-                        <div class="absolute top-0 right-0 bg-emerald-500/20 text-emerald-300 text-[10px] font-bold px-3 py-1 rounded-bl-lg uppercase tracking-widest border-b border-l border-emerald-500/30">Listicle Placement</div>
-                        <div class="flex items-center gap-5 mt-2 md:mt-0">
-                            <!-- UPDATED: Logo Container -->
-                            <div class="w-14 h-14 rounded-xl bg-white/95 p-1.5 flex items-center justify-center shadow-[0_0_15px_rgba(255,255,255,0.1)] shrink-0 border border-white/30 overflow-hidden">
+                    <div class="bg-surface backdrop-blur-xl border border-white/10 hover:border-emerald-500/40 rounded-2xl p-4 md:p-6 transition-all group flex flex-col md:flex-row items-start md:items-center justify-between gap-4 md:gap-6 relative overflow-hidden">
+                        <div class="absolute top-0 right-0 bg-emerald-500/20 text-emerald-300 text-[9px] md:text-[10px] font-bold px-2 py-1 md:px-3 md:py-1 rounded-bl-lg uppercase tracking-widest border-b border-l border-emerald-500/30">Listicle Placement</div>
+                        <div class="flex items-center gap-4 md:gap-5 mt-4 md:mt-0">
+                            <div class="w-12 h-12 md:w-14 md:h-14 rounded-xl bg-white/95 p-1 md:p-1.5 flex items-center justify-center shadow-[0_0_15px_rgba(255,255,255,0.1)] shrink-0 border border-white/30 overflow-hidden">
                                 <img src="https://www.google.com/s2/favicons?domain=recruitcrm.io&sz=128" alt="RecruitCRM Logo" class="w-full h-full object-contain" />
                             </div>
                             <div>
-                                <h4 class="text-xl font-bold text-white group-hover:text-emerald-300 transition-colors">RecruitCRM</h4>
-                                <div class="text-sm text-emerald-400/80 font-medium mt-1 mb-1"><i class="fa-solid fa-bolt text-xs"></i> Direct Competitor Win</div>
-                                <div class="text-sm text-slate-400"><span class="font-semibold text-slate-300">Anchor:</span> factoHR</div>
+                                <h4 class="text-lg md:text-xl font-bold text-white group-hover:text-emerald-300 transition-colors">RecruitCRM</h4>
+                                <div class="text-xs md:text-sm text-emerald-400/80 font-medium mt-1 mb-1"><i class="fa-solid fa-bolt text-[10px] md:text-xs"></i> Direct Competitor Win</div>
+                                <div class="text-xs md:text-sm text-slate-400"><span class="font-semibold text-slate-300">Anchor:</span> factoHR</div>
                             </div>
                         </div>
 
-                        <div class="flex flex-wrap sm:flex-nowrap items-center gap-4 w-full md:w-auto">
-                            <div class="flex gap-3">
-                                <span class="bg-[#120a21] border border-white/10 px-4 py-2 rounded-lg text-sm font-mono text-lavender-300 shadow-inner">DR 80</span>
-                                <span class="bg-[#120a21] border border-white/10 px-4 py-2 rounded-lg text-sm font-mono text-emerald-400 shadow-inner">Traffic: 13K</span>
+                        <div class="flex flex-wrap sm:flex-nowrap items-center gap-3 md:gap-4 w-full md:w-auto mt-2 md:mt-0">
+                            <div class="flex gap-2 md:gap-3 w-full sm:w-auto">
+                                <span class="bg-[#120a21] border border-white/10 px-3 py-1.5 md:px-4 md:py-2 rounded-lg text-xs md:text-sm font-mono text-lavender-300 shadow-inner flex-1 text-center">DR 80</span>
+                                <span class="bg-[#120a21] border border-white/10 px-3 py-1.5 md:px-4 md:py-2 rounded-lg text-xs md:text-sm font-mono text-emerald-400 shadow-inner flex-1 text-center">Traffic: 13K</span>
                             </div>
-                            <a href="https://recruitcrm.io/blogs/best-recruiting-software/#:~:text=Integrated%20Recruitment%20%26%20Onboarding-,factoHR" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto text-center bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 px-6 py-2 rounded-lg text-sm font-bold transition-all flex items-center justify-center gap-2 whitespace-nowrap">
-                                View Placement <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+                            <a href="https://recruitcrm.io/blogs/best-recruiting-software/#:~:text=Integrated%20Recruitment%20%26%20Onboarding-,factoHR" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto text-center bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 px-4 py-2 md:px-6 md:py-2 rounded-lg text-xs md:text-sm font-bold transition-all flex items-center justify-center gap-2 whitespace-nowrap">
+                                View Placement <i class="fa-solid fa-arrow-up-right-from-square text-[10px] md:text-xs"></i>
                             </a>
                         </div>
                     </div>
 
                     <!-- Placement 5: SurveySparrow -->
-                    <div class="bg-surface backdrop-blur-xl border border-white/10 hover:border-fuchsia-500/40 rounded-2xl p-6 transition-all group flex flex-col md:flex-row items-start md:items-center justify-between gap-6 relative overflow-hidden">
-                        <div class="absolute top-0 right-0 bg-fuchsia-500/20 text-fuchsia-300 text-[10px] font-bold px-3 py-1 rounded-bl-lg uppercase tracking-widest border-b border-l border-fuchsia-500/30">Link Insertion</div>
-                        <div class="flex items-center gap-5 mt-2 md:mt-0">
-                            <!-- UPDATED: Logo Container -->
-                            <div class="w-14 h-14 rounded-xl bg-white/95 p-1.5 flex items-center justify-center shadow-[0_0_15px_rgba(255,255,255,0.1)] shrink-0 border border-white/30 overflow-hidden">
+                    <div class="bg-surface backdrop-blur-xl border border-white/10 hover:border-fuchsia-500/40 rounded-2xl p-4 md:p-6 transition-all group flex flex-col md:flex-row items-start md:items-center justify-between gap-4 md:gap-6 relative overflow-hidden">
+                        <div class="absolute top-0 right-0 bg-fuchsia-500/20 text-fuchsia-300 text-[9px] md:text-[10px] font-bold px-2 py-1 md:px-3 md:py-1 rounded-bl-lg uppercase tracking-widest border-b border-l border-fuchsia-500/30">Link Insertion</div>
+                        <div class="flex items-center gap-4 md:gap-5 mt-4 md:mt-0">
+                            <div class="w-12 h-12 md:w-14 md:h-14 rounded-xl bg-white/95 p-1 md:p-1.5 flex items-center justify-center shadow-[0_0_15px_rgba(255,255,255,0.1)] shrink-0 border border-white/30 overflow-hidden">
                                 <img src="https://www.google.com/s2/favicons?domain=surveysparrow.com&sz=128" alt="SurveySparrow Logo" class="w-full h-full object-contain" />
                             </div>
                             <div>
-                                <h4 class="text-xl font-bold text-white group-hover:text-fuchsia-300 transition-colors">SurveySparrow</h4>
-                                <div class="text-sm text-slate-400 mt-1"><span class="font-semibold text-slate-300">Anchor:</span> HR metrics</div>
+                                <h4 class="text-lg md:text-xl font-bold text-white group-hover:text-fuchsia-300 transition-colors">SurveySparrow</h4>
+                                <div class="text-xs md:text-sm text-slate-400 mt-1"><span class="font-semibold text-slate-300">Anchor:</span> HR metrics</div>
                             </div>
                         </div>
 
-                        <div class="flex flex-wrap sm:flex-nowrap items-center gap-4 w-full md:w-auto">
-                            <div class="flex gap-3">
-                                <span class="bg-[#120a21] border border-white/10 px-4 py-2 rounded-lg text-sm font-mono text-lavender-300 shadow-inner">DR 80</span>
-                                <span class="bg-[#120a21] border border-white/10 px-4 py-2 rounded-lg text-sm font-mono text-emerald-400 shadow-inner">Traffic: 30K</span>
+                        <div class="flex flex-wrap sm:flex-nowrap items-center gap-3 md:gap-4 w-full md:w-auto mt-2 md:mt-0">
+                            <div class="flex gap-2 md:gap-3 w-full sm:w-auto">
+                                <span class="bg-[#120a21] border border-white/10 px-3 py-1.5 md:px-4 md:py-2 rounded-lg text-xs md:text-sm font-mono text-lavender-300 shadow-inner flex-1 text-center">DR 80</span>
+                                <span class="bg-[#120a21] border border-white/10 px-3 py-1.5 md:px-4 md:py-2 rounded-lg text-xs md:text-sm font-mono text-emerald-400 shadow-inner flex-1 text-center">Traffic: 30K</span>
                             </div>
-                            <a href="https://surveysparrow.com/blog/hr-reporting-and-analytics/#:~:text=Some%20commonly%20used-,HR%20metrics,-include%20employee%20turnover" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto text-center bg-fuchsia-500/10 hover:bg-fuchsia-500/20 text-fuchsia-300 border border-fuchsia-500/30 px-6 py-2 rounded-lg text-sm font-bold transition-all flex items-center justify-center gap-2 whitespace-nowrap">
-                                View Placement <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+                            <a href="https://surveysparrow.com/blog/hr-reporting-and-analytics/#:~:text=Some%20commonly%20used-,HR%20metrics,-include%20employee%20turnover" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto text-center bg-fuchsia-500/10 hover:bg-fuchsia-500/20 text-fuchsia-300 border border-fuchsia-500/30 px-4 py-2 md:px-6 md:py-2 rounded-lg text-xs md:text-sm font-bold transition-all flex items-center justify-center gap-2 whitespace-nowrap">
+                                View Placement <i class="fa-solid fa-arrow-up-right-from-square text-[10px] md:text-xs"></i>
                             </a>
                         </div>
                     </div>
 
                     <!-- Placement 6: RecruiterFlow -->
-                    <div class="bg-surface backdrop-blur-xl border border-white/10 hover:border-orange-500/40 rounded-2xl p-6 transition-all group flex flex-col md:flex-row items-start md:items-center justify-between gap-6 relative overflow-hidden">
-                        <div class="absolute top-0 right-0 bg-orange-500/20 text-orange-300 text-[10px] font-bold px-3 py-1 rounded-bl-lg uppercase tracking-widest border-b border-l border-orange-500/30">Link Insertion</div>
-                        <div class="flex items-center gap-5 mt-2 md:mt-0">
-                            <!-- UPDATED: Logo Container -->
-                            <div class="w-14 h-14 rounded-xl bg-white/95 p-1.5 flex items-center justify-center shadow-[0_0_15px_rgba(255,255,255,0.1)] shrink-0 border border-white/30 overflow-hidden">
+                    <div class="bg-surface backdrop-blur-xl border border-white/10 hover:border-orange-500/40 rounded-2xl p-4 md:p-6 transition-all group flex flex-col md:flex-row items-start md:items-center justify-between gap-4 md:gap-6 relative overflow-hidden">
+                        <div class="absolute top-0 right-0 bg-orange-500/20 text-orange-300 text-[9px] md:text-[10px] font-bold px-2 py-1 md:px-3 md:py-1 rounded-bl-lg uppercase tracking-widest border-b border-l border-orange-500/30">Link Insertion</div>
+                        <div class="flex items-center gap-4 md:gap-5 mt-4 md:mt-0">
+                            <div class="w-12 h-12 md:w-14 md:h-14 rounded-xl bg-white/95 p-1 md:p-1.5 flex items-center justify-center shadow-[0_0_15px_rgba(255,255,255,0.1)] shrink-0 border border-white/30 overflow-hidden">
                                 <img src="https://www.google.com/s2/favicons?domain=recruiterflow.com&sz=128" alt="RecruiterFlow Logo" class="w-full h-full object-contain" />
                             </div>
                             <div>
-                                <h4 class="text-xl font-bold text-white group-hover:text-orange-300 transition-colors">RecruiterFlow</h4>
-                                <div class="text-sm text-slate-400 mt-1"><span class="font-semibold text-slate-300">Anchor:</span> HR software guide</div>
+                                <h4 class="text-lg md:text-xl font-bold text-white group-hover:text-orange-300 transition-colors">RecruiterFlow</h4>
+                                <div class="text-xs md:text-sm text-slate-400 mt-1"><span class="font-semibold text-slate-300">Anchor:</span> HR software guide</div>
                             </div>
                         </div>
 
-                        <div class="flex flex-wrap sm:flex-nowrap items-center gap-4 w-full md:w-auto">
-                            <div class="flex gap-3">
-                                <span class="bg-[#120a21] border border-white/10 px-4 py-2 rounded-lg text-sm font-mono text-lavender-300 shadow-inner">DR 75</span>
-                                <span class="bg-[#120a21] border border-white/10 px-4 py-2 rounded-lg text-sm font-mono text-emerald-400 shadow-inner">Traffic: 30K</span>
+                        <div class="flex flex-wrap sm:flex-nowrap items-center gap-3 md:gap-4 w-full md:w-auto mt-2 md:mt-0">
+                            <div class="flex gap-2 md:gap-3 w-full sm:w-auto">
+                                <span class="bg-[#120a21] border border-white/10 px-3 py-1.5 md:px-4 md:py-2 rounded-lg text-xs md:text-sm font-mono text-lavender-300 shadow-inner flex-1 text-center">DR 75</span>
+                                <span class="bg-[#120a21] border border-white/10 px-3 py-1.5 md:px-4 md:py-2 rounded-lg text-xs md:text-sm font-mono text-emerald-400 shadow-inner flex-1 text-center">Traffic: 30K</span>
                             </div>
-                            <a href="https://recruiterflow.com/blog/recruitment-analytics/#:~:text=available%20in%20this-,HR%20software%20guide%2C,-saves%20them%20both" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto text-center bg-orange-500/10 hover:bg-orange-500/20 text-orange-300 border border-orange-500/30 px-6 py-2 rounded-lg text-sm font-bold transition-all flex items-center justify-center gap-2 whitespace-nowrap">
-                                View Placement <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+                            <a href="https://recruiterflow.com/blog/recruitment-analytics/#:~:text=available%20in%20this-,HR%20software%20guide%2C,-saves%20them%20both" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto text-center bg-orange-500/10 hover:bg-orange-500/20 text-orange-300 border border-orange-500/30 px-4 py-2 md:px-6 md:py-2 rounded-lg text-xs md:text-sm font-bold transition-all flex items-center justify-center gap-2 whitespace-nowrap">
+                                View Placement <i class="fa-solid fa-arrow-up-right-from-square text-[10px] md:text-xs"></i>
                             </a>
                         </div>
                     </div>
 
                     <!-- Placement 7: People's HR -->
-                    <div class="bg-surface backdrop-blur-xl border border-white/10 hover:border-rose-500/40 rounded-2xl p-6 transition-all group flex flex-col md:flex-row items-start md:items-center justify-between gap-6 relative overflow-hidden">
-                        <div class="absolute top-0 right-0 bg-rose-500/20 text-rose-300 text-[10px] font-bold px-3 py-1 rounded-bl-lg uppercase tracking-widest border-b border-l border-rose-500/30">Brand Mention</div>
-                        <div class="flex items-center gap-5 mt-2 md:mt-0">
-                            <!-- UPDATED: Logo Container -->
-                            <div class="w-14 h-14 rounded-xl bg-white/95 p-1.5 flex items-center justify-center shadow-[0_0_15px_rgba(255,255,255,0.1)] shrink-0 border border-white/30 overflow-hidden">
+                    <div class="bg-surface backdrop-blur-xl border border-white/10 hover:border-rose-500/40 rounded-2xl p-4 md:p-6 transition-all group flex flex-col md:flex-row items-start md:items-center justify-between gap-4 md:gap-6 relative overflow-hidden">
+                        <div class="absolute top-0 right-0 bg-rose-500/20 text-rose-300 text-[9px] md:text-[10px] font-bold px-2 py-1 md:px-3 md:py-1 rounded-bl-lg uppercase tracking-widest border-b border-l border-rose-500/30">Brand Mention</div>
+                        <div class="flex items-center gap-4 md:gap-5 mt-4 md:mt-0">
+                            <div class="w-12 h-12 md:w-14 md:h-14 rounded-xl bg-white/95 p-1 md:p-1.5 flex items-center justify-center shadow-[0_0_15px_rgba(255,255,255,0.1)] shrink-0 border border-white/30 overflow-hidden">
                                 <img src="https://www.google.com/s2/favicons?domain=peopleshr.com&sz=128" alt="PeoplesHR Logo" class="w-full h-full object-contain" />
                             </div>
                             <div>
-                                <h4 class="text-xl font-bold text-white group-hover:text-rose-300 transition-colors">PeoplesHR</h4>
-                                <div class="text-sm text-rose-400/80 font-medium mt-1 mb-1"><i class="fa-solid fa-bullseye text-xs"></i> Direct Competitor | UAE Regional Target</div>
+                                <h4 class="text-lg md:text-xl font-bold text-white group-hover:text-rose-300 transition-colors">PeoplesHR</h4>
+                                <div class="text-xs md:text-sm text-rose-400/80 font-medium mt-1 mb-1"><i class="fa-solid fa-bullseye text-[10px] md:text-xs"></i> Direct Competitor | UAE Regional Target</div>
                             </div>
                         </div>
 
-                        <div class="flex flex-wrap sm:flex-nowrap items-center gap-4 w-full md:w-auto">
-                            <div class="flex gap-3">
-                                <span class="bg-[#120a21] border border-white/10 px-4 py-2 rounded-lg text-sm font-mono text-lavender-300 shadow-inner">DR 48</span>
-                                <span class="bg-[#120a21] border border-white/10 px-4 py-2 rounded-lg text-sm font-mono text-emerald-400 shadow-inner">Traffic: 2.1K</span>
+                        <div class="flex flex-wrap sm:flex-nowrap items-center gap-3 md:gap-4 w-full md:w-auto mt-2 md:mt-0">
+                            <div class="flex gap-2 md:gap-3 w-full sm:w-auto">
+                                <span class="bg-[#120a21] border border-white/10 px-3 py-1.5 md:px-4 md:py-2 rounded-lg text-xs md:text-sm font-mono text-lavender-300 shadow-inner flex-1 text-center">DR 48</span>
+                                <span class="bg-[#120a21] border border-white/10 px-3 py-1.5 md:px-4 md:py-2 rounded-lg text-xs md:text-sm font-mono text-emerald-400 shadow-inner flex-1 text-center">Traffic: 2.1K</span>
                             </div>
-                            <a href="https://peopleshr.com/best-hr-software-in-uae/#:~:text=2.%20factoHR%3A%20Scalable%20HRIS%20for%20UAE%20Growth%C2%A0" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto text-center bg-rose-500/10 hover:bg-rose-500/20 text-rose-300 border border-rose-500/30 px-6 py-2 rounded-lg text-sm font-bold transition-all flex items-center justify-center gap-2 whitespace-nowrap">
-                                View Placement <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+                            <a href="https://peopleshr.com/best-hr-software-in-uae/#:~:text=2.%20factoHR%3A%20Scalable%20HRIS%20for%20UAE%20Growth%C2%A0" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto text-center bg-rose-500/10 hover:bg-rose-500/20 text-rose-300 border border-rose-500/30 px-4 py-2 md:px-6 md:py-2 rounded-lg text-xs md:text-sm font-bold transition-all flex items-center justify-center gap-2 whitespace-nowrap">
+                                View Placement <i class="fa-solid fa-arrow-up-right-from-square text-[10px] md:text-xs"></i>
                             </a>
                         </div>
                     </div>
@@ -795,15 +819,15 @@
         </div>
     </section>
 
-    <div class="section-divider my-8 px-6"></div>
+    <div class="section-divider my-8 px-4 md:px-6"></div>
 
     <!-- ── 4. Process ────────────────────────────────────────── -->
-    <section id="process" class="py-32 relative z-20 bg-gradient-to-b from-transparent via-[#0f091f]/50 to-transparent border-y border-white/5">
-        <div class="max-w-6xl mx-auto px-6">
+    <section id="process" class="py-20 md:py-32 relative z-20 bg-gradient-to-b from-transparent via-[#0f091f]/50 to-transparent border-y border-white/5">
+        <div class="max-w-6xl mx-auto px-4 md:px-6">
 
-            <div class="text-center mb-24 reveal">
-                <h2 class="text-4xl lg:text-5xl font-bold text-white mb-6">My Psychology of Successful Campaigns</h2>
-                <p class="text-xl text-slate-400 max-w-2xl mx-auto font-light">High reply rates are not luck. They are the output of a repeatable system that I adapt based on what the campaign actually needs, whether that's surgical precision or efficient scale.</p>
+            <div class="text-center mb-16 md:mb-24 reveal">
+                <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 md:mb-6">My Psychology of Successful Campaigns</h2>
+                <p class="text-base md:text-xl text-slate-400 max-w-2xl mx-auto font-light">High reply rates are not luck. They are the output of a repeatable system that I adapt based on what the campaign actually needs, whether that's surgical precision or efficient scale.</p>
             </div>
 
             <!-- Process timeline -->
@@ -812,137 +836,137 @@
                 <div class="hidden md:block" id="timeline-fill"></div>
 
                 <!-- Step 1 -->
-                <div class="process-step relative flex flex-col md:flex-row justify-between items-center mb-16" data-step="1">
-                    <div class="step-card w-full md:w-[45%] md:text-right pr-0 md:pr-10 mb-6 md:mb-0 relative z-10">
-                        <div class="md:hidden flex w-12 h-12 rounded-full bg-[#0c0817] border-2 border-lavender-500 items-center justify-center text-lavender-400 font-bold mb-4 shadow-[0_0_15px_rgba(168,85,247,0.4)]">1</div>
-                        <h4 class="text-2xl font-bold text-white mb-3">Keyword & Competitor Intel</h4>
-                        <p class="text-slate-400 font-light leading-relaxed">Before prospecting starts, I map every linkable asset and identify who is already linking to competing content. This tells me which doors are open before I knock, and which angles are most likely to land.</p>
+                <div class="process-step relative flex flex-col md:flex-row justify-between items-center mb-10 md:mb-16" data-step="1">
+                    <div class="step-card w-full md:w-[45%] md:text-right pr-0 md:pr-10 mb-2 md:mb-0 relative z-10">
+                        <div class="md:hidden flex w-10 h-10 md:w-12 md:h-12 rounded-full bg-[#0c0817] border-2 border-lavender-500 items-center justify-center text-lavender-400 font-bold mb-4 shadow-[0_0_15px_rgba(168,85,247,0.4)]">1</div>
+                        <h4 class="text-xl md:text-2xl font-bold text-white mb-2 md:mb-3">Keyword & Competitor Intel</h4>
+                        <p class="text-sm md:text-base text-slate-400 font-light leading-relaxed">Before prospecting starts, I map every linkable asset and identify who is already linking to competing content. This tells me which doors are open before I knock, and which angles are most likely to land.</p>
                     </div>
-                    <div class="step-node hidden md:flex absolute left-1/2 -translate-x-1/2 w-14 h-14 rounded-full bg-[#05030A] border-[3px] border-lavender-500 items-center justify-center text-lavender-400 font-bold text-xl z-20 shadow-[0_0_20px_rgba(168,85,247,0.5)]">1</div>
+                    <div class="step-node hidden md:flex absolute left-1/2 -translate-x-1/2 w-12 h-12 md:w-14 md:h-14 rounded-full bg-[#05030A] border-[3px] border-lavender-500 items-center justify-center text-lavender-400 font-bold text-lg md:text-xl z-20 shadow-[0_0_20px_rgba(168,85,247,0.5)]">1</div>
                     <div class="hidden md:block w-[45%]"></div>
                 </div>
 
                 <!-- Step 2 -->
-                <div class="process-step relative flex flex-col md:flex-row justify-between items-center mb-16" data-step="2">
+                <div class="process-step relative flex flex-col md:flex-row justify-between items-center mb-10 md:mb-16" data-step="2">
                     <div class="hidden md:block w-[45%]"></div>
-                    <div class="step-node hidden md:flex absolute left-1/2 -translate-x-1/2 w-14 h-14 rounded-full bg-[#05030A] border-[3px] border-fuchsia-500 items-center justify-center text-fuchsia-400 font-bold text-xl z-20 shadow-[0_0_20px_rgba(217,70,239,0.5)]">2</div>
+                    <div class="step-node hidden md:flex absolute left-1/2 -translate-x-1/2 w-12 h-12 md:w-14 md:h-14 rounded-full bg-[#05030A] border-[3px] border-fuchsia-500 items-center justify-center text-fuchsia-400 font-bold text-lg md:text-xl z-20 shadow-[0_0_20px_rgba(217,70,239,0.5)]">2</div>
                     <div class="step-card w-full md:w-[45%] md:text-left pl-0 md:pl-10 relative z-10">
-                        <div class="md:hidden flex w-12 h-12 rounded-full bg-[#0c0817] border-2 border-fuchsia-500 items-center justify-center text-fuchsia-400 font-bold mb-4 shadow-[0_0_15px_rgba(217,70,239,0.4)]">2</div>
-                        <h4 class="text-2xl font-bold text-white mb-3">Prospecting That Fits the Brief</h4>
-                        <p class="text-slate-400 font-light leading-relaxed">For targeted campaigns, strict DR, traffic, and topical relevancy filters narrow the list to sites that will actually move the needle. For high-volume campaigns, I use automation tools to build and segment prospect lists quickly,
+                        <div class="md:hidden flex w-10 h-10 md:w-12 md:h-12 rounded-full bg-[#0c0817] border-2 border-fuchsia-500 items-center justify-center text-fuchsia-400 font-bold mb-4 shadow-[0_0_15px_rgba(217,70,239,0.4)]">2</div>
+                        <h4 class="text-xl md:text-2xl font-bold text-white mb-2 md:mb-3">Prospecting That Fits the Brief</h4>
+                        <p class="text-sm md:text-base text-slate-400 font-light leading-relaxed">For targeted campaigns, strict DR, traffic, and topical relevancy filters narrow the list to sites that will actually move the needle. For high-volume campaigns, I use automation tools to build and segment prospect lists quickly,
                             without compromising on relevancy. No PBNs. No link farms.</p>
                     </div>
                 </div>
 
                 <!-- Step 3 -->
-                <div class="process-step relative flex flex-col md:flex-row justify-between items-center mb-16" data-step="3">
-                    <div class="step-card w-full md:w-[45%] md:text-right pr-0 md:pr-10 mb-6 md:mb-0 relative z-10">
-                        <div class="md:hidden flex w-12 h-12 rounded-full bg-[#0c0817] border-2 border-blue-500 items-center justify-center text-blue-400 font-bold mb-4 shadow-[0_0_15px_rgba(59,130,246,0.4)]">3</div>
-                        <h4 class="text-2xl font-bold text-white mb-3">Personalization at the Right Level</h4>
-                        <p class="text-slate-400 font-light leading-relaxed">For specific, high-value targets, I dig into the site and write openers that feel genuinely tailored. For scale campaigns, I use AI-assisted tools to build templates that read as personal without requiring manual effort on every
+                <div class="process-step relative flex flex-col md:flex-row justify-between items-center mb-10 md:mb-16" data-step="3">
+                    <div class="step-card w-full md:w-[45%] md:text-right pr-0 md:pr-10 mb-2 md:mb-0 relative z-10">
+                        <div class="md:hidden flex w-10 h-10 md:w-12 md:h-12 rounded-full bg-[#0c0817] border-2 border-blue-500 items-center justify-center text-blue-400 font-bold mb-4 shadow-[0_0_15px_rgba(59,130,246,0.4)]">3</div>
+                        <h4 class="text-xl md:text-2xl font-bold text-white mb-2 md:mb-3">Personalization at the Right Level</h4>
+                        <p class="text-sm md:text-base text-slate-400 font-light leading-relaxed">For specific, high-value targets, I dig into the site and write openers that feel genuinely tailored. For scale campaigns, I use AI-assisted tools to build templates that read as personal without requiring manual effort on every
                             send. The approach matches the output required.</p>
                     </div>
-                    <div class="step-node hidden md:flex absolute left-1/2 -translate-x-1/2 w-14 h-14 rounded-full bg-[#05030A] border-[3px] border-blue-500 items-center justify-center text-blue-400 font-bold text-xl z-20 shadow-[0_0_20px_rgba(59,130,246,0.5)]">3</div>
+                    <div class="step-node hidden md:flex absolute left-1/2 -translate-x-1/2 w-12 h-12 md:w-14 md:h-14 rounded-full bg-[#05030A] border-[3px] border-blue-500 items-center justify-center text-blue-400 font-bold text-lg md:text-xl z-20 shadow-[0_0_20px_rgba(59,130,246,0.5)]">3</div>
                     <div class="hidden md:block w-[45%]"></div>
                 </div>
 
                 <!-- Step 4 -->
-                <div class="process-step relative flex flex-col md:flex-row justify-between items-center mb-16" data-step="4">
+                <div class="process-step relative flex flex-col md:flex-row justify-between items-center mb-10 md:mb-16" data-step="4">
                     <div class="hidden md:block w-[45%]"></div>
-                    <div class="step-node hidden md:flex absolute left-1/2 -translate-x-1/2 w-14 h-14 rounded-full bg-[#05030A] border-[3px] border-lavender-500 items-center justify-center text-lavender-400 font-bold text-xl z-20 shadow-[0_0_20px_rgba(168,85,247,0.5)]">4</div>
+                    <div class="step-node hidden md:flex absolute left-1/2 -translate-x-1/2 w-12 h-12 md:w-14 md:h-14 rounded-full bg-[#05030A] border-[3px] border-lavender-500 items-center justify-center text-lavender-400 font-bold text-lg md:text-xl z-20 shadow-[0_0_20px_rgba(168,85,247,0.5)]">4</div>
                     <div class="step-card w-full md:w-[45%] md:text-left pl-0 md:pl-10 relative z-10">
-                        <div class="md:hidden flex w-12 h-12 rounded-full bg-[#0c0817] border-2 border-lavender-500 items-center justify-center text-lavender-400 font-bold mb-4 shadow-[0_0_15px_rgba(168,85,247,0.4)]">4</div>
-                        <h4 class="text-2xl font-bold text-white mb-3">The Right Angle, Every Time</h4>
-                        <p class="text-slate-400 font-light leading-relaxed">Value swap, broken-link fix, expert quote, listicle pitch, guest article, or something new. I match the outreach angle to the prospect type, so the ask feels like a logical next step rather than a cold interruption.</p>
+                        <div class="md:hidden flex w-10 h-10 md:w-12 md:h-12 rounded-full bg-[#0c0817] border-2 border-lavender-500 items-center justify-center text-lavender-400 font-bold mb-4 shadow-[0_0_15px_rgba(168,85,247,0.4)]">4</div>
+                        <h4 class="text-xl md:text-2xl font-bold text-white mb-2 md:mb-3">The Right Angle, Every Time</h4>
+                        <p class="text-sm md:text-base text-slate-400 font-light leading-relaxed">Value swap, broken-link fix, expert quote, listicle pitch, guest article, or something new. I match the outreach angle to the prospect type, so the ask feels like a logical next step rather than a cold interruption.</p>
                     </div>
                 </div>
 
                 <!-- Step 5 -->
-                <div class="process-step relative flex flex-col md:flex-row justify-between items-center mb-16" data-step="5">
-                    <div class="step-card w-full md:w-[45%] md:text-right pr-0 md:pr-10 mb-6 md:mb-0 relative z-10">
-                        <div class="md:hidden flex w-12 h-12 rounded-full bg-[#0c0817] border-2 border-fuchsia-500 items-center justify-center text-fuchsia-400 font-bold mb-4 shadow-[0_0_15px_rgba(217,70,239,0.4)]">5</div>
-                        <h4 class="text-2xl font-bold text-white mb-3">Smart Send & Follow-Up</h4>
-                        <p class="text-slate-400 font-light leading-relaxed">Sequences that go out on time and follow-ups that add something new to the thread rather than just nudging. The goal is replies, not blocklists.</p>
+                <div class="process-step relative flex flex-col md:flex-row justify-between items-center mb-10 md:mb-16" data-step="5">
+                    <div class="step-card w-full md:w-[45%] md:text-right pr-0 md:pr-10 mb-2 md:mb-0 relative z-10">
+                        <div class="md:hidden flex w-10 h-10 md:w-12 md:h-12 rounded-full bg-[#0c0817] border-2 border-fuchsia-500 items-center justify-center text-fuchsia-400 font-bold mb-4 shadow-[0_0_15px_rgba(217,70,239,0.4)]">5</div>
+                        <h4 class="text-xl md:text-2xl font-bold text-white mb-2 md:mb-3">Smart Send & Follow-Up</h4>
+                        <p class="text-sm md:text-base text-slate-400 font-light leading-relaxed">Sequences that go out on time and follow-ups that add something new to the thread rather than just nudging. The goal is replies, not blocklists.</p>
                     </div>
-                    <div class="step-node hidden md:flex absolute left-1/2 -translate-x-1/2 w-14 h-14 rounded-full bg-[#05030A] border-[3px] border-fuchsia-500 items-center justify-center text-fuchsia-400 font-bold text-xl z-20 shadow-[0_0_20px_rgba(217,70,239,0.5)]">5</div>
+                    <div class="step-node hidden md:flex absolute left-1/2 -translate-x-1/2 w-12 h-12 md:w-14 md:h-14 rounded-full bg-[#05030A] border-[3px] border-fuchsia-500 items-center justify-center text-fuchsia-400 font-bold text-lg md:text-xl z-20 shadow-[0_0_20px_rgba(217,70,239,0.5)]">5</div>
                     <div class="hidden md:block w-[45%]"></div>
                 </div>
 
                 <!-- Step 6 -->
                 <div class="process-step relative flex flex-col md:flex-row justify-between items-center" data-step="6">
                     <div class="hidden md:block w-[45%]"></div>
-                    <div class="step-node hidden md:flex absolute left-1/2 -translate-x-1/2 w-14 h-14 rounded-full bg-[#05030A] border-[3px] border-indigo-500 items-center justify-center text-indigo-400 font-bold text-xl z-20 shadow-[0_0_20px_rgba(99,102,241,0.5)]">6</div>
+                    <div class="step-node hidden md:flex absolute left-1/2 -translate-x-1/2 w-12 h-12 md:w-14 md:h-14 rounded-full bg-[#05030A] border-[3px] border-indigo-500 items-center justify-center text-indigo-400 font-bold text-lg md:text-xl z-20 shadow-[0_0_20px_rgba(99,102,241,0.5)]">6</div>
                     <div class="step-card w-full md:w-[45%] md:text-left pl-0 md:pl-10 relative z-10">
-                        <div class="md:hidden flex w-12 h-12 rounded-full bg-[#0c0817] border-2 border-indigo-500 items-center justify-center text-indigo-400 font-bold mb-4 shadow-[0_0_15px_rgba(99,102,241,0.4)]">6</div>
-                        <h4 class="text-2xl font-bold text-white mb-3">Relationship Capital</h4>
-                        <p class="text-slate-400 font-light leading-relaxed">Every editor who says yes gets logged for the long term. A first placement is an opening. The compounding value comes from what happens after.</p>
+                        <div class="md:hidden flex w-10 h-10 md:w-12 md:h-12 rounded-full bg-[#0c0817] border-2 border-indigo-500 items-center justify-center text-indigo-400 font-bold mb-4 shadow-[0_0_15px_rgba(99,102,241,0.4)]">6</div>
+                        <h4 class="text-xl md:text-2xl font-bold text-white mb-2 md:mb-3">Relationship Capital</h4>
+                        <p class="text-sm md:text-base text-slate-400 font-light leading-relaxed">Every editor who says yes gets logged for the long term. A first placement is an opening. The compounding value comes from what happens after.</p>
                     </div>
                 </div>
             </div>
 
             <!-- Tech Stack -->
-            <div class="mt-32 reveal">
-                <div class="text-center mb-10">
-                    <span class="text-sm font-bold uppercase tracking-widest text-lavender-400">Mastered Tools & Stack</span>
+            <div class="mt-20 md:mt-32 reveal">
+                <div class="text-center mb-8 md:mb-10">
+                    <span class="text-xs md:text-sm font-bold uppercase tracking-widest text-lavender-400">Mastered Tools & Stack</span>
                 </div>
-                <div class="flex flex-wrap justify-center gap-4 items-center max-w-4xl mx-auto">
+                <div class="flex flex-wrap justify-center gap-3 md:gap-4 items-center max-w-4xl mx-auto px-2">
                     <!-- Ahrefs -->
-                    <div class="flex items-center gap-3 bg-surface border border-white/10 px-6 py-3.5 rounded-2xl text-sm font-bold text-slate-200 backdrop-blur-md hover:bg-white/10 hover:border-orange-500/50 hover:-translate-y-1 transition-all shadow-lg cursor-default group">
-                        <div class="w-7 h-7 rounded-md bg-white/95 p-1 flex items-center justify-center shrink-0 overflow-hidden group-hover:scale-110 transition-transform shadow-sm">
+                    <div class="flex items-center gap-2 md:gap-3 bg-surface border border-white/10 px-4 md:px-6 py-2 md:py-3.5 rounded-2xl text-xs md:text-sm font-bold text-slate-200 backdrop-blur-md hover:bg-white/10 hover:border-orange-500/50 hover:-translate-y-1 transition-all shadow-lg cursor-default group">
+                        <div class="w-6 h-6 md:w-7 md:h-7 rounded-md bg-white/95 p-1 flex items-center justify-center shrink-0 overflow-hidden group-hover:scale-110 transition-transform shadow-sm">
                             <img src="https://www.google.com/s2/favicons?domain=ahrefs.com&sz=128" alt="Ahrefs Logo" class="w-full h-full object-contain" />
                         </div> Ahrefs
                     </div>
                     <!-- SemRush -->
-                    <div class="flex items-center gap-3 bg-surface border border-white/10 px-6 py-3.5 rounded-2xl text-sm font-bold text-slate-200 backdrop-blur-md hover:bg-white/10 hover:border-red-500/50 hover:-translate-y-1 transition-all shadow-lg cursor-default group">
-                        <div class="w-7 h-7 rounded-md bg-white/95 p-1 flex items-center justify-center shrink-0 overflow-hidden group-hover:scale-110 transition-transform shadow-sm">
+                    <div class="flex items-center gap-2 md:gap-3 bg-surface border border-white/10 px-4 md:px-6 py-2 md:py-3.5 rounded-2xl text-xs md:text-sm font-bold text-slate-200 backdrop-blur-md hover:bg-white/10 hover:border-red-500/50 hover:-translate-y-1 transition-all shadow-lg cursor-default group">
+                        <div class="w-6 h-6 md:w-7 md:h-7 rounded-md bg-white/95 p-1 flex items-center justify-center shrink-0 overflow-hidden group-hover:scale-110 transition-transform shadow-sm">
                             <img src="https://www.google.com/s2/favicons?domain=semrush.com&sz=128" alt="SemRush Logo" class="w-full h-full object-contain" />
                         </div> SemRush
                     </div>
                     <!-- Majestic -->
-                    <div class="flex items-center gap-3 bg-surface border border-white/10 px-6 py-3.5 rounded-2xl text-sm font-bold text-slate-200 backdrop-blur-md hover:bg-white/10 hover:border-blue-500/50 hover:-translate-y-1 transition-all shadow-lg cursor-default group">
-                        <div class="w-7 h-7 rounded-md bg-white/95 p-1 flex items-center justify-center shrink-0 overflow-hidden group-hover:scale-110 transition-transform shadow-sm">
+                    <div class="flex items-center gap-2 md:gap-3 bg-surface border border-white/10 px-4 md:px-6 py-2 md:py-3.5 rounded-2xl text-xs md:text-sm font-bold text-slate-200 backdrop-blur-md hover:bg-white/10 hover:border-blue-500/50 hover:-translate-y-1 transition-all shadow-lg cursor-default group">
+                        <div class="w-6 h-6 md:w-7 md:h-7 rounded-md bg-white/95 p-1 flex items-center justify-center shrink-0 overflow-hidden group-hover:scale-110 transition-transform shadow-sm">
                             <img src="https://www.google.com/s2/favicons?domain=majestic.com&sz=128" alt="Majestic Logo" class="w-full h-full object-contain" />
                         </div> Majestic
                     </div>
                     <!-- Pitchbox -->
-                    <div class="flex items-center gap-3 bg-surface border border-white/10 px-6 py-3.5 rounded-2xl text-sm font-bold text-slate-200 backdrop-blur-md hover:bg-white/10 hover:border-emerald-500/50 hover:-translate-y-1 transition-all shadow-lg cursor-default group">
-                        <div class="w-7 h-7 rounded-md bg-white/95 p-1 flex items-center justify-center shrink-0 overflow-hidden group-hover:scale-110 transition-transform shadow-sm">
+                    <div class="flex items-center gap-2 md:gap-3 bg-surface border border-white/10 px-4 md:px-6 py-2 md:py-3.5 rounded-2xl text-xs md:text-sm font-bold text-slate-200 backdrop-blur-md hover:bg-white/10 hover:border-emerald-500/50 hover:-translate-y-1 transition-all shadow-lg cursor-default group">
+                        <div class="w-6 h-6 md:w-7 md:h-7 rounded-md bg-white/95 p-1 flex items-center justify-center shrink-0 overflow-hidden group-hover:scale-110 transition-transform shadow-sm">
                             <img src="https://www.google.com/s2/favicons?domain=pitchbox.com&sz=128" alt="Pitchbox Logo" class="w-full h-full object-contain" />
                         </div> Pitchbox
                     </div>
                     <!-- Lemlist -->
-                    <div class="flex items-center gap-3 bg-surface border border-white/10 px-6 py-3.5 rounded-2xl text-sm font-bold text-slate-200 backdrop-blur-md hover:bg-white/10 hover:border-pink-500/50 hover:-translate-y-1 transition-all shadow-lg cursor-default group">
-                        <div class="w-7 h-7 rounded-md bg-white/95 p-1 flex items-center justify-center shrink-0 overflow-hidden group-hover:scale-110 transition-transform shadow-sm">
+                    <div class="flex items-center gap-2 md:gap-3 bg-surface border border-white/10 px-4 md:px-6 py-2 md:py-3.5 rounded-2xl text-xs md:text-sm font-bold text-slate-200 backdrop-blur-md hover:bg-white/10 hover:border-pink-500/50 hover:-translate-y-1 transition-all shadow-lg cursor-default group">
+                        <div class="w-6 h-6 md:w-7 md:h-7 rounded-md bg-white/95 p-1 flex items-center justify-center shrink-0 overflow-hidden group-hover:scale-110 transition-transform shadow-sm">
                             <img src="https://www.google.com/s2/favicons?domain=lemlist.com&sz=128" alt="Lemlist Logo" class="w-full h-full object-contain" />
                         </div> Lemlist
                     </div>
                     <!-- Hunter.io -->
-                    <div class="flex items-center gap-3 bg-surface border border-white/10 px-6 py-3.5 rounded-2xl text-sm font-bold text-slate-200 backdrop-blur-md hover:bg-white/10 hover:border-orange-400/50 hover:-translate-y-1 transition-all shadow-lg cursor-default group">
-                        <div class="w-7 h-7 rounded-md bg-white/95 p-1 flex items-center justify-center shrink-0 overflow-hidden group-hover:scale-110 transition-transform shadow-sm">
+                    <div class="flex items-center gap-2 md:gap-3 bg-surface border border-white/10 px-4 md:px-6 py-2 md:py-3.5 rounded-2xl text-xs md:text-sm font-bold text-slate-200 backdrop-blur-md hover:bg-white/10 hover:border-orange-400/50 hover:-translate-y-1 transition-all shadow-lg cursor-default group">
+                        <div class="w-6 h-6 md:w-7 md:h-7 rounded-md bg-white/95 p-1 flex items-center justify-center shrink-0 overflow-hidden group-hover:scale-110 transition-transform shadow-sm">
                             <img src="https://www.google.com/s2/favicons?domain=hunter.io&sz=128" alt="Hunter.io Logo" class="w-full h-full object-contain" />
                         </div> Hunter.io
                     </div>
                     <!-- Apollo -->
-                    <div class="flex items-center gap-3 bg-surface border border-white/10 px-6 py-3.5 rounded-2xl text-sm font-bold text-slate-200 backdrop-blur-md hover:bg-white/10 hover:border-blue-300/50 hover:-translate-y-1 transition-all shadow-lg cursor-default group">
-                        <div class="w-7 h-7 rounded-md bg-white/95 p-1 flex items-center justify-center shrink-0 overflow-hidden group-hover:scale-110 transition-transform shadow-sm">
+                    <div class="flex items-center gap-2 md:gap-3 bg-surface border border-white/10 px-4 md:px-6 py-2 md:py-3.5 rounded-2xl text-xs md:text-sm font-bold text-slate-200 backdrop-blur-md hover:bg-white/10 hover:border-blue-300/50 hover:-translate-y-1 transition-all shadow-lg cursor-default group">
+                        <div class="w-6 h-6 md:w-7 md:h-7 rounded-md bg-white/95 p-1 flex items-center justify-center shrink-0 overflow-hidden group-hover:scale-110 transition-transform shadow-sm">
                             <img src="https://www.google.com/s2/favicons?domain=apollo.io&sz=128" alt="Apollo Logo" class="w-full h-full object-contain" />
                         </div> Apollo
                     </div>
                     <!-- Gumloop -->
-                    <div class="flex items-center gap-3 bg-surface border border-white/10 px-6 py-3.5 rounded-2xl text-sm font-bold text-slate-200 backdrop-blur-md hover:bg-white/10 hover:border-purple-400/50 hover:-translate-y-1 transition-all shadow-lg cursor-default group">
-                        <div class="w-7 h-7 rounded-md bg-white/95 p-1 flex items-center justify-center shrink-0 overflow-hidden group-hover:scale-110 transition-transform shadow-sm">
+                    <div class="flex items-center gap-2 md:gap-3 bg-surface border border-white/10 px-4 md:px-6 py-2 md:py-3.5 rounded-2xl text-xs md:text-sm font-bold text-slate-200 backdrop-blur-md hover:bg-white/10 hover:border-purple-400/50 hover:-translate-y-1 transition-all shadow-lg cursor-default group">
+                        <div class="w-6 h-6 md:w-7 md:h-7 rounded-md bg-white/95 p-1 flex items-center justify-center shrink-0 overflow-hidden group-hover:scale-110 transition-transform shadow-sm">
                             <img src="https://www.google.com/s2/favicons?domain=gumloop.com&sz=128" alt="Gumloop Logo" class="w-full h-full object-contain" />
                         </div> Gumloop
                     </div>
                     <!-- AirTable -->
-                    <div class="flex items-center gap-3 bg-surface border border-white/10 px-6 py-3.5 rounded-2xl text-sm font-bold text-slate-200 backdrop-blur-md hover:bg-white/10 hover:border-yellow-400/50 hover:-translate-y-1 transition-all shadow-lg cursor-default group">
-                        <div class="w-7 h-7 rounded-md bg-white/95 p-1 flex items-center justify-center shrink-0 overflow-hidden group-hover:scale-110 transition-transform shadow-sm">
+                    <div class="flex items-center gap-2 md:gap-3 bg-surface border border-white/10 px-4 md:px-6 py-2 md:py-3.5 rounded-2xl text-xs md:text-sm font-bold text-slate-200 backdrop-blur-md hover:bg-white/10 hover:border-yellow-400/50 hover:-translate-y-1 transition-all shadow-lg cursor-default group">
+                        <div class="w-6 h-6 md:w-7 md:h-7 rounded-md bg-white/95 p-1 flex items-center justify-center shrink-0 overflow-hidden group-hover:scale-110 transition-transform shadow-sm">
                             <img src="https://www.google.com/s2/favicons?domain=airtable.com&sz=128" alt="AirTable Logo" class="w-full h-full object-contain" />
                         </div> AirTable
                     </div>
                     <!-- Google Sheets -->
-                    <div class="flex items-center gap-3 bg-surface border border-white/10 px-6 py-3.5 rounded-2xl text-sm font-bold text-slate-200 backdrop-blur-md hover:bg-white/10 hover:border-green-500/50 hover:-translate-y-1 transition-all shadow-lg cursor-default group">
-                        <div class="w-7 h-7 rounded-md bg-white/95 p-1 flex items-center justify-center shrink-0 overflow-hidden group-hover:scale-110 transition-transform shadow-sm">
+                    <div class="flex items-center gap-2 md:gap-3 bg-surface border border-white/10 px-4 md:px-6 py-2 md:py-3.5 rounded-2xl text-xs md:text-sm font-bold text-slate-200 backdrop-blur-md hover:bg-white/10 hover:border-green-500/50 hover:-translate-y-1 transition-all shadow-lg cursor-default group">
+                        <div class="w-6 h-6 md:w-7 md:h-7 rounded-md bg-white/95 p-1 flex items-center justify-center shrink-0 overflow-hidden group-hover:scale-110 transition-transform shadow-sm">
                             <img src="https://upload.wikimedia.org/wikipedia/commons/3/30/Google_Sheets_logo_%282014-2020%29.svg" alt="Google Sheets Logo" class="w-full h-full object-contain" />
                         </div> Google Sheets
                     </div>
@@ -952,13 +976,13 @@
     </section>
 
     <!-- ── 5. CTA ─────────────────────────────────────────────── -->
-    <section class="py-32 relative overflow-hidden z-20">
-        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[500px] bg-lavender-600/20 rounded-[100%] blur-[120px] -z-10 pointer-events-none"></div>
+    <section class="py-20 md:py-32 relative overflow-hidden z-20">
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] md:w-[800px] h-[300px] md:h-[500px] bg-lavender-600/20 rounded-[100%] blur-[100px] md:blur-[120px] -z-10 pointer-events-none"></div>
 
-        <div class="max-w-4xl mx-auto px-6 relative text-center reveal">
+        <div class="max-w-4xl mx-auto px-4 md:px-6 relative text-center reveal">
 
             <!-- Single proof strip -->
-            <div class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/5 border border-white/10 text-slate-400 text-sm font-medium mb-12 flex-wrap justify-center">
+            <div class="inline-flex items-center gap-2 px-4 py-2 md:px-5 md:py-2.5 rounded-full bg-white/5 border border-white/10 text-slate-400 text-xs md:text-sm font-medium mb-10 md:mb-12 flex-wrap justify-center leading-relaxed">
                 <span class="text-slate-300 font-semibold">3 years</span>
                 <span class="text-white/20">·</span>
                 <span class="text-slate-300 font-semibold">500+ placements</span>
@@ -967,86 +991,81 @@
             </div>
 
             <!-- Headline -->
-            <h2 class="text-5xl md:text-6xl font-bold text-white mb-6 tracking-tight leading-[1.1]">
-            You've seen the work.<br/>
+            <h2 class="text-3xl md:text-5xl lg:text-6xl font-bold text-white mb-4 md:mb-6 tracking-tight leading-[1.1]">
+            You've seen the work.<br class="hidden sm:block"/>
             <span class="text-gradient">You know what this produces.</span>
-        </h2>
+            </h2>
 
             <!-- Body -->
-            <p class="text-xl text-slate-400 mb-4 font-light max-w-2xl mx-auto">
+            <p class="text-base md:text-xl text-slate-400 mb-3 md:mb-4 font-light max-w-2xl mx-auto">
                 Most link builders can follow a template. Very few can build the system, manage the pipeline, adapt the angle, and still hit the numbers when the campaign scales.
             </p>
-            <p class="stat-value">
+            <p class="text-base md:text-xl font-semibold color-white mb-10">
                 That's the gap I fill.
             </p>
-            <br>
-            <br>
 
             <!-- Stat strip -->
-            <div class="flex flex-wrap justify-center gap-4 mb-14">
+            <div class="flex flex-col sm:flex-row flex-wrap justify-center gap-3 md:gap-4 mb-10 md:mb-14 px-2 sm:px-0">
                 <div class="cta-stat-card">
                     <div class="stat-label">What you get</div>
-                    <div class="stat-value">A system that runs
-                        <br/>without hand-holding</div>
+                    <div class="stat-value">A system that runs<br/>without hand-holding</div>
                 </div>
                 <div class="cta-stat-card">
                     <div class="stat-label">At any volume</div>
-                    <div class="stat-value">Campaigns that scale
-                        <br/>without losing quality</div>
+                    <div class="stat-value">Campaigns that scale<br/>without losing quality</div>
                 </div>
                 <div class="cta-stat-card">
                     <div class="stat-label">Every month</div>
-                    <div class="stat-value">Results you can
-                        <br/>show your clients</div>
+                    <div class="stat-value">Results you can<br/>show your clients</div>
                 </div>
             </div>
 
             <!-- CTAs -->
-            <div class="flex flex-col sm:flex-row justify-center gap-6 mb-8">
-                <button onclick="Calendly.initPopupWidget({url: 'https://calendly.com/kushvahsid/30min'});return false;" class="glow-border relative inline-flex justify-center items-center gap-3 px-10 py-5 rounded-2xl font-bold text-white hover:text-lavender-100 transition-all text-lg shadow-[0_0_40px_rgba(168,85,247,0.3)]">
-                    <span class="relative z-10 flex items-center gap-3">
-                    <i class="fa-regular fa-calendar-check text-xl"></i> Book a 20-Minute Call
+            <div class="flex flex-col sm:flex-row justify-center gap-4 md:gap-6 mb-8 px-2 sm:px-0">
+                <button onclick="Calendly.initPopupWidget({url: 'https://calendly.com/kushvahsid/30min'});return false;" class="glow-border relative inline-flex justify-center items-center gap-2 md:gap-3 w-full sm:w-auto px-6 py-4 md:px-10 md:py-5 rounded-2xl font-bold text-white hover:text-lavender-100 transition-all text-base md:text-lg shadow-[0_0_40px_rgba(168,85,247,0.3)]">
+                    <span class="relative z-10 flex items-center gap-2 md:gap-3">
+                    <i class="fa-regular fa-calendar-check text-lg md:text-xl"></i> Book a 20-Minute Call
                 </span>
                 </button>
-                <a href="Siddharth-Senior-Link-Builder-Resume.pdf" download="Siddharth-Senior-Link-Builder-Resume.pdf" onclick="showToast('Downloading Resume...', 'success')" class="inline-flex justify-center items-center gap-3 bg-white/5 border border-white/10 hover:bg-white/10 backdrop-blur-xl text-white px-10 py-5 rounded-2xl font-bold transition-all text-lg cursor-pointer">
-                    <i class="fa-regular fa-file-pdf text-lavender-400 text-xl"></i> View Resume
+                <a href="Siddharth-Senior-Link-Builder-Resume.pdf" download="Siddharth-Senior-Link-Builder-Resume.pdf" onclick="showToast('Downloading Resume...', 'success')" class="inline-flex justify-center items-center gap-2 md:gap-3 bg-white/5 border border-white/10 hover:bg-white/10 backdrop-blur-xl text-white w-full sm:w-auto px-6 py-4 md:px-10 md:py-5 rounded-2xl font-bold transition-all text-base md:text-lg cursor-pointer">
+                    <i class="fa-regular fa-file-pdf text-lavender-400 text-lg md:text-xl"></i> View Resume
                 </a>
             </div>
 
             <!-- Freelance availability note -->
-            <p class="text-base text-slate-500 mb-12 max-w-xl mx-auto font-light">
+            <p class="text-sm md:text-base text-slate-500 mb-10 md:mb-12 max-w-xl mx-auto font-light px-2 sm:px-0">
                 There is a two-month notice period at my current company, though I'm open to freelance engagements in the meantime if the timeline doesn't work for you.
             </p>
 
             <!-- Email -->
-            <div class="inline-flex items-center gap-3 text-slate-300 bg-[#0c0817] px-8 py-4 rounded-full border border-white/10 hover:border-lavender-500/50 hover:bg-[#120a21] transition-all cursor-pointer group shadow-xl" onclick="copyEmail()">
+            <div class="inline-flex items-center gap-2 md:gap-3 text-slate-300 bg-[#0c0817] px-5 py-3 md:px-8 md:py-4 rounded-full border border-white/10 hover:border-lavender-500/50 hover:bg-[#120a21] transition-all cursor-pointer group shadow-xl max-w-full" onclick="copyEmail()">
                 <i class="fa-regular fa-envelope text-lavender-400 group-hover:scale-110 transition-transform"></i>
-                <span id="email-text" class="font-medium tracking-wide">kushvahsid@gmail.com</span>
-                <div class="w-[1px] h-4 bg-white/20 mx-2"></div>
+                <span id="email-text" class="font-medium tracking-wide text-xs sm:text-base truncate">kushvahsid@gmail.com</span>
+                <div class="w-[1px] h-3 md:h-4 bg-white/20 mx-1 md:mx-2"></div>
                 <i class="fa-regular fa-copy text-slate-500 group-hover:text-lavender-400 transition-colors" title="Copy to clipboard"></i>
             </div>
             <!-- Closing line -->
-            <p class="text-sm text-slate-600 mt-6 font-light">
+            <p class="text-xs md:text-sm text-slate-600 mt-6 font-light">
                 No lengthy process. Just a conversation to see if it's a fit.
             </p>
 
         </div>
     </section>
 
-    <footer class="bg-[#030206] py-10 border-t border-white/5 text-center text-slate-500 text-sm relative z-20">
-        <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
+    <footer class="bg-[#030206] py-8 md:py-10 border-t border-white/5 text-center text-slate-500 text-sm relative z-20">
+        <div class="max-w-6xl mx-auto px-4 md:px-6 flex flex-col md:flex-row justify-between items-center gap-4 md:gap-6">
             <div class="font-medium">&copy; 2026 Siddharth K. All rights reserved.</div>
-            <div class="flex items-center gap-4">
-                <a href="https://www.linkedin.com/in/kushwaha-sid/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-slate-400 hover:text-lavender-300 transition-colors text-xs font-semibold uppercase tracking-wider">
-                    <i class="fa-brands fa-linkedin text-base"></i> LinkedIn
+            <div class="flex items-center gap-3 md:gap-4 flex-wrap justify-center">
+                <a href="https://www.linkedin.com/in/kushwaha-sid/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-slate-400 hover:text-lavender-300 transition-colors text-[10px] md:text-xs font-semibold uppercase tracking-wider">
+                    <i class="fa-brands fa-linkedin text-sm md:text-base"></i> LinkedIn
                 </a>
-                <div class="w-[1px] h-4 bg-white/10"></div>
-                <div class="flex items-center gap-3 bg-white/5 px-4 py-2 rounded-full border border-white/5 backdrop-blur-sm">
-                    <span class="relative flex h-2 w-2">
+                <div class="w-[1px] h-4 bg-white/10 hidden sm:block"></div>
+                <div class="flex items-center gap-2 md:gap-3 bg-white/5 px-3 py-1.5 md:px-4 md:py-2 rounded-full border border-white/5 backdrop-blur-sm">
+                    <span class="relative flex h-1.5 w-1.5 md:h-2 md:w-2">
                         <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                    <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                    <span class="relative inline-flex rounded-full h-1.5 w-1.5 md:h-2 md:w-2 bg-emerald-500"></span>
                     </span>
-                    <span class="text-slate-400 font-medium tracking-wide text-xs">Updated May 2026</span>
+                    <span class="text-slate-400 font-medium tracking-wide text-[10px] md:text-xs">Updated July 2026</span>
                 </div>
             </div>
         </div>
@@ -1055,8 +1074,8 @@
     <!-- Image Lightbox Modal -->
     <div id="image-modal" class="fixed inset-0 z-[100] hidden bg-black/90 backdrop-blur-sm flex items-center justify-center p-4 opacity-0 transition-opacity duration-300" onclick="closeModal()">
         <div class="relative max-w-full max-h-full">
-            <button onclick="closeModal()" class="absolute -top-12 right-0 md:-right-12 text-slate-400 hover:text-lavender-400 transition-colors p-2">
-                <i class="fa-solid fa-xmark text-3xl"></i>
+            <button onclick="closeModal()" class="absolute top-2 right-2 md:-top-12 md:-right-12 text-slate-300 hover:text-lavender-400 transition-colors p-2 bg-black/60 md:bg-transparent rounded-full z-10 backdrop-blur-md">
+                <i class="fa-solid fa-xmark text-xl md:text-3xl"></i>
             </button>
             <img id="modal-image" src="" alt="Enlarged View" class="max-w-full max-h-[85vh] object-contain rounded-xl border border-white/10 shadow-2xl" onclick="event.stopPropagation()">
         </div>
@@ -1072,53 +1091,86 @@
         }, { root: null, rootMargin: '0px', threshold: 0.12 });
 
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-// ── Process timeline scroll progress ──────────────────
-const timeline = document.getElementById('process-timeline');
-const fillEl   = document.getElementById('timeline-fill');
-const steps    = Array.from(document.querySelectorAll('.process-step'));
-const isMobile = () => window.innerWidth < 768;
-
-function updateTimeline() {
-    if (!timeline || isMobile()) return;
-    const tlRect      = timeline.getBoundingClientRect();
-    const tlHeight    = timeline.offsetHeight;
-    const viewMid     = window.innerHeight / 2;
-    const rawProgress = (viewMid - tlRect.top) / tlHeight;
-    const progress    = Math.min(Math.max(rawProgress, 0), 1);
-    fillEl.style.height = (progress * 100) + '%';
-
-    let closestStep = null;
-    let closestDist = Infinity;
-    steps.forEach(step => {
-        const r    = step.getBoundingClientRect();
-        const mid  = r.top + r.height / 2;
-        const dist = Math.abs(mid - viewMid);
-        if (dist < closestDist) { closestDist = dist; closestStep = step; }
-    });
-    steps.forEach(step => {
-        step.classList.toggle('step-active', step === closestStep);
-    });
-}
-
-// Mobile: use IntersectionObserver to highlight steps as they enter view
-if (isMobile()) {
-    const mobileObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                steps.forEach(s => s.classList.remove('step-active'));
-                entry.target.classList.add('step-active');
+        
+        // Mobile Navigation Menu Toggle
+        const mobileBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+        
+        mobileBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            mobileMenu.classList.toggle('flex');
+            const icon = mobileBtn.querySelector('i');
+            if (mobileMenu.classList.contains('hidden')) {
+                icon.classList.remove('fa-xmark');
+                icon.classList.add('fa-bars');
+                document.body.style.overflow = '';
+            } else {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-xmark');
+                document.body.style.overflow = 'hidden'; // Stop scrolling when menu is open
             }
         });
-    }, { threshold: 0.5, rootMargin: '-10% 0px -10% 0px' });
-    steps.forEach(step => mobileObserver.observe(step));
-}
 
-window.addEventListener('load', updateTimeline);
-window.addEventListener('scroll', updateTimeline, { passive: true });
-window.addEventListener('resize', updateTimeline, { passive: true });
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                mobileMenu.classList.remove('flex');
+                mobileBtn.querySelector('i').classList.remove('fa-xmark');
+                mobileBtn.querySelector('i').classList.add('fa-bars');
+                document.body.style.overflow = '';
+            });
+        });
+
+        // ── Process timeline scroll progress ──────────────────
+        const timeline = document.getElementById('process-timeline');
+        const fillEl   = document.getElementById('timeline-fill');
+        const steps    = Array.from(document.querySelectorAll('.process-step'));
+        const isMobile = () => window.innerWidth < 768;
+
+        function updateTimeline() {
+            if (!timeline || isMobile()) return;
+            const tlRect      = timeline.getBoundingClientRect();
+            const tlHeight    = timeline.offsetHeight;
+            const viewMid     = window.innerHeight / 2;
+            const rawProgress = (viewMid - tlRect.top) / tlHeight;
+            const progress    = Math.min(Math.max(rawProgress, 0), 1);
+            fillEl.style.height = (progress * 100) + '%';
+
+            let closestStep = null;
+            let closestDist = Infinity;
+            steps.forEach(step => {
+                const r    = step.getBoundingClientRect();
+                const mid  = r.top + r.height / 2;
+                const dist = Math.abs(mid - viewMid);
+                if (dist < closestDist) { closestDist = dist; closestStep = step; }
+            });
+            steps.forEach(step => {
+                step.classList.toggle('step-active', step === closestStep);
+            });
+        }
+
+        // Mobile: use IntersectionObserver to highlight steps as they enter view
+        const mobileObserver = new IntersectionObserver((entries) => {
+            if (isMobile()) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        steps.forEach(s => s.classList.remove('step-active'));
+                        entry.target.classList.add('step-active');
+                    }
+                });
+            }
+        }, { threshold: 0.5, rootMargin: '-10% 0px -10% 0px' });
+        
+        steps.forEach(step => mobileObserver.observe(step));
+
+        window.addEventListener('load', updateTimeline);
+        window.addEventListener('scroll', updateTimeline, { passive: true });
+        window.addEventListener('resize', updateTimeline, { passive: true });
+        
         // Copy email
         function copyEmail() {
-            const email = "hello@siddharth-outreach.com";
+            const email = "kushvahsid@gmail.com";
             navigator.clipboard?.writeText(email).catch(() => {
                 const tmp = document.createElement("input");
                 tmp.value = email;
@@ -1140,8 +1192,8 @@ window.addEventListener('resize', updateTimeline, { passive: true });
                 ? '<i class="fa-solid fa-check-circle text-white"></i>'
                 : '<i class="fa-solid fa-info-circle text-lavender-400"></i>';
 
-            toast.className = `${bgClass} backdrop-blur-xl border ${borderClass} text-white px-6 py-4 rounded-2xl shadow-[0_10px_40px_rgba(0,0,0,0.5)] flex items-center gap-4 transform transition-all duration-300 translate-y-10 opacity-0`;
-            toast.innerHTML = `<div class="text-xl">${icon}</div><span class="font-medium tracking-wide">${message}</span>`;
+            toast.className = `${bgClass} backdrop-blur-xl border ${borderClass} text-white px-5 py-3 md:px-6 md:py-4 rounded-2xl shadow-[0_10px_40px_rgba(0,0,0,0.5)] flex items-center gap-3 md:gap-4 transform transition-all duration-300 translate-y-10 opacity-0`;
+            toast.innerHTML = `<div class="text-lg md:text-xl">${icon}</div><span class="font-medium tracking-wide text-sm md:text-base">${message}</span>`;
             container.appendChild(toast);
 
             requestAnimationFrame(() => toast.classList.remove('translate-y-10', 'opacity-0'));
