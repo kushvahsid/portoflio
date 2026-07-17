@@ -22,7 +22,7 @@
                         sans: ['"Plus Jakarta Sans"', 'sans-serif'],
                     },
                     colors: {
-                        base: '#05030A',
+                        darkBg: '#05030A', // Renamed from 'base' to prevent text-base font-size conflict
                         surface: 'rgba(20, 15, 35, 0.4)',
                         surfaceHover: 'rgba(30, 20, 50, 0.6)',
                         lavender: {
@@ -283,7 +283,7 @@
             </div>
             
             <div class="flex items-center gap-4 z-50">
-                <button onclick="showToast('Connecting to Calendly...', 'info')" class="text-sm font-bold bg-white text-base px-4 py-2 md:px-5 md:py-2.5 rounded-full hover:bg-lavender-100 transition-colors hover:shadow-[0_0_20px_rgba(192,132,252,0.4)]">
+                <button onclick="showToast('Connecting to Calendly...', 'info')" class="text-sm font-bold bg-white text-darkBg px-4 py-2 md:px-5 md:py-2.5 rounded-full hover:bg-lavender-100 transition-colors hover:shadow-[0_0_20px_rgba(192,132,252,0.4)]">
                     <a href="https://calendly.com/kushvahsid/30min" rel="noopener">Let's Chat</a>
                 </button>
                 
@@ -827,7 +827,7 @@
 
             <div class="text-center mb-16 md:mb-24 reveal">
                 <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 md:mb-6">My Psychology of Successful Campaigns</h2>
-                <p class="text-base md:text-xl text-slate-400 max-w-2xl mx-auto font-light">High reply rates are not luck. They are the output of a repeatable system that I adapt based on what the campaign actually needs, whether that's surgical precision or efficient scale.</p>
+                <p class="text-[16px] md:text-xl text-slate-400 max-w-2xl mx-auto font-light">High reply rates are not luck. They are the output of a repeatable system that I adapt based on what the campaign actually needs, whether that's surgical precision or efficient scale.</p>
             </div>
 
             <!-- Process timeline -->
@@ -840,7 +840,7 @@
                     <div class="step-card w-full md:w-[45%] md:text-right pr-0 md:pr-10 mb-2 md:mb-0 relative z-10">
                         <div class="md:hidden flex w-10 h-10 md:w-12 md:h-12 rounded-full bg-[#0c0817] border-2 border-lavender-500 items-center justify-center text-lavender-400 font-bold mb-4 shadow-[0_0_15px_rgba(168,85,247,0.4)]">1</div>
                         <h4 class="text-xl md:text-2xl font-bold text-white mb-2 md:mb-3">Keyword & Competitor Intel</h4>
-                        <p class="text-sm md:text-base text-slate-400 font-light leading-relaxed">Before prospecting starts, I map every linkable asset and identify who is already linking to competing content. This tells me which doors are open before I knock, and which angles are most likely to land.</p>
+                        <p class="text-sm md:text-[16px] text-slate-400 font-light leading-relaxed">Before prospecting starts, I map every linkable asset and identify who is already linking to competing content. This tells me which doors are open before I knock, and which angles are most likely to land.</p>
                     </div>
                     <div class="step-node hidden md:flex absolute left-1/2 -translate-x-1/2 w-12 h-12 md:w-14 md:h-14 rounded-full bg-[#05030A] border-[3px] border-lavender-500 items-center justify-center text-lavender-400 font-bold text-lg md:text-xl z-20 shadow-[0_0_20px_rgba(168,85,247,0.5)]">1</div>
                     <div class="hidden md:block w-[45%]"></div>
@@ -853,7 +853,7 @@
                     <div class="step-card w-full md:w-[45%] md:text-left pl-0 md:pl-10 relative z-10">
                         <div class="md:hidden flex w-10 h-10 md:w-12 md:h-12 rounded-full bg-[#0c0817] border-2 border-fuchsia-500 items-center justify-center text-fuchsia-400 font-bold mb-4 shadow-[0_0_15px_rgba(217,70,239,0.4)]">2</div>
                         <h4 class="text-xl md:text-2xl font-bold text-white mb-2 md:mb-3">Prospecting That Fits the Brief</h4>
-                        <p class="text-sm md:text-base text-slate-400 font-light leading-relaxed">For targeted campaigns, strict DR, traffic, and topical relevancy filters narrow the list to sites that will actually move the needle. For high-volume campaigns, I use automation tools to build and segment prospect lists quickly,
+                        <p class="text-sm md:text-[16px] text-slate-400 font-light leading-relaxed">For targeted campaigns, strict DR, traffic, and topical relevancy filters narrow the list to sites that will actually move the needle. For high-volume campaigns, I use automation tools to build and segment prospect lists quickly,
                             without compromising on relevancy. No PBNs. No link farms.</p>
                     </div>
                 </div>
@@ -863,7 +863,7 @@
                     <div class="step-card w-full md:w-[45%] md:text-right pr-0 md:pr-10 mb-2 md:mb-0 relative z-10">
                         <div class="md:hidden flex w-10 h-10 md:w-12 md:h-12 rounded-full bg-[#0c0817] border-2 border-blue-500 items-center justify-center text-blue-400 font-bold mb-4 shadow-[0_0_15px_rgba(59,130,246,0.4)]">3</div>
                         <h4 class="text-xl md:text-2xl font-bold text-white mb-2 md:mb-3">Personalization at the Right Level</h4>
-                        <p class="text-sm md:text-base text-slate-400 font-light leading-relaxed">For specific, high-value targets, I dig into the site and write openers that feel genuinely tailored. For scale campaigns, I use AI-assisted tools to build templates that read as personal without requiring manual effort on every
+                        <p class="text-sm md:text-[16px] text-slate-400 font-light leading-relaxed">For specific, high-value targets, I dig into the site and write openers that feel genuinely tailored. For scale campaigns, I use AI-assisted tools to build templates that read as personal without requiring manual effort on every
                             send. The approach matches the output required.</p>
                     </div>
                     <div class="step-node hidden md:flex absolute left-1/2 -translate-x-1/2 w-12 h-12 md:w-14 md:h-14 rounded-full bg-[#05030A] border-[3px] border-blue-500 items-center justify-center text-blue-400 font-bold text-lg md:text-xl z-20 shadow-[0_0_20px_rgba(59,130,246,0.5)]">3</div>
@@ -877,7 +877,7 @@
                     <div class="step-card w-full md:w-[45%] md:text-left pl-0 md:pl-10 relative z-10">
                         <div class="md:hidden flex w-10 h-10 md:w-12 md:h-12 rounded-full bg-[#0c0817] border-2 border-lavender-500 items-center justify-center text-lavender-400 font-bold mb-4 shadow-[0_0_15px_rgba(168,85,247,0.4)]">4</div>
                         <h4 class="text-xl md:text-2xl font-bold text-white mb-2 md:mb-3">The Right Angle, Every Time</h4>
-                        <p class="text-sm md:text-base text-slate-400 font-light leading-relaxed">Value swap, broken-link fix, expert quote, listicle pitch, guest article, or something new. I match the outreach angle to the prospect type, so the ask feels like a logical next step rather than a cold interruption.</p>
+                        <p class="text-sm md:text-[16px] text-slate-400 font-light leading-relaxed">Value swap, broken-link fix, expert quote, listicle pitch, guest article, or something new. I match the outreach angle to the prospect type, so the ask feels like a logical next step rather than a cold interruption.</p>
                     </div>
                 </div>
 
@@ -886,7 +886,7 @@
                     <div class="step-card w-full md:w-[45%] md:text-right pr-0 md:pr-10 mb-2 md:mb-0 relative z-10">
                         <div class="md:hidden flex w-10 h-10 md:w-12 md:h-12 rounded-full bg-[#0c0817] border-2 border-fuchsia-500 items-center justify-center text-fuchsia-400 font-bold mb-4 shadow-[0_0_15px_rgba(217,70,239,0.4)]">5</div>
                         <h4 class="text-xl md:text-2xl font-bold text-white mb-2 md:mb-3">Smart Send & Follow-Up</h4>
-                        <p class="text-sm md:text-base text-slate-400 font-light leading-relaxed">Sequences that go out on time and follow-ups that add something new to the thread rather than just nudging. The goal is replies, not blocklists.</p>
+                        <p class="text-sm md:text-[16px] text-slate-400 font-light leading-relaxed">Sequences that go out on time and follow-ups that add something new to the thread rather than just nudging. The goal is replies, not blocklists.</p>
                     </div>
                     <div class="step-node hidden md:flex absolute left-1/2 -translate-x-1/2 w-12 h-12 md:w-14 md:h-14 rounded-full bg-[#05030A] border-[3px] border-fuchsia-500 items-center justify-center text-fuchsia-400 font-bold text-lg md:text-xl z-20 shadow-[0_0_20px_rgba(217,70,239,0.5)]">5</div>
                     <div class="hidden md:block w-[45%]"></div>
@@ -899,7 +899,7 @@
                     <div class="step-card w-full md:w-[45%] md:text-left pl-0 md:pl-10 relative z-10">
                         <div class="md:hidden flex w-10 h-10 md:w-12 md:h-12 rounded-full bg-[#0c0817] border-2 border-indigo-500 items-center justify-center text-indigo-400 font-bold mb-4 shadow-[0_0_15px_rgba(99,102,241,0.4)]">6</div>
                         <h4 class="text-xl md:text-2xl font-bold text-white mb-2 md:mb-3">Relationship Capital</h4>
-                        <p class="text-sm md:text-base text-slate-400 font-light leading-relaxed">Every editor who says yes gets logged for the long term. A first placement is an opening. The compounding value comes from what happens after.</p>
+                        <p class="text-sm md:text-[16px] text-slate-400 font-light leading-relaxed">Every editor who says yes gets logged for the long term. A first placement is an opening. The compounding value comes from what happens after.</p>
                     </div>
                 </div>
             </div>
@@ -997,10 +997,10 @@
             </h2>
 
             <!-- Body -->
-            <p class="text-base md:text-xl text-slate-400 mb-3 md:mb-4 font-light max-w-2xl mx-auto">
+            <p class="text-[16px] md:text-xl text-slate-400 mb-3 md:mb-4 font-light max-w-2xl mx-auto">
                 Most link builders can follow a template. Very few can build the system, manage the pipeline, adapt the angle, and still hit the numbers when the campaign scales.
             </p>
-            <p class="text-base md:text-xl font-semibold color-white mb-10">
+            <p class="text-[16px] md:text-xl font-semibold color-white mb-10">
                 That's the gap I fill.
             </p>
 
@@ -1022,12 +1022,12 @@
 
             <!-- CTAs -->
             <div class="flex flex-col sm:flex-row justify-center gap-4 md:gap-6 mb-8 px-2 sm:px-0">
-                <button onclick="Calendly.initPopupWidget({url: 'https://calendly.com/kushvahsid/30min'});return false;" class="glow-border relative inline-flex justify-center items-center gap-2 md:gap-3 w-full sm:w-auto px-6 py-4 md:px-10 md:py-5 rounded-2xl font-bold text-white hover:text-lavender-100 transition-all text-base md:text-lg shadow-[0_0_40px_rgba(168,85,247,0.3)]">
+                <button onclick="Calendly.initPopupWidget({url: 'https://calendly.com/kushvahsid/30min'});return false;" class="glow-border relative inline-flex justify-center items-center gap-2 md:gap-3 w-full sm:w-auto px-6 py-4 md:px-10 md:py-5 rounded-2xl font-bold text-white hover:text-lavender-100 transition-all text-[16px] md:text-lg shadow-[0_0_40px_rgba(168,85,247,0.3)]">
                     <span class="relative z-10 flex items-center gap-2 md:gap-3">
                     <i class="fa-regular fa-calendar-check text-lg md:text-xl"></i> Book a 20-Minute Call
                 </span>
                 </button>
-                <a href="Siddharth-Senior-Link-Builder-Resume.pdf" download="Siddharth-Senior-Link-Builder-Resume.pdf" onclick="showToast('Downloading Resume...', 'success')" class="inline-flex justify-center items-center gap-2 md:gap-3 bg-white/5 border border-white/10 hover:bg-white/10 backdrop-blur-xl text-white w-full sm:w-auto px-6 py-4 md:px-10 md:py-5 rounded-2xl font-bold transition-all text-base md:text-lg cursor-pointer">
+                <a href="Siddharth-Senior-Link-Builder-Resume.pdf" download="Siddharth-Senior-Link-Builder-Resume.pdf" onclick="showToast('Downloading Resume...', 'success')" class="inline-flex justify-center items-center gap-2 md:gap-3 bg-white/5 border border-white/10 hover:bg-white/10 backdrop-blur-xl text-white w-full sm:w-auto px-6 py-4 md:px-10 md:py-5 rounded-2xl font-bold transition-all text-[16px] md:text-lg cursor-pointer">
                     <i class="fa-regular fa-file-pdf text-lavender-400 text-lg md:text-xl"></i> View Resume
                 </a>
             </div>
@@ -1057,7 +1057,7 @@
             <div class="font-medium">&copy; 2026 Siddharth K. All rights reserved.</div>
             <div class="flex items-center gap-3 md:gap-4 flex-wrap justify-center">
                 <a href="https://www.linkedin.com/in/kushwaha-sid/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-slate-400 hover:text-lavender-300 transition-colors text-[10px] md:text-xs font-semibold uppercase tracking-wider">
-                    <i class="fa-brands fa-linkedin text-sm md:text-base"></i> LinkedIn
+                    <i class="fa-brands fa-linkedin text-sm md:text-[16px]"></i> LinkedIn
                 </a>
                 <div class="w-[1px] h-4 bg-white/10 hidden sm:block"></div>
                 <div class="flex items-center gap-2 md:gap-3 bg-white/5 px-3 py-1.5 md:px-4 md:py-2 rounded-full border border-white/5 backdrop-blur-sm">
